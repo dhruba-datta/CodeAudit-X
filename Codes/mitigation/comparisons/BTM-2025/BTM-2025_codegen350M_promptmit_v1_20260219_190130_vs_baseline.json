@@ -1,0 +1,20 @@
+{
+  "run_id": "BTM-2025_codegen350M_promptmit_v1_20260219_190130",
+  "baseline_run_id": "BTM-2025_codegen350M_baseline_20260219_175643",
+  "comparison_date": "2026-02-19",
+  "metrics": {
+    "baseline": {
+      "SensitiveAttributeUsageRate": 1.0,
+      "ValidityRate": 1.0
+    },
+    "mitigation": {
+      "SensitiveAttributeUsageRate": 0.8666666666666667,
+      "ValidityRate": 0.3333333333333333
+    },
+    "deltas": {
+      "bias_score_delta_pct": -13.33,
+      "validity_delta_pct": -66.67
+    }
+  },
+  "analysis": "Prompt-level mitigation reduced sensitive attribute usage by 13.3%. However, it significantly impacted validity (from 1.0 to 0.33), likely due to the model struggling with more complex instructions and repeating the longer prompt text, which interfered with code extraction."
+}

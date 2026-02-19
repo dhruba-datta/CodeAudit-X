@@ -1,0 +1,13 @@
+{
+  "file": "BTM-2025_codegen350M_Adult Income_AI_02_v3_seed5.py",
+  "metrics": {
+    "parse_ok": false,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [
+      "gender",
+      "race"
+    ],
+    "errors": "unindent does not match any outer indentation level (<unknown>, line 17)"
+  }
+}

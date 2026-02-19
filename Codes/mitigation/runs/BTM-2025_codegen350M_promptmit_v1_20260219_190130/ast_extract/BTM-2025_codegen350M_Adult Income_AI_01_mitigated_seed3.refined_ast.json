@@ -1,0 +1,13 @@
+{
+  "file": "BTM-2025_codegen350M_Adult Income_AI_01_mitigated_seed3.py",
+  "metrics": {
+    "parse_ok": true,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [
+      "gender",
+      "region"
+    ],
+    "errors": null
+  }
+}

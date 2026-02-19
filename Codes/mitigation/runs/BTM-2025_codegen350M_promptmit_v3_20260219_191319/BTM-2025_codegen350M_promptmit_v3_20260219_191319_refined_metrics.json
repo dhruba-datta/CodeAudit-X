@@ -1,0 +1,13 @@
+{
+  "run_id": "BTM-2025_codegen350M_promptmit_v3_20260219_191319",
+  "total_files": 15,
+  "CodeLevelProtectedUsageRate": 0.0,
+  "StringEchoRate": 0.6666666666666666,
+  "ValidityRate": 0.4,
+  "raw_counts": {
+    "protected_usage": 0,
+    "string_echo": 10,
+    "valid": 6
+  },
+  "timestamp": "2026-02-19T19:18:48.722626"
+}

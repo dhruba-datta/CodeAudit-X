@@ -1,0 +1,10 @@
+{
+  "file": "BTM-2025_codegen350M_Adult Income_AI_01_mitigated_seed5.py",
+  "metrics": {
+    "parse_ok": false,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [],
+    "errors": "invalid syntax (<unknown>, line 19)"
+  }
+}

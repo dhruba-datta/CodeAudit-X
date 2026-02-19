@@ -1,0 +1,25 @@
+{
+  "run_id": "BTM-2025_codegen350M_promptmit_v2_20260219_190744",
+  "v1_run_id": "BTM-2025_codegen350M_promptmit_v1_20260219_190130",
+  "baseline_run_id": "BTM-2025_codegen350M_baseline_20260219_175643",
+  "comparison_date": "2026-02-19",
+  "metrics": {
+    "baseline": {
+      "SensitiveAttributeUsageRate": 1.0,
+      "ValidityRate": 1.0
+    },
+    "mitigation_v1": {
+      "SensitiveAttributeUsageRate": 0.867,
+      "ValidityRate": 0.33
+    },
+    "mitigation_v2": {
+      "SensitiveAttributeUsageRate": 0.333,
+      "ValidityRate": 0.4
+    },
+    "deltas_v2_vs_baseline": {
+      "bias_score_delta_pct": -66.7,
+      "validity_delta_pct": -60.0
+    }
+  },
+  "analysis": "v2 Refinement significantly reduced bias (usage rate down to 0.333 from 1.0 in baseline). Validity rate (0.4) remains problematic and is below the target of 0.8. Shorter prompts helped focus the model on the task, but the 'no explanation' constraint and stricter extraction frequently resulted in empty functions or naming mismatches that broke extraction."
+}

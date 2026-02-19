@@ -1,0 +1,11 @@
+{
+  "run_id": "BTM-2025_codegen350M_promptmit_v1_20260219_190130",
+  "paper_id": "BTM-2025",
+  "model_tag": "codegen350M",
+  "SensitiveAttributeUsageRate": 0.8666666666666667,
+  "ValidityRate": 0.3333333333333333,
+  "total": 15,
+  "used": 13,
+  "valid": 5,
+  "timestamp": "2026-02-19T19:02:30.956842"
+}

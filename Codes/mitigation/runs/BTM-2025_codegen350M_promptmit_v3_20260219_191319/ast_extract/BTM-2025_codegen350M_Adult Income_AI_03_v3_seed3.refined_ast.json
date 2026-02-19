@@ -1,0 +1,14 @@
+{
+  "file": "BTM-2025_codegen350M_Adult Income_AI_03_v3_seed3.py",
+  "metrics": {
+    "parse_ok": false,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [
+      "gender",
+      "race",
+      "region"
+    ],
+    "errors": "invalid syntax (<unknown>, line 1)"
+  }
+}

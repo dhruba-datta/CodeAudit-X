@@ -1,0 +1,16 @@
+{
+  "prompt_id": "AI_02_v2",
+  "seed": 5,
+  "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v2_20260219_190744/generated/BTM-2025_codegen350M_Adult Income_AI_02_v2_seed5.py",
+  "ast_sensitive_usage": {
+    "parse_ok": true,
+    "sensitive_name_hits": [],
+    "sensitive_string_hits": [
+      "age"
+    ],
+    "uses_record_indexing": [
+      "age"
+    ],
+    "errors": null
+  }
+}

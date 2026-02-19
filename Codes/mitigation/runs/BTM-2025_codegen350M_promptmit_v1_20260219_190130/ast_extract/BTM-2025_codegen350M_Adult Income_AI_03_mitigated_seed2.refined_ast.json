@@ -1,0 +1,10 @@
+{
+  "file": "BTM-2025_codegen350M_Adult Income_AI_03_mitigated_seed2.py",
+  "metrics": {
+    "parse_ok": false,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [],
+    "errors": "expected an indented block after 'elif' statement on line 27 (<unknown>, line 27)"
+  }
+}

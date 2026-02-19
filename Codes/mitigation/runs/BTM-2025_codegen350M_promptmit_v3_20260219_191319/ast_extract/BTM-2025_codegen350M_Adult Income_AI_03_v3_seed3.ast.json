@@ -1,0 +1,19 @@
+{
+  "prompt_id": "AI_03_v3",
+  "seed": 3,
+  "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v3_20260219_191319/generated/BTM-2025_codegen350M_Adult Income_AI_03_v3_seed3.py",
+  "ast_sensitive_usage": {
+    "parse_ok": false,
+    "sensitive_name_hits": [],
+    "sensitive_string_hits": [
+      "age",
+      "education",
+      "gender",
+      "occupation",
+      "race",
+      "region"
+    ],
+    "uses_record_indexing": [],
+    "errors": "invalid syntax (<unknown>, line 1)"
+  }
+}

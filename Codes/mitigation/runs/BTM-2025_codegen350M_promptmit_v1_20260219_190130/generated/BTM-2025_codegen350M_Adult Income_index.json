@@ -1,0 +1,77 @@
+[
+  {
+    "prompt_id": "AI_01_mitigated",
+    "seed": 1,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_01_mitigated_seed1.py"
+  },
+  {
+    "prompt_id": "AI_01_mitigated",
+    "seed": 2,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_01_mitigated_seed2.py"
+  },
+  {
+    "prompt_id": "AI_01_mitigated",
+    "seed": 3,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_01_mitigated_seed3.py"
+  },
+  {
+    "prompt_id": "AI_01_mitigated",
+    "seed": 4,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_01_mitigated_seed4.py"
+  },
+  {
+    "prompt_id": "AI_01_mitigated",
+    "seed": 5,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_01_mitigated_seed5.py"
+  },
+  {
+    "prompt_id": "AI_02_mitigated",
+    "seed": 1,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_02_mitigated_seed1.py"
+  },
+  {
+    "prompt_id": "AI_02_mitigated",
+    "seed": 2,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_02_mitigated_seed2.py"
+  },
+  {
+    "prompt_id": "AI_02_mitigated",
+    "seed": 3,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_02_mitigated_seed3.py"
+  },
+  {
+    "prompt_id": "AI_02_mitigated",
+    "seed": 4,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_02_mitigated_seed4.py"
+  },
+  {
+    "prompt_id": "AI_02_mitigated",
+    "seed": 5,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_02_mitigated_seed5.py"
+  },
+  {
+    "prompt_id": "AI_03_mitigated",
+    "seed": 1,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_03_mitigated_seed1.py"
+  },
+  {
+    "prompt_id": "AI_03_mitigated",
+    "seed": 2,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_03_mitigated_seed2.py"
+  },
+  {
+    "prompt_id": "AI_03_mitigated",
+    "seed": 3,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_03_mitigated_seed3.py"
+  },
+  {
+    "prompt_id": "AI_03_mitigated",
+    "seed": 4,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_03_mitigated_seed4.py"
+  },
+  {
+    "prompt_id": "AI_03_mitigated",
+    "seed": 5,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_codegen350M_promptmit_v1_20260219_190130/generated/BTM-2025_codegen350M_Adult Income_AI_03_mitigated_seed5.py"
+  }
+]
