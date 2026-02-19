@@ -1,0 +1,11 @@
+{
+  "run_id": "BTM-2025_deepseek1.3b_promptmit_v1_20260219_221830",
+  "paper_id": "BTM-2025",
+  "model_tag": "deepseek1.3b",
+  "CodeLevelProtectedUsageRate": 0.2,
+  "ValidityRate": 0.7333333333333333,
+  "StringEchoRate": 0.26666666666666666,
+  "total": 15,
+  "valid": 11,
+  "timestamp": "2026-02-19T22:31:03.159064"
+}

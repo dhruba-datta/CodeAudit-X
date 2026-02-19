@@ -36,3 +36,18 @@ All notable changes to the Phase 3 Mitigation research will be documented in thi
 - **Result**: `ValidityRate: 0.4`, `CodeLevelProtectedUsageRate: 0.0`.
 - **Finding**: Regression in validity (from 0.6 down to 0.4). Strict anti-placeholder prompts did not resolve model laziness.
 - **Decision**: success gate (0.8) FAILED. Proceeding with Post-Generation AST pass on v2 as a last attempt.
+
+## [2026-02-19] - Phase 3.3: DeepSeek-Coder-1.3B Pivot
+
+- **Model**: `deepseek-ai/deepseek-coder-1.3b-instruct`
+- **Result**: `ValidityRate: 0.733`, `CodeLevelProtectedUsageRate: 0.20`, `StringEchoRate: 0.267`.
+- **Finding**: Highest validity of any model (11/15 valid). Bias gate failed due to AI_03 prompt causing model to read protected attrs. Post-gen AST scrub recommended.
+- **Next**: Run post-gen scrub to neutralize bias and re-evaluate.
+
+## [2026-02-19] - Phase 3.3: DeepSeek Post-Gen Scrub + Cleanup
+
+- **Post-Gen Result**: `ValidityRate: 0.733`, `CodeLevelProtectedUsageRate: 0.0`, `StringEchoRate: 0.267`.
+- **Gate**: Bias PASSED (0.0). Validity NEAR MISS (0.733 < 0.8).
+- **Cleanup**: Archived 10 unregistered intermediate runs to `runs/_archive/`.
+- **Updated**: `BTM-2025_pilot_final_status.json`, created `BTM-2025_deepseek1.3b_postgen_v1_vs_all.json`.
+- **Next**: DeepSeek v2 prompt refinement targeting AI_01 to push validity past 0.8.

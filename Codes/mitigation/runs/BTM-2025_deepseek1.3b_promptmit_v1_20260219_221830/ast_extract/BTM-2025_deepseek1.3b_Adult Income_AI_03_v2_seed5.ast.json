@@ -1,0 +1,16 @@
+{
+  "prompt_id": "AI_03_v2",
+  "seed": 5,
+  "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_deepseek1.3b_promptmit_v1_20260219_221830/generated/BTM-2025_deepseek1.3b_Adult Income_AI_03_v2_seed5.py",
+  "refined_metrics": {
+    "parse_ok": false,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [
+      "region",
+      "gender",
+      "race"
+    ],
+    "errors": "invalid syntax (<unknown>, line 1)"
+  }
+}

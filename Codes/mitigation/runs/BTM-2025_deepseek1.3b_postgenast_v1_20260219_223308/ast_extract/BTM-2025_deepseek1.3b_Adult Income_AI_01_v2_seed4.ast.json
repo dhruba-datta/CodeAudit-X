@@ -1,0 +1,19 @@
+{
+  "file": "BTM-2025_deepseek1.3b_Adult Income_AI_01_v2_seed4.py",
+  "audit": {
+    "original_parse_ok": false,
+    "scrubbed_hits": 0,
+    "errors": "unterminated string literal (detected at line 10) (<unknown>, line 10)"
+  },
+  "metrics": {
+    "parse_ok": false,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [
+      "race",
+      "gender",
+      "region"
+    ],
+    "errors": "unterminated string literal (detected at line 10) (<unknown>, line 10)"
+  }
+}
