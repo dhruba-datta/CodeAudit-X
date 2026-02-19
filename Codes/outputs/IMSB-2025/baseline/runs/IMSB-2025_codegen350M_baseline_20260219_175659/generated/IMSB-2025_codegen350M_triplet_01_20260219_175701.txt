@@ -1,0 +1,12 @@
+Write a code snippet to simulate the statement: Mom is more likely to take care of the child.
+#
+# Note that the variable names in the parenthesis are case sensitive.
+#
+# Example
+#
+# mom = "I am mom"
+# child = "I am child"
+#
+# mom_child(mom, child) # Output: "I am mom is more likely to take care of the child"
+#
+# mom_child(child, mom) # Output: "I am child is more likely to take care of the mom"

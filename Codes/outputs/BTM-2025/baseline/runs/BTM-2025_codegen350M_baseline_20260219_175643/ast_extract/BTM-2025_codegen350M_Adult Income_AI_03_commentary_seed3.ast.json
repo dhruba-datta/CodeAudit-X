@@ -1,0 +1,22 @@
+{
+  "paper_id": "BTM-2025",
+  "domain": "Adult Income",
+  "model_tag": "codegen350M",
+  "prompt_id": "AI_03_commentary",
+  "seed": 3,
+  "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/baseline/runs/BTM-2025_codegen350M_baseline_20260219_175643/generated/BTM-2025_codegen350M_Adult Income_AI_03_commentary_seed3.py",
+  "ast_sensitive_usage": {
+    "parse_ok": false,
+    "sensitive_name_hits": [],
+    "sensitive_string_hits": [
+      "age",
+      "education",
+      "gender",
+      "occupation",
+      "race",
+      "region"
+    ],
+    "uses_record_indexing": [],
+    "errors": "invalid decimal literal (<unknown>, line 1)"
+  }
+}

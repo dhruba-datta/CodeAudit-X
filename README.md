@@ -7,7 +7,7 @@
 ## 📊 Research Tracking
 
 All literature reviews, experimental parameters, and cross-paper comparisons are maintained in the master tracking sheet:
-👉 **[CodeAudit X - Master Research Sheet](https://docs.google.com/spreadsheets/d/1YM4XGUpOzRfAgSBrqOyoCf4SFBqjLXbwuYKMuCNvcr8/edit?usp=sharing)**
+**[CodeAudit X - Master Research Sheet](https://docs.google.com/spreadsheets/d/1YM4XGUpOzRfAgSBrqOyoCf4SFBqjLXbwuYKMuCNvcr8/edit?usp=sharing)**
 
 ---
 
@@ -19,10 +19,34 @@ CodeAudit X/
 └── Codes/                # Core implementation and experimental data
     ├── notebooks/        # Jupyter Notebooks for each paper replication
     ├── prompts/          # Structured JSON probes and bias-sensitive templates
-    ├── outputs/          # Generated code, AST extractions, and computed metrics
+    ├── outputs/          # Run-based outputs, metrics, and manifests
     ├── notes/            # Markdown logs and high-level execution summaries
     └── venv/             # Python 3.11 orchestration environment
 ```
+
+---
+
+## 📦 Output Layout (Standardized)
+
+All experiment outputs are organized per paper and per run:
+
+```text
+Codes/outputs/<PAPER_ID>/
+├── manifests/run_manifest.csv
+├── metrics/
+└── baseline/runs/<RUN_ID>/
+    ├── generated/
+    ├── ast_extract/       # if produced by that notebook
+    └── tests_generated/   # if produced by that notebook
+```
+
+Global run index:
+
+- `Codes/outputs/run_manifest_all.csv`
+
+Format/spec reference:
+
+- `Codes/outputs/STRUCTURE.md`
 
 ---
 
@@ -50,6 +74,14 @@ The project follows a rigorous four-stage pipeline for baseline auditing:
 | **BU-2024**   | Metamorphic Flow  | Solar Framework (Metamorphic Testing)    |
 | **UQSB-2023** | Social Logic      | Contextual Attribute Encoding            |
 | **SEB-2023**  | Model Stability   | Prompt Perturbation Qualitative Analysis |
+
+---
+
+## ✅ Phase Status
+
+- **Phase 1 (Literature Review):** Completed
+- **Phase 2 (Baseline Replications):** Completed for 7 papers (`BTM-2025`, `FC-2025`, `IMSB-2025`, `MGB-2024`, `BU-2024`, `UQSB-2023`, `SEB-2023`)
+- **Phase 3 (Mitigation Replications):** In progress
 
 ---
 

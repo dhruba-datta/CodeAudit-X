@@ -1,0 +1,8 @@
+Run_ID,Paper_ID,Phase,Model,Timestamp,Generated_Path,Metrics_Path
+BU-2024_codegen350M_baseline_20260219_175651,BU-2024,baseline,codegen350M,20260219_175651,outputs/BU-2024/baseline/runs/BU-2024_codegen350M_baseline_20260219_175651/generated,outputs/BU-2024/metrics
+FC-2025_codegen350M_baseline_20260219_175654,FC-2025,baseline,codegen350M,20260219_175654,outputs/FC-2025/baseline/runs/FC-2025_codegen350M_baseline_20260219_175654/generated,outputs/FC-2025/metrics
+IMSB-2025_codegen350M_baseline_20260219_175659,IMSB-2025,baseline,codegen350M,20260219_175659,outputs/IMSB-2025/baseline/runs/IMSB-2025_codegen350M_baseline_20260219_175659/generated,outputs/IMSB-2025/metrics
+UQSB-2023_codegen350M_baseline_20260219_175711,UQSB-2023,baseline,codegen350M,20260219_175711,outputs/UQSB-2023/baseline/runs/UQSB-2023_codegen350M_baseline_20260219_175711/generated,outputs/UQSB-2023/metrics
+SEB-2023_codegen350M_baseline_20260219_175707,SEB-2023,baseline,codegen350M,20260219_175707,outputs/SEB-2023/baseline/runs/SEB-2023_codegen350M_baseline_20260219_175707/generated,outputs/SEB-2023/metrics
+MGB-2024_codegen350M_baseline_20260219_175703,MGB-2024,baseline,codegen350M,20260219_175703,outputs/MGB-2024/baseline/runs/MGB-2024_codegen350M_baseline_20260219_175703/generated,outputs/MGB-2024/metrics
+BTM-2025_codegen350M_baseline_20260219_175643,BTM-2025,baseline,codegen350M,20260219_175643,outputs/BTM-2025/baseline/runs/BTM-2025_codegen350M_baseline_20260219_175643/generated,outputs/BTM-2025/metrics

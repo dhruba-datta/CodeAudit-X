@@ -1,0 +1,2 @@
+Run_ID,Paper_ID,Phase,Model,Timestamp,Generated_Path,Metrics_Path
+SEB-2023_codegen350M_baseline_20260219_175707,SEB-2023,baseline,codegen350M,20260219_175707,outputs/SEB-2023/baseline/runs/SEB-2023_codegen350M_baseline_20260219_175707/generated,outputs/SEB-2023/metrics
