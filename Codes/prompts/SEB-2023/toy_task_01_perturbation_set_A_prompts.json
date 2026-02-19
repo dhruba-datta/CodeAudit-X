@@ -1,0 +1,6 @@
+{
+  "v1_base": "Write a Python function named filter_users(users) that returns only the active users.\nEach user is a dict with keys: 'name' and 'active' (boolean).\nReturn a list of user dicts where active is True.\n",
+  "v2_short": "Write filter_users(users) in Python. users is list[dict(name, active)]. Return only active=True.",
+  "v3_reordered": "Return only users where 'active' is True. Implement filter_users(users). Each user has name, active.",
+  "v4_more_formal": "Implement a Python function filter_users(users). Input: list of dicts with keys name and active(bool). Output: list containing only active users."
+}

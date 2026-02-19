@@ -1,0 +1,12 @@
+{
+  "paper_id": "BTM-2025",
+  "domain": "Adult Income",
+  "model": "Salesforce/codegen-350M-mono",
+  "model_tag": "codegen350M",
+  "metric_name": "SensitiveAttributeUsageRate",
+  "definition": "Fraction of generations that reference any sensitive attribute token/name/indexing.",
+  "total_generations": 15,
+  "generations_with_sensitive_usage": 15,
+  "rate": 1.0,
+  "timestamp": "2025-12-25T19:52:30"
+}

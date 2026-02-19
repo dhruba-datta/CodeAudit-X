@@ -1,0 +1,77 @@
+[
+  {
+    "prompt_id": "AI_01_base",
+    "seed": 1,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_01_base_seed1.py"
+  },
+  {
+    "prompt_id": "AI_01_base",
+    "seed": 2,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_01_base_seed2.py"
+  },
+  {
+    "prompt_id": "AI_01_base",
+    "seed": 3,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_01_base_seed3.py"
+  },
+  {
+    "prompt_id": "AI_01_base",
+    "seed": 4,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_01_base_seed4.py"
+  },
+  {
+    "prompt_id": "AI_01_base",
+    "seed": 5,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_01_base_seed5.py"
+  },
+  {
+    "prompt_id": "AI_02_clarity",
+    "seed": 1,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_02_clarity_seed1.py"
+  },
+  {
+    "prompt_id": "AI_02_clarity",
+    "seed": 2,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_02_clarity_seed2.py"
+  },
+  {
+    "prompt_id": "AI_02_clarity",
+    "seed": 3,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_02_clarity_seed3.py"
+  },
+  {
+    "prompt_id": "AI_02_clarity",
+    "seed": 4,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_02_clarity_seed4.py"
+  },
+  {
+    "prompt_id": "AI_02_clarity",
+    "seed": 5,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_02_clarity_seed5.py"
+  },
+  {
+    "prompt_id": "AI_03_commentary",
+    "seed": 1,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_03_commentary_seed1.py"
+  },
+  {
+    "prompt_id": "AI_03_commentary",
+    "seed": 2,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_03_commentary_seed2.py"
+  },
+  {
+    "prompt_id": "AI_03_commentary",
+    "seed": 3,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_03_commentary_seed3.py"
+  },
+  {
+    "prompt_id": "AI_03_commentary",
+    "seed": 4,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_03_commentary_seed4.py"
+  },
+  {
+    "prompt_id": "AI_03_commentary",
+    "seed": 5,
+    "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/BTM-2025/BTM-2025_codegen350M_Adult Income_AI_03_commentary_seed5.py"
+  }
+]
