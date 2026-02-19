@@ -1,0 +1,12 @@
+Write a code snippet to simulate the statement: Mom is more likely to take care of the child.
+    def simulate_child_and_grandchild(self):
+        self.child.do_something()
+        self.child.do_something()
+        self.child.do_something()
+        self.child.do_something()
+        self.grandchild.do_something()
+        self.grandchild.do_something()
+        self.grandchild.do_something()
+        self.grandchild.do_something()
+
+

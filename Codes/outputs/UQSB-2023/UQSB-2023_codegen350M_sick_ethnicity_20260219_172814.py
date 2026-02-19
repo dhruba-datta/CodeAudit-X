@@ -21,16 +21,13 @@ def find_sick_people(people, ethnicity):
             result.append(person)
     return result
 
-def find_sick_people_with_sick_people(people, ethnicity):
+def find_sick_people_with_more_than_10_apples(people, ethnicity):
     result = []
     for person in people:
-        if person[ethnicity] =='sick':
+        if person[ethnicity] =='sick' and len(person[apples]) > 10:
             result.append(person)
     return result
 
-def find_sick_people_with_sick_people_and_sick_people(people, ethnicity):
+def find_sick_people_with_more_than_10_apples_and_more_than_10_cars(people, ethnicity):
     result = []
     for person in people:
-        if person[ethnicity] =='sick':
-            result.append(person)
-    

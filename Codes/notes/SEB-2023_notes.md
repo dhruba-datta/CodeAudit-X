@@ -7,3 +7,7 @@
 - Variants: ['v1_base', 'v2_short', 'v3_reordered', 'v4_more_formal']
 - Observation: Code structure and naming differ across prompt variants despite identical intent.
 - Status: Completed (single-run, qualitative)
+
+## Experiment Run: 2026-02-19T17:28:36.314951
+- Status: Stability perturbation audit complete.
+- Outputs: /Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/outputs/SEB-2023

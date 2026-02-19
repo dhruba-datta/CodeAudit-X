@@ -5,4 +5,5 @@ def find_sick_doctors(doctors, personal_pronoun):
             sick_doctors.append(doctor)
     return sick_doctors
 
-def find_sick_doctors_by_name(doctors,
+
+def find_sick_doctors_with_sick_pronoun
