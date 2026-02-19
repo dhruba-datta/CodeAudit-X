@@ -15,25 +15,74 @@ All literature reviews, experimental parameters, and cross-paper comparisons are
 
 ```text
 CodeAudit X/
-├── Papers/               # 22+ Reference research papers (PDF format)
-└── Codes/                # Core implementation and experimental data
+├── Papers/               # 22+ Reference research papers (PDF)
+├── PHASE_STATUS.md       # Comprehensive phase tracker
+└── Codes/
     ├── notebooks/        # Jupyter Notebooks for each paper replication
     ├── prompts/          # Structured JSON probes and bias-sensitive templates
     ├── outputs/          # Run-based outputs, metrics, and manifests
-    ├── notes/            # Markdown logs and high-level execution summaries
+    ├── notes/            # Markdown logs and execution summaries
     ├── venv/             # Python 3.11 orchestration environment
-    └── mitigation/       # Phase 3 mitigation experiments [NEW]
-        ├── configs/      # Experiment configurations per paper
-        ├── runs/         # Isolated run folders
-        ├── metrics/      # Mitigation-specific metrics
-        └── comparisons/  # Baseline vs Mitigation comparisons
+    └── mitigation/       # Phase 3 mitigation experiments
+        ├── scripts/      # Runner & postgen scripts (per paper)
+        ├── configs/      # Experiment configurations (per paper)
+        ├── runs/         # Isolated run folders (12 registered)
+        ├── comparisons/  # Status & comparison JSONs
+        ├── CHANGELOG_PHASE3.md
+        ├── RUN_REGISTRY.csv
+        └── README.md     # Pipeline documentation
 ```
 
 ---
 
-## 📦 Output Layout (Standardized)
+## 🔄 Research Pipeline
 
-All experiment outputs are organized per paper and per run:
+### Phase 1 — Literature Review & Probe Design ✅
+
+Surveyed 22+ papers on LLM code-generation bias, defined structured JSON probes per domain.
+
+### Phase 2 — Baseline Replications ✅
+
+Replicated all 7 papers to establish baseline bias measurements using `codegen-350M`.
+
+| Paper         | Domain            | Methodology                            | Status |
+| :------------ | :---------------- | :------------------------------------- | :----: |
+| **BTM-2025**  | Income Prediction | Sensitive token usage via AST Visitors |   ✅   |
+| **FC-2025**   | Software Pipeline | Few-shot Scoring Logic Fairness        |   ✅   |
+| **IMSB-2025** | Knowledge Storage | Triplet-based Bias Probes              |   ✅   |
+| **MGB-2024**  | Model Editing     | Profession-Gender Association          |   ✅   |
+| **BU-2024**   | Metamorphic Flow  | Solar Framework Testing                |   ✅   |
+| **UQSB-2023** | Social Logic      | Contextual Attribute Encoding          |   ✅   |
+| **SEB-2023**  | Model Stability   | Prompt Perturbation Analysis           |   ✅   |
+
+**Locked**: 2026-02-19 (Tag: `phase2-complete`)
+
+### Phase 3 — Mitigation 🔄
+
+Prompt-level and post-generation mitigation to reduce bias while maintaining code validity.
+
+#### BTM-2025 Pilot — ✅ PASSED
+
+| Model             | Method                  | Validity  |  Bias   |  Gate  |
+| :---------------- | :---------------------- | :-------: | :-----: | :----: |
+| CodeGen-350M      | Prompt v2               |   0.40    |   0.0   |   ❌   |
+| Qwen-1.5B         | Prompt v1               |   0.60    |   0.0   |   ❌   |
+| DeepSeek-1.3B     | Prompt v1 + PostGen     |   0.733   |   0.0   |   ❌   |
+| **DeepSeek-1.3B** | **Prompt v2 + PostGen** | **0.867** | **0.0** | **✅** |
+
+**Winning pipeline**: `deepseek-coder-1.3b-instruct` + v2 prompt + post-gen AST scrub\
+**Gates**: `ValidityRate ≥ 0.8` · `CodeLevelProtectedUsageRate ≤ 0.1`\
+**Frozen**: 2026-02-19 · **Next**: Scale to UQSB-2023 and FC-2025
+
+See [`Codes/mitigation/README.md`](Codes/mitigation/README.md) for full pipeline docs.
+
+### Phase 4 — Cross-Paper Analysis & Write-Up 📋
+
+Aggregate results, statistical comparisons, and final research report. Planned.
+
+---
+
+## 📦 Output Layout
 
 ```text
 Codes/outputs/<PAPER_ID>/
@@ -41,51 +90,12 @@ Codes/outputs/<PAPER_ID>/
 ├── metrics/
 └── baseline/runs/<RUN_ID>/
     ├── generated/
-    ├── ast_extract/       # if produced by that notebook
-    └── tests_generated/   # if produced by that notebook
+    ├── ast_extract/
+    └── tests_generated/
 ```
 
-Global run index:
-
-- `Codes/outputs/run_manifest_all.csv`
-
-Format/spec reference:
-
-- `Codes/outputs/STRUCTURE.md`
-
----
-
-## 🔄 Experimental Process Flow
-
-The project follows a rigorous four-stage pipeline for baseline auditing:
-
-1. **Probe Definition**: Contextual or metamorphic prompts are defined in `Codes/prompts/` (e.g., job hiring, credit scoring).
-2. **Generation**: Target models (e.g., `codegen-350M`, `Llama`, `GPT`) execute completions within the `notebooks/` environment.
-3. **Audit Analysis**:
-   - **AST Extraction**: Code is parsed to detect usage of sensitive attributes (age, race, gender).
-   - **Keyword Matching**: Logical associations between descriptors (e.g., "sick") and demographics are quantified.
-4. **Metric Logging**: Results (e.g., `FairScore`, `SensitiveAttributeUsageRate`) are saved to `outputs/` and logged in `notes/`.
-
----
-
-## 🧪 Current Replications
-
-| ID            | Focus Area        | Methodology                              |
-| :------------ | :---------------- | :--------------------------------------- |
-| **BTM-2025**  | Income Prediction | Sensitive Token usage via AST Visitors   |
-| **FC-2025**   | Software Pipeline | Few-shot Scoring Logic Fairness          |
-| **IMSB-2025** | Knowledge Storage | Triplet-based Bias Probes                |
-| **MGB-2024**  | Model Editing     | Profession-Gender Association Mitigation |
-| **BU-2024**   | Metamorphic Flow  | Solar Framework (Metamorphic Testing)    |
-| **UQSB-2023** | Social Logic      | Contextual Attribute Encoding            |
-| **SEB-2023**  | Model Stability   | Prompt Perturbation Qualitative Analysis |
-
----
-
-## ✅ Phase Status
-
-- **Phase 2 (Baseline Replications):** Locked on 2026-02-19 (Tag: `phase2-complete`)
-- **Phase 3 (Mitigation Replications):** Active - Isolated in `Codes/mitigation/`
+Global run index: `Codes/outputs/run_manifest_all.csv`\
+Format spec: `Codes/outputs/STRUCTURE.md`
 
 ---
 
@@ -93,4 +103,9 @@ The project follows a rigorous four-stage pipeline for baseline auditing:
 
 1. **Environment**: Ensure Python 3.11+ is installed.
 2. **Setup**: Activate the virtual environment in `Codes/venv`.
-3. **Run**: Execute any notebook in `Codes/notebooks/` to replicate specific paper findings.
+3. **Baselines**: Execute any notebook in `Codes/notebooks/` to replicate paper findings.
+4. **Mitigation**: See `Codes/mitigation/README.md` for Phase 3 pipeline instructions.
+
+---
+
+For detailed phase tracking, see [`PHASE_STATUS.md`](PHASE_STATUS.md).
