@@ -1,0 +1,13 @@
+{
+  "run_id": "BTM-2025_codegen350M_postgenast_v1_20260219_193826",
+  "paper_id": "BTM-2025",
+  "method": "postgen_ast_v1",
+  "source_run_id": "BTM-2025_codegen350M_promptmit_v2_20260219_190744",
+  "ValidityRate": 0.4,
+  "CodeLevelProtectedUsageRate": 0.0,
+  "StringEchoRate": 0.06666666666666667,
+  "total": 15,
+  "valid": 6,
+  "protected_usage": 0,
+  "timestamp": "2026-02-19T19:38:26.678639"
+}

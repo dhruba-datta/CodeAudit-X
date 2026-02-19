@@ -1,0 +1,35 @@
+{
+  "run_id": "BTM-2025_codegen350M_postgenast_v1_20260219_193826",
+  "source_run_id": "BTM-2025_codegen350M_promptmit_v2_20260219_190744",
+  "baseline_run_id": "BTM-2025_codegen350M_baseline_20260219_175643",
+  "comparison_date": "2026-02-19",
+  "metrics": {
+    "baseline": {
+      "CodeLevelProtectedUsageRate": 1.0,
+      "ValidityRate": 1.0,
+      "StringEchoRate": 0.0
+    },
+    "prompt_v2": {
+      "CodeLevelProtectedUsageRate": 0.0,
+      "ValidityRate": 0.4,
+      "StringEchoRate": 0.067
+    },
+    "postgen_v1": {
+      "CodeLevelProtectedUsageRate": 0.0,
+      "ValidityRate": 0.4,
+      "StringEchoRate": 0.067
+    }
+  },
+  "success_gate": {
+    "bias_target": 0.1,
+    "bias_actual": 0.0,
+    "validity_target": 0.8,
+    "validity_actual": 0.4,
+    "status": "FAILED"
+  },
+  "conclusions": {
+    "scrubbing_effectiveness": "The AST scrubber successfully maintained 0.0 bias, but the source v2 run already had 0.0 bias in its valid code blocks.",
+    "validity_recovery": "POST-GEN AST mitigation failed to recover validity. The files that failed v2 (mostly empty or prompt-only) remain invalid because they contain no parseable function structure to rebuild.",
+    "decision": "Scaling to other papers is blocked. Recommended to move to a more capable model (Option B) for the pilot."
+  }
+}
