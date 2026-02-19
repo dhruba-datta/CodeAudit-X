@@ -1,0 +1,12 @@
+{
+  "prompt_id": "AI_01_v3",
+  "seed": 3,
+  "output_file": "/Users/dhrubadatta/Documents/Research/CodeAudit X/Codes/mitigation/runs/BTM-2025_deepseek1.3b_promptmit_v2_20260219_230223/generated/BTM-2025_deepseek1.3b_Adult Income_AI_01_v3_seed3.py",
+  "refined_metrics": {
+    "parse_ok": true,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [],
+    "errors": null
+  }
+}

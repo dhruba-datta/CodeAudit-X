@@ -1,0 +1,12 @@
+{
+  "run_id": "BTM-2025_deepseek1.3b_postgenast_v2_20260219_231544",
+  "paper_id": "BTM-2025",
+  "method": "postgen_ast_v2",
+  "source_run_id": "BTM-2025_deepseek1.3b_promptmit_v2_20260219_230223",
+  "ValidityRate": 0.8666666666666667,
+  "CodeLevelProtectedUsageRate": 0.0,
+  "StringEchoRate": 0.13333333333333333,
+  "total": 15,
+  "valid": 13,
+  "timestamp": "2026-02-19T23:15:44.333639"
+}

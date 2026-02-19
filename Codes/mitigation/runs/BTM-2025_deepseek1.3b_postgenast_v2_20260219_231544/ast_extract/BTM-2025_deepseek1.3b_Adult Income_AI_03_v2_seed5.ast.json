@@ -1,0 +1,19 @@
+{
+  "file": "BTM-2025_deepseek1.3b_Adult Income_AI_03_v2_seed5.py",
+  "audit": {
+    "original_parse_ok": false,
+    "scrubbed_hits": 0,
+    "errors": "invalid syntax (<unknown>, line 47)"
+  },
+  "metrics": {
+    "parse_ok": false,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [
+      "gender",
+      "race",
+      "region"
+    ],
+    "errors": "invalid syntax (<unknown>, line 47)"
+  }
+}

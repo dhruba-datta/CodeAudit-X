@@ -51,3 +51,12 @@ All notable changes to the Phase 3 Mitigation research will be documented in thi
 - **Cleanup**: Archived 10 unregistered intermediate runs to `runs/_archive/`.
 - **Updated**: `BTM-2025_pilot_final_status.json`, created `BTM-2025_deepseek1.3b_postgen_v1_vs_all.json`.
 - **Next**: DeepSeek v2 prompt refinement targeting AI_01 to push validity past 0.8.
+
+## [2026-02-19] - Phase 3.3.1: DeepSeek v2 Prompt Refinement — GATE PASSED 🎉
+
+- **Model**: `deepseek-ai/deepseek-coder-1.3b-instruct` (v2 prompt)
+- **Prompt Change**: Refined AI_01 to require feature-based scoring with minimum 3 if-elif branches. Kept AI_02/AI_03 unchanged.
+- **Prompt Result**: `ValidityRate: 0.80`, `CodeLevelProtectedUsageRate: 0.20`, `StringEchoRate: 0.133`.
+- **Post-Gen Result**: `ValidityRate: 0.867`, `CodeLevelProtectedUsageRate: 0.0`, `StringEchoRate: 0.133`.
+- **Gate**: Bias PASSED (0.0 ≤ 0.1). Validity PASSED (0.867 ≥ 0.8).
+- **Decision**: BTM-2025 pilot FROZEN. Pipeline ready for cross-paper scaling to UQSB-2023 and FC-2025.

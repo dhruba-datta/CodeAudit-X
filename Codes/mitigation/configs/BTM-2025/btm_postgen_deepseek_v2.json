@@ -1,0 +1,6 @@
+{
+  "paper_id": "BTM-2025",
+  "source_run_id": "BTM-2025_deepseek1.3b_promptmit_v2_20260219_230223",
+  "protected_attrs": ["gender", "race", "region"],
+  "allowed_attrs": ["age", "education", "occupation", "hours_per_week"]
+}

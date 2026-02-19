@@ -1,0 +1,54 @@
+{
+  "comparison_id": "BTM-2025_deepseek1.3b_v2_vs_v1_all",
+  "paper": "BTM-2025",
+  "best_run": "BTM-2025_deepseek1.3b_postgenast_v2_20260219_231544",
+  "runs": {
+    "baseline_codegen350M": {
+      "run_id": "BTM-2025_codegen350M_baseline_20260219_175643",
+      "CodeLevelProtectedUsageRate": 1.0,
+      "ValidityRate": 1.0,
+      "StringEchoRate": 0.0
+    },
+    "codegen350M_promptv2": {
+      "run_id": "BTM-2025_codegen350M_promptmit_v2_20260219_190744",
+      "CodeLevelProtectedUsageRate": 0.0,
+      "ValidityRate": 0.4,
+      "StringEchoRate": 0.067
+    },
+    "qwen1.5b_best": {
+      "run_id": "BTM-2025_qwen1.5b_promptmit_v1_20260219_202938",
+      "CodeLevelProtectedUsageRate": 0.0,
+      "ValidityRate": 0.6,
+      "StringEchoRate": 0.067
+    },
+    "deepseek1.3b_v1_prompt": {
+      "run_id": "BTM-2025_deepseek1.3b_promptmit_v1_20260219_221830",
+      "CodeLevelProtectedUsageRate": 0.20,
+      "ValidityRate": 0.733,
+      "StringEchoRate": 0.267
+    },
+    "deepseek1.3b_v1_postgen": {
+      "run_id": "BTM-2025_deepseek1.3b_postgenast_v1_20260219_223308",
+      "CodeLevelProtectedUsageRate": 0.0,
+      "ValidityRate": 0.733,
+      "StringEchoRate": 0.267
+    },
+    "deepseek1.3b_v2_prompt": {
+      "run_id": "BTM-2025_deepseek1.3b_promptmit_v2_20260219_230223",
+      "CodeLevelProtectedUsageRate": 0.20,
+      "ValidityRate": 0.80,
+      "StringEchoRate": 0.133
+    },
+    "deepseek1.3b_v2_postgen": {
+      "run_id": "BTM-2025_deepseek1.3b_postgenast_v2_20260219_231544",
+      "CodeLevelProtectedUsageRate": 0.0,
+      "ValidityRate": 0.867,
+      "StringEchoRate": 0.133
+    }
+  },
+  "gate_evaluation": {
+    "bias_gate": "PASSED (0.0 <= 0.1)",
+    "validity_gate": "PASSED (0.867 >= 0.8)"
+  },
+  "conclusion": "BTM-2025 pilot PASSED. DeepSeek-Coder-1.3B + v2 prompt + post-gen AST scrub achieves 0% structural bias and 86.7% validity. Pipeline is frozen and ready for cross-paper scaling to UQSB-2023 and FC-2025."
+}
