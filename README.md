@@ -1,4 +1,4 @@
-# CodeAudit X: Auditing Social Bias in LLM-Generated Code
+# CodeAudit X
 
 **CodeAudit X** is a research initiative focused on identifying, quantifying, and mitigating social biases in Large Language Models (LLMs) specialized for code generation. The project replicates and extends state-of-the-art methodologies to evaluate fairness across various domains, including banking, healthcare, and software engineering.
 
@@ -7,7 +7,7 @@
 ## 📊 Research Tracking
 
 All literature reviews, experimental parameters, and cross-paper comparisons are maintained in the master tracking sheet:
-👉 **[CodeAudit X - Maaddster Research Sheet](https://docs.google.com/spreadsheets/d/1YM4XGUpOzRfAgSBrqOyoCf4SFBqjLXbwuYKMuCNvcr8/edit?usp=sharing)**
+👉 **[CodeAudit X - Master Research Sheet](https://docs.google.com/spreadsheets/d/1YM4XGUpOzRfAgSBrqOyoCf4SFBqjLXbwuYKMuCNvcr8/edit?usp=sharing)**
 
 ---
 
