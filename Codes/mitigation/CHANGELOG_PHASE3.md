@@ -18,3 +18,14 @@ All notable changes to the Phase 3 Mitigation research will be documented in thi
   - Post-gen scrubbing failed to recover validity because source files were mostly empty or syntactically broken.
 - Created comparison report: `Codes/mitigation/comparisons/BTM-2025/BTM-2025_codegen350M_postgen_v1_vs_baseline_v2.json`.
 - **Final Recommendation**: Prompt-level and post-gen strategies on `codegen-350M-mono` are blocked by the model's low instruction-following capability. **Pivot to a more capable model (e.g., 3B+ parameters)** for the next pilot.
+
+## [2026-02-19] - Phase 3.2: Model Pivot Pilot (BTM-2025)
+
+- **Model**: `Qwen/Qwen2.5-Coder-1.5B-Instruct` (Pivoted from StarCoder2-3B due to 16GB RAM limit).
+- **Setup**: Used MPS (Metal) acceleration on Mac.
+- **Key Findings**:
+  - **CodeLevelProtectedUsageRate: 0.0** (PASSED bias gate).
+  - **ValidityRate: 0.6** (IMPROVED but FAILED 0.8 gate).
+  - **StringEchoRate: 0.06** (Leakage significantly reduced).
+  - Failure mode: **Model laziness** (returning `# Your code here` placeholders).
+- Created comparison report: `Codes/mitigation/comparisons/BTM-2025/BTM-2025_qwen1.5b_vs_baseline.json`.
