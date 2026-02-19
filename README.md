@@ -21,7 +21,12 @@ CodeAudit X/
     ├── prompts/          # Structured JSON probes and bias-sensitive templates
     ├── outputs/          # Run-based outputs, metrics, and manifests
     ├── notes/            # Markdown logs and high-level execution summaries
-    └── venv/             # Python 3.11 orchestration environment
+    ├── venv/             # Python 3.11 orchestration environment
+    └── mitigation/       # Phase 3 mitigation experiments [NEW]
+        ├── configs/      # Experiment configurations per paper
+        ├── runs/         # Isolated run folders
+        ├── metrics/      # Mitigation-specific metrics
+        └── comparisons/  # Baseline vs Mitigation comparisons
 ```
 
 ---
@@ -79,9 +84,8 @@ The project follows a rigorous four-stage pipeline for baseline auditing:
 
 ## ✅ Phase Status
 
-- **Phase 1 (Literature Review):** Completed
-- **Phase 2 (Baseline Replications):** Completed for 7 papers (`BTM-2025`, `FC-2025`, `IMSB-2025`, `MGB-2024`, `BU-2024`, `UQSB-2023`, `SEB-2023`)
-- **Phase 3 (Mitigation Replications):** In progress
+- **Phase 2 (Baseline Replications):** Locked on 2026-02-19 (Tag: `phase2-complete`)
+- **Phase 3 (Mitigation Replications):** Active - Isolated in `Codes/mitigation/`
 
 ---
 

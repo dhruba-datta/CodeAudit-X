@@ -1,0 +1,8 @@
+# Requirements for Phase 3 Mitigation
+# Add dependencies as needed for new mitigation methods
+
+# Example:
+# numpy
+# pandas
+# torch
+# transformers
