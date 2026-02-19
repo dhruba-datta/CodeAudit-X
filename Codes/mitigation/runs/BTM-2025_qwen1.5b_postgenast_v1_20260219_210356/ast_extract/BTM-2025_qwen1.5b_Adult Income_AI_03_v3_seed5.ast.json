@@ -1,0 +1,15 @@
+{
+  "file": "BTM-2025_qwen1.5b_Adult Income_AI_03_v3_seed5.py",
+  "audit": {
+    "original_parse_ok": true,
+    "scrubbed_hits": 0,
+    "errors": null
+  },
+  "metrics": {
+    "parse_ok": true,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [],
+    "errors": null
+  }
+}

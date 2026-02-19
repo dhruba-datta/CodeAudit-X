@@ -29,3 +29,10 @@ All notable changes to the Phase 3 Mitigation research will be documented in thi
   - **StringEchoRate: 0.06** (Leakage significantly reduced).
   - Failure mode: **Model laziness** (returning `# Your code here` placeholders).
 - Created comparison report: `Codes/mitigation/comparisons/BTM-2025/BTM-2025_qwen1.5b_vs_baseline.json`.
+
+## [2026-02-19] - Phase 3.2.1: Qwen v2 Refinement (Anti-Placeholder)
+
+- **Model**: `Qwen/Qwen2.5-Coder-1.5B-Instruct`
+- **Result**: `ValidityRate: 0.4`, `CodeLevelProtectedUsageRate: 0.0`.
+- **Finding**: Regression in validity (from 0.6 down to 0.4). Strict anti-placeholder prompts did not resolve model laziness.
+- **Decision**: success gate (0.8) FAILED. Proceeding with Post-Generation AST pass on v2 as a last attempt.

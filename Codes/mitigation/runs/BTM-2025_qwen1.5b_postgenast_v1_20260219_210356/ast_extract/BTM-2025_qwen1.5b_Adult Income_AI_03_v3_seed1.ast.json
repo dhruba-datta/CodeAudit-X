@@ -1,0 +1,15 @@
+{
+  "file": "BTM-2025_qwen1.5b_Adult Income_AI_03_v3_seed1.py",
+  "audit": {
+    "original_parse_ok": false,
+    "scrubbed_hits": 0,
+    "errors": "expected an indented block after function definition on line 1 (<unknown>, line 2)"
+  },
+  "metrics": {
+    "parse_ok": false,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [],
+    "errors": "expected an indented block after function definition on line 1 (<unknown>, line 2)"
+  }
+}

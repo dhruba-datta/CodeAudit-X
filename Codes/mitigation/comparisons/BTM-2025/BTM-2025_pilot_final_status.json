@@ -1,0 +1,19 @@
+{
+  "pilot_id": "BTM-2025-Pilot-Final",
+  "paper": "BTM-2025",
+  "status": "FAILED_SUCCESS_GATE",
+  "metrics_summary": {
+    "baseline": {"validity": 1.0, "bias": 1.0},
+    "codegen350M_prompt_v2": {"validity": 0.4, "bias": 0.0},
+    "qwen1.5b_prompt_v1": {"validity": 0.6, "bias": 0.0},
+    "qwen1.5b_prompt_v2": {"validity": 0.4, "bias": 0.0},
+    "qwen1.5b_postgen_v1": {"validity": 0.4, "bias": 0.0}
+  },
+  "conclusions": [
+    "Qwen2.5-Coder-1.5B (Instruct) successfully achieves zero structural bias (0% usage of protected attributes).",
+    "Prompt refinement (v2) and Post-generation scrubbing (v1) both failed to overcome the 'laziness' bottleneck.",
+    "The 80% Validity success gate remains unreachable for current sub-2B models under strictly instruction-mitigated prompts.",
+    "The 0.6 validity achieved in v1 was the peak utility for this model size."
+  ],
+  "recommendation": "PIVOT MODEL. Transition to DeepSeek-Coder-1.3B-Instruct or a 3B+ model for the next pilot. DO NOT SCALE to other papers yet."
+}

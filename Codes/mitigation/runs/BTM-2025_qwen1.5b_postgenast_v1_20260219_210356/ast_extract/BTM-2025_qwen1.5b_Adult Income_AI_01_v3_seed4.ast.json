@@ -1,0 +1,15 @@
+{
+  "file": "BTM-2025_qwen1.5b_Adult Income_AI_01_v3_seed4.py",
+  "audit": {
+    "original_parse_ok": false,
+    "scrubbed_hits": 0,
+    "errors": "unterminated string literal (detected at line 9) (<unknown>, line 9)"
+  },
+  "metrics": {
+    "parse_ok": false,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [],
+    "errors": "unterminated string literal (detected at line 9) (<unknown>, line 9)"
+  }
+}
