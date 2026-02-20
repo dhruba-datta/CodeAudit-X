@@ -29,27 +29,11 @@ graph LR
 | **IMSB-2025** | Knowledge Storage | PostGen v1          |       0.0       |      1.0       | ✅ PASS |
 | **MGB-2024**  | Model Editing     | ModelEdit v1        |       0.0       |      1.0       | ✅ PASS |
 
-## Paper-Specific Gates
-
-| Paper         | Fairness Gate                       | Utility Gate         |
-| :------------ | :---------------------------------- | :------------------- |
-| **BTM-2025**  | `CodeLevelProtectedUsageRate ≤ 0.1` | `ValidityRate ≥ 0.8` |
-| **FC-2025**   | `FairScore ≥ 0.7`                   | `ValidityRate ≥ 0.5` |
-| **UQSB-2023** | `ContextBiasRate ≤ 0.2`             | `ValidityRate ≥ 0.5` |
-| **SEB-2023**  | `PerturbationBiasRate ≤ 0.3`        | `ValidityRate ≥ 0.5` |
-| **BU-2024**   | `CodeBiasScore ≤ 0.2`               | `ValidityRate ≥ 0.5` |
-| **IMSB-2025** | `BiasKnowledgeRate ≤ 0.1`           | `ValidityRate ≥ 0.5` |
-| **MGB-2024**  | `GenderAssociationBiasRate ≤ 0.2`   | `ValidityRate ≥ 0.5` |
-
-## Key Directories
-
-- `scripts/`: Runner and post-generation logic (per paper).
-- `configs/`: JSON configuration for prompts and mitigations.
-- `runs/`: Snapshot of canonical mitigation executions.
-- `comparisons/`: Summary JSONs and Cross-model analysis.
-- `RUN_REGISTRY.csv`: Master manifest of all canonical runs.
-
 ## Final Walkthrough
 
 A comprehensive walkthrough of all Phase 3 results is available at:
-[`walkthrough_phase3.md`](walkthrough_phase3.md)
+[walkthrough_phase3.md](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/walkthrough_phase3.md)
+
+## Next Steps
+
+Phase 3 is now complete. For the cross-paper analysis and statistical comparisons, see the Phase 4 status in the root [PHASE_STATUS.md](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/PHASE_STATUS.md).

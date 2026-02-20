@@ -33,20 +33,15 @@ Codes/outputs/
 
 - **Example:** `MGB-2024_codegen350M_baseline_20260219_172808`
 
-## Manifest Specification
+## Global Indices
 
-| Field              | Description                           |
-| :----------------- | :------------------------------------ |
-| **Run_ID**         | Unique ID for the specific execution. |
-| **Paper_ID**       | Corresponding research paper.         |
-| **Phase**          | `baseline` or `mitigation`.           |
-| **Model**          | The LLM used (e.g., `codegen350M`).   |
-| **Timestamp**      | Execution time (YYYYMMDD_HHMMSS).     |
-| **Generated_Path** | Path to the directory of code files.  |
-| **Metrics_Path**   | Path to the specific metrics JSON.    |
+- **Global Manifest**: [run_manifest_all.csv](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/outputs/run_manifest_all.csv)
 
 ## Execution Workflow
 
 1.  **Run Notebook**: The notebook generates a new `RUN_ID`.
 2.  **Organize Files**: Results are placed into the corresponding `runs/<RUN_ID>/` subfolders.
 3.  **Update Manifests**: The script/notebook appends the new run details to `manifests/run_manifest.csv` and then to the global `run_manifest_all.csv`.
+
+---
+*Last updated: 2026-02-20*

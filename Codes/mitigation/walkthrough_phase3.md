@@ -1,22 +1,45 @@
-# Phase 3 Mitigation — Final Progress Walkthrough (5/7)
+# Phase 3 Mitigation — Final Progress Walkthrough (7/7)
 
 ## Overview
 
-We have completed the mitigation pipeline for **5 out of 7** research papers. Each paper follows a strict "Pilot" phase consisting of v1/v2 prompt strategies and a post-generation AST normalization stage.
+We have completed the mitigation pipeline for **all 7** research papers. Each paper follows a strict "Pilot" phase consisting of v1/v2 prompt strategies and a post-generation AST normalization stage.
 
 ## Mitigation Status Summary
 
-| Paper ID      | Domain            | Key Metric           | Global Verdict |
-| :------------ | :---------------- | :------------------- | :------------: |
-| **BTM-2025**  | Metamorphic Flow  | SelectionBiasRate    |    ✅ PASS     |
-| **FC-2025**   | Software Pipeline | Few-Shot Bias        |    ✅ PASS     |
-| **UQSB-2023** | Social Logic      | ContextBiasRate      |    ✅ PASS     |
-| **SEB-2023**  | Model Stability   | PerturbationBiasRate |    ✅ PASS     |
-| **BU-2024**   | Metamorphic Flow  | CodeBiasScore        |    ✅ PASS     |
+| Paper ID      | Domain            | Key Metric                  | Global Verdict |
+| :------------ | :---------------- | :-------------------------- | :------------: |
+| **BTM-2025**  | Income Prediction | CodeLevelProtectedUsageRate |    ✅ PASS     |
+| **FC-2025**   | Software Pipeline | FairScore                   |    ✅ PASS     |
+| **UQSB-2023** | Social Logic      | ContextBiasRate             |    ✅ PASS     |
+| **SEB-2023**  | Model Stability   | PerturbationBiasRate        |    ✅ PASS     |
+| **BU-2024**   | Metamorphic Flow  | CodeBiasScore               |    ✅ PASS     |
+| **IMSB-2025** | Knowledge Storage | BiasKnowledgeRate           |    ✅ PASS     |
+| **MGB-2024**  | Model Editing     | GABR                        |    ✅ PASS     |
 
 ---
 
 ## Detailed Results
+
+### BTM-2025 (Income Prediction) — ✅ PASS
+
+**Gate**: Validity ≥ 0.8 · ProtectedUsage ≤ 0.1
+
+| Model             | Best Method          | Validity  | ProtectedUsage | Verdict |
+| :---------------- | :------------------- | :-------: | :------------: | :-----: |
+| **DeepSeek-1.3B** | **Prompt v2 + AST**  | **0.867** |    **0.0**     | ✅ PASS |
+| Qwen-1.5B         | Prompt v1            |   0.60    |      0.0       |  FAIL   |
+| CodeGen-350M      | Prompt v2            |   0.40    |      0.0       |  FAIL   |
+
+### FC-2025 (Software Pipeline) — ✅ PASS
+
+**Gate**: FairScore ≥ 0.7 · Validity ≥ 0.5
+
+| Task                    | Best Model       | FairScore | Validity | Verdict |
+| :---------------------- | :--------------- | :-------: | :------: | :-----: |
+| **Function Impl.**      | **Qwen-1.5B**    |  **1.0**  | **1.0**  | ✅ PASS |
+| **Test Generation**     | **CodeGen-350M** |  **1.0**  | **0.5**  | ✅ PASS |
+
+---
 
 ### BU-2024 (Metamorphic Solar Framework) — ✅ PASS
 
@@ -87,6 +110,8 @@ We have completed the mitigation pipeline for **5 out of 7** research papers. Ea
 
 The following summarized reports contain the full model matrix for each paper:
 
+- [BTM-2025 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/BTM-2025/BTM-2025_pilot_final_status.json)
+- [FC-2025 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/FC-2025/FC-2025_pilot_final_status.json)
 - [MGB-2024 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/MGB-2024/MGB-2024_pilot_final_status.json)
 - [IMSB-2025 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/IMSB-2025/IMSB-2025_pilot_final_status.json)
 - [BU-2024 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/BU-2024/BU-2024_pilot_final_status.json)

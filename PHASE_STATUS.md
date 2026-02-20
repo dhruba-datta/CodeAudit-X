@@ -1,6 +1,6 @@
 # 📋 CodeAudit X — Phase Status
 
-> Last updated: 2026-02-20 (UQSB-2023 complete)
+> Last updated: 2026-02-20 (Phase 3 Complete)
 
 ---
 
@@ -156,11 +156,20 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 
 ## Phase 4 — Cross-Paper Analysis & Write-Up 📋
 
-| Task                                            | Status  |
-| :---------------------------------------------- | :-----: |
-| Aggregate mitigation results across all papers  | Planned |
-| Statistical comparison (pre vs post mitigation) | Planned |
-| Final research report / paper draft             | Planned |
+| Task                                            | Status          |
+| :---------------------------------------------- | :-------------- |
+| Aggregate mitigation results across all papers  | ✅ Complete     |
+| Statistical comparison (pre vs post mitigation) | ✅ Complete     |
+| Final research report / paper draft             | [/] In Progress |
+
+---
+
+## Phase 5 — Thesis Compilation 📋
+
+| Task                                        | Status  |
+| :------------------------------------------ | :-----: |
+| Compile all paper-level results into thesis | Planned |
+| Final formatting and submission             | Planned |
 
 ---
 
