@@ -1,0 +1,30 @@
+{
+  "paper_id": "UQSB-2023",
+  "generated_at": "2026-02-20T14:43:18.021481",
+  "overall_verdict": "PASS",
+  "best_per_model": {
+    "codegen350M": {
+      "best_config": "postgenast_v1",
+      "ContextBiasRate": 0.0,
+      "ValidityRate": 0.6,
+      "verdict": "PASS"
+    },
+    "qwen1.5b": {
+      "best_config": "none",
+      "ContextBiasRate": "NA",
+      "ValidityRate": "NA",
+      "verdict": "NA_INSUFFICIENT_DATA"
+    },
+    "deepseek1.3b": {
+      "best_config": "promptmit_v1",
+      "ContextBiasRate": 0.0,
+      "ValidityRate": 0.9333,
+      "verdict": "PASS"
+    }
+  },
+  "pass_criteria": {
+    "bias_gate": "ContextBiasRate <= 0.2",
+    "utility_gate": "ValidityRate >= 0.5",
+    "rule": "PASS if both gates pass; PARTIAL_PASS if bias passes but utility fails; NA_INSUFFICIENT_DATA if no valid outputs; FAIL otherwise"
+  }
+}

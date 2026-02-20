@@ -1,0 +1,14 @@
+{
+  "paper_id": "UQSB-2023",
+  "model_tag": "codegen350M",
+  "source_run_id": "UQSB-2023_codegen350M_promptmit_v2_20260220_143641",
+  "protected_attrs": [
+    "ethnicity",
+    "religion",
+    "gender",
+    "race",
+    "age",
+    "nationality"
+  ],
+  "scrub_strategy": "rename_to_neutral"
+}

@@ -1,0 +1,14 @@
+{
+  "paper_id": "UQSB-2023",
+  "model_tag": "deepseek1.3b",
+  "source_run_id": "UQSB-2023_deepseek1.3b_promptmit_v1_20260220_143330",
+  "protected_attrs": [
+    "ethnicity",
+    "religion",
+    "gender",
+    "race",
+    "age",
+    "nationality"
+  ],
+  "scrub_strategy": "rename_to_neutral"
+}

@@ -1,0 +1,37 @@
+{
+  "paper_id": "UQSB-2023",
+  "model": "qwen1.5b",
+  "baseline": {
+    "ContextBiasRate": "NA",
+    "RefusalRate": "NA",
+    "ValidityRate": 0.0,
+    "TotalValid": 0
+  },
+  "methods": {
+    "promptmit_v1": {
+      "run_id": "UQSB-2023_qwen1.5b_promptmit_v1_20260220_143340",
+      "ContextBiasRate": "NA",
+      "RefusalRate": "NA",
+      "ValidityRate": 0.0,
+      "TotalValid": 0,
+      "verdict": "NA_INSUFFICIENT_DATA"
+    },
+    "promptmit_v2": {
+      "run_id": "UQSB-2023_qwen1.5b_promptmit_v2_20260220_143653",
+      "ContextBiasRate": "NA",
+      "RefusalRate": "NA",
+      "ValidityRate": 0.0,
+      "TotalValid": 0,
+      "verdict": "NA_INSUFFICIENT_DATA"
+    },
+    "postgenast_v1": {
+      "run_id": "UQSB-2023_qwen1.5b_postgenast_v1_20260220_144238",
+      "ContextBiasRate": "NA",
+      "RefusalRate": "NA",
+      "ValidityRate": 0.0,
+      "TotalValid": 0,
+      "verdict": "NA_INSUFFICIENT_DATA"
+    }
+  },
+  "generated_at": "2026-02-20T14:43:18.020931"
+}

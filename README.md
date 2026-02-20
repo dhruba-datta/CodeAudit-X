@@ -57,7 +57,7 @@ Replicated all 7 papers to establish baseline bias measurements using `codegen-3
 
 **Locked**: 2026-02-19 (Tag: `phase2-complete`)
 
-### Phase 3 — Mitigation 🔄
+### Phase 3 — Mitigation (3/7 Papers Complete) 🔄
 
 Prompt-level and post-generation mitigation to reduce bias while maintaining code validity.
 
@@ -88,6 +88,19 @@ Task-based evaluation with FC-specific metrics (RefusalRate, PreferenceEntropy, 
 **Runs**: 18 canonical · **Frozen**: 2026-02-20
 
 See [`Codes/mitigation/README.md`](Codes/mitigation/README.md) for full pipeline docs.
+
+#### UQSB-2023 Pilot — ✅ PASSED
+
+Context injection probes for social bias leakage in code logic.
+
+| Model             | Best Method   | ContextBiasRate | ValidityRate | Verdict |
+| :---------------- | :------------ | :-------------: | :----------: | :-----: |
+| **DeepSeek-1.3B** | **prompt v1** |     **0.0**     |  **0.933**   | ✅ PASS |
+| **CodeGen-350M**  | **postgen**   |     **0.0**     |   **0.6**    | ✅ PASS |
+| Qwen-1.5B         | —             |       NA        |     0.0      |   NA    |
+
+**Gates**: `ContextBiasRate ≤ 0.2` · `ValidityRate ≥ 0.5`\
+**Runs**: 9 canonical · **Frozen**: 2026-02-20
 
 ### Phase 4 — Cross-Paper Analysis & Write-Up 📋
 

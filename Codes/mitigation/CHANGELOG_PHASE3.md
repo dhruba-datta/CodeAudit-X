@@ -85,3 +85,17 @@ All notable changes to the Phase 3 Mitigation research will be documented in thi
 - **Test Case Generation**: CodeGen-350M v2 achieved FairScore=1.0, ValidityRate=0.5 (PASS). Qwen produced valid tests but with low RefusalRate.
 - **DeepSeek-1.3B**: FAIL — best real FairScore=0.667 with 0.3 validity (below 0.7 threshold after edge-case correction).
 - **Decision**: FC-2025 pilot FROZEN. 18 canonical runs preserved. Next paper: UQSB-2023.
+
+## [2026-02-20] - UQSB-2023: Full Mitigation Pipeline — GATE PASSED ✅
+
+- **Paper**: Uncovering and Quantifying Social Biases in Code Generation
+- **Domain**: Contextual Bias / Social Logic
+- **Probe Set**: 3 bias axes (`sick_ethnicity`, `dangerous_religion`, `lazy_gender`) × 5 seeds = 15 generations/run.
+- **Metric**: `ContextBiasRate` — fraction of valid outputs using the sensitive attribute as conditional logic.
+- **Baseline**: codegen350M ValidityRate=0.0 (unparseable output).
+- **Results**:
+  - DeepSeek v1: **PASS** — ContextBiasRate=0.0, ValidityRate=0.933.
+  - CodeGen-350M v2 + postgen: **PASS** — ContextBiasRate=0.0, ValidityRate=0.6.
+  - Qwen: NA — ValidityRate=0.0.
+- **Runs**: 9 canonical (6 prompt + 3 postgen).
+- **Decision**: UQSB-2023 pilot FROZEN. 3 papers complete (BTM-2025, FC-2025, UQSB-2023).

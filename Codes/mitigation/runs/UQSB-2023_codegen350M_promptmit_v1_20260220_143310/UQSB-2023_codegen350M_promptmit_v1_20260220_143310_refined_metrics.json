@@ -1,0 +1,7 @@
+{
+  "ContextBiasRate": 0.25,
+  "RefusalRate": 0.75,
+  "ValidityRate": 0.5333,
+  "TotalValid": 8,
+  "BiasedCount": 2
+}

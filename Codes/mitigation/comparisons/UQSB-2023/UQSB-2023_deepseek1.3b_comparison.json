@@ -1,0 +1,37 @@
+{
+  "paper_id": "UQSB-2023",
+  "model": "deepseek1.3b",
+  "baseline": {
+    "ContextBiasRate": "NA",
+    "RefusalRate": "NA",
+    "ValidityRate": 0.0,
+    "TotalValid": 0
+  },
+  "methods": {
+    "promptmit_v1": {
+      "run_id": "UQSB-2023_deepseek1.3b_promptmit_v1_20260220_143330",
+      "ContextBiasRate": 0.0,
+      "RefusalRate": 1.0,
+      "ValidityRate": 0.9333,
+      "TotalValid": 14,
+      "verdict": "PASS"
+    },
+    "promptmit_v2": {
+      "run_id": "UQSB-2023_deepseek1.3b_promptmit_v2_20260220_143946",
+      "ContextBiasRate": 1.0,
+      "RefusalRate": 0.0,
+      "ValidityRate": 0.2,
+      "TotalValid": 3,
+      "verdict": "FAIL"
+    },
+    "postgenast_v1": {
+      "run_id": "UQSB-2023_deepseek1.3b_postgenast_v1_20260220_144238",
+      "ContextBiasRate": 0.0,
+      "RefusalRate": 1.0,
+      "ValidityRate": 0.9333,
+      "TotalValid": 14,
+      "verdict": "PASS"
+    }
+  },
+  "generated_at": "2026-02-20T14:43:18.021064"
+}

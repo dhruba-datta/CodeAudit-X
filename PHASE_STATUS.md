@@ -1,6 +1,6 @@
 # 📋 CodeAudit X — Phase Status
 
-> Last updated: 2026-02-20
+> Last updated: 2026-02-20 (UQSB-2023 complete)
 
 ---
 
@@ -36,7 +36,7 @@ Replicated all 7 papers to establish baseline bias measurements.
 
 ---
 
-## Phase 3 — Mitigation 🔄
+## Phase 3 — Mitigation (3/7 Papers Complete) 🔄
 
 Prompt-level and post-generation mitigation to reduce bias while maintaining code validity.
 
@@ -72,9 +72,21 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 
 > **Note**: DeepSeek-1.3B FAILED on FC-2025 (best FairScore=0.667, ValidityRate=0.3). Runs with zero valid outputs return FairScore=NA.
 
-### UQSB-2023 (Social Logic) — ⏳ Pending
+### UQSB-2023 (Social Logic) — ✅ PASSED
 
-Scale winning pipeline. Next active paper.
+**Pipeline**: Context injection probes with 3 bias axes (sick_ethnicity, dangerous_religion, lazy_gender)\
+**Metric**: `ContextBiasRate` (sensitive attribute usage in conditional logic)
+
+| Model             | Best Method   | ContextBiasRate | ValidityRate | Verdict |
+| :---------------- | :------------ | :-------------: | :----------: | :-----: |
+| **DeepSeek-1.3B** | **prompt v1** |     **0.0**     |  **0.933**   | ✅ PASS |
+| **CodeGen-350M**  | **postgen**   |     **0.0**     |   **0.6**    | ✅ PASS |
+| Qwen-1.5B         | —             |       NA        |     0.0      |   NA    |
+
+**Gates**: `ContextBiasRate ≤ 0.2` · `ValidityRate ≥ 0.5`\
+**Runs**: 9 canonical · **Frozen**: 2026-02-20
+
+> **Note**: DeepSeek passed on prompt v1 alone (zero bias). CodeGen-350M needed postgen AST scrub to clear the bias gate. Qwen produced no parseable outputs.
 
 ### Remaining Papers — 📋 Planned
 
@@ -99,11 +111,12 @@ Scale winning pipeline. Next active paper.
 
 ## 📂 Key References
 
-| Resource                 | Path                                                                                                                                               |
-| :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Mitigation pipeline docs | [`Codes/mitigation/README.md`](Codes/mitigation/README.md)                                                                                         |
-| Experiment changelog     | [`Codes/mitigation/CHANGELOG_PHASE3.md`](Codes/mitigation/CHANGELOG_PHASE3.md)                                                                     |
-| Run registry             | [`Codes/mitigation/RUN_REGISTRY.csv`](Codes/mitigation/RUN_REGISTRY.csv)                                                                           |
-| BTM-2025 final status    | [`Codes/mitigation/comparisons/BTM-2025/BTM-2025_pilot_final_status.json`](Codes/mitigation/comparisons/BTM-2025/BTM-2025_pilot_final_status.json) |
-| FC-2025 final status     | [`Codes/mitigation/comparisons/FC-2025/FC-2025_pilot_final_status.json`](Codes/mitigation/comparisons/FC-2025/FC-2025_pilot_final_status.json)     |
-| Output structure spec    | [`Codes/outputs/STRUCTURE.md`](Codes/outputs/STRUCTURE.md)                                                                                         |
+| Resource                 | Path                                                                                                                                                   |
+| :----------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Mitigation pipeline docs | [`Codes/mitigation/README.md`](Codes/mitigation/README.md)                                                                                             |
+| Experiment changelog     | [`Codes/mitigation/CHANGELOG_PHASE3.md`](Codes/mitigation/CHANGELOG_PHASE3.md)                                                                         |
+| Run registry             | [`Codes/mitigation/RUN_REGISTRY.csv`](Codes/mitigation/RUN_REGISTRY.csv)                                                                               |
+| BTM-2025 final status    | [`Codes/mitigation/comparisons/BTM-2025/BTM-2025_pilot_final_status.json`](Codes/mitigation/comparisons/BTM-2025/BTM-2025_pilot_final_status.json)     |
+| FC-2025 final status     | [`Codes/mitigation/comparisons/FC-2025/FC-2025_pilot_final_status.json`](Codes/mitigation/comparisons/FC-2025/FC-2025_pilot_final_status.json)         |
+| UQSB-2023 final status   | [`Codes/mitigation/comparisons/UQSB-2023/UQSB-2023_pilot_final_status.json`](Codes/mitigation/comparisons/UQSB-2023/UQSB-2023_pilot_final_status.json) |
+| Output structure spec    | [`Codes/outputs/STRUCTURE.md`](Codes/outputs/STRUCTURE.md)                                                                                             |
