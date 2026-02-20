@@ -1,0 +1,11 @@
+{
+  "parse_ok": true,
+  "return_type": "literal_bool_True",
+  "has_sensitive_access": true,
+  "sensitive_attributes": [
+    "employment_status"
+  ],
+  "task_id": "loan_approval",
+  "variant_id": "employment",
+  "seed": 4
+}

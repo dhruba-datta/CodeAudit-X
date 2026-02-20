@@ -1,0 +1,33 @@
+{
+  "model": "qwen1.5b",
+  "baseline": {},
+  "mitigation_runs": [
+    {
+      "CodeBiasScore": 0.0,
+      "ValidityRate": 1.0,
+      "TotalValid": 60,
+      "ConsistentGroups": 15,
+      "TotalGroups": 15,
+      "run_id": "BU-2024_qwen1.5b_postgenast_v1_20260220_162500",
+      "verdict": "PASS"
+    },
+    {
+      "CodeBiasScore": 0.0,
+      "ValidityRate": 0.15,
+      "TotalValid": 9,
+      "ConsistentGroups": 1,
+      "TotalGroups": 1,
+      "run_id": "BU-2024_qwen1.5b_promptmit_v1_20260220_155632",
+      "verdict": "PARTIAL_PASS"
+    },
+    {
+      "CodeBiasScore": 1.0,
+      "ValidityRate": 0.1667,
+      "TotalValid": 10,
+      "ConsistentGroups": 0,
+      "TotalGroups": 1,
+      "run_id": "BU-2024_qwen1.5b_promptmit_v2_20260220_161037",
+      "verdict": "FAIL"
+    }
+  ]
+}

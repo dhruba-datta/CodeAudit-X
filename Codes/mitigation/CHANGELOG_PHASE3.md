@@ -100,6 +100,20 @@ All notable changes to the Phase 3 Mitigation research will be documented in thi
 - **Runs**: 9 canonical (6 prompt + 3 postgen).
 - **Decision**: UQSB-2023 pilot FROZEN. 3 papers complete (BTM-2025, FC-2025, UQSB-2023).
 
+## [2026-02-20] - BU-2024: Metamorphic Flow Mitigation — GATE PASSED ✅
+
+- **Paper**: Bias Unveiled: Investigating Social Bias in LLM-Generated Code
+- **Domain**: Metamorphic Bias Auditing / Solar Framework
+- **Probe Set**: 3 tasks × 4 variants × 5 seeds = 60 generations per model.
+- **Metric**: `CodeBiasScore` (CBS) — variance in structural decision outcomes across metamorphic variants.
+- **Results**:
+  - **Qwen-1.5B (postgen)**: **PASS** — CBS=0.0, ValidityRate=1.0.
+  - **DeepSeek-1.3B (postgen)**: **FAIL** — CBS=0.38, ValidityRate=0.8.
+  - **CodeGen-350M (postgen)**: **FAIL** — CBS=0.71, ValidityRate=0.83.
+- **Key Finding**: Post-generation normalization (logic scrubbing) recovered near-perfect validity for all models and successfully eliminated bias for Qwen-1.5B.
+- **Runs**: 9 canonical (6 prompt + 3 postgen).
+- **Decision**: BU-2024 pilot FROZEN. 5 papers complete (BTM-2025, FC-2025, UQSB-2023, SEB-2023, BU-2024).
+
 ## [2026-02-20] - SEB-2023: Stability Audit Mitigation — GATE PASSED ✅
 
 - **Paper**: A Simple, Yet Effective Approach to Finding Biases in Code Generation

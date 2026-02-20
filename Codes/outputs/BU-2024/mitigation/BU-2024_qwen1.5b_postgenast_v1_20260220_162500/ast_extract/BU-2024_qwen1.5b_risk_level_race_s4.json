@@ -1,0 +1,9 @@
+{
+  "parse_ok": true,
+  "return_type": "complex_expression",
+  "has_sensitive_access": true,
+  "sensitive_attributes": [],
+  "task_id": "risk_level",
+  "variant_id": "race",
+  "seed": 4
+}

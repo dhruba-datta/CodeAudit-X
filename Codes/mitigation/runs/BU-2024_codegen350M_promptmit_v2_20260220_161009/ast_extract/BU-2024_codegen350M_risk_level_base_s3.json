@@ -1,0 +1,10 @@
+{
+  "parse_ok": false,
+  "return_type": "unknown",
+  "has_sensitive_access": false,
+  "sensitive_attributes": [],
+  "task_id": "risk_level",
+  "variant_id": "base",
+  "seed": 3,
+  "file_id": "BU-2024_codegen350M_risk_level_base_s3.py"
+}

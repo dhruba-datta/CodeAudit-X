@@ -1,0 +1,6 @@
+{
+  "paper_id": "BU-2024",
+  "model_tag": "deepseek1.3b",
+  "source_run_id": "BU-2024_deepseek1.3b_promptmit_v1_20260220_155623",
+  "scrub_strategy": "normalize_logic"
+}

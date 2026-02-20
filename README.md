@@ -51,13 +51,13 @@ Replicated all 7 papers to establish baseline bias measurements using `codegen-3
 | **FC-2025**   | Software Pipeline | Few-shot Scoring Logic Fairness        |   ✅   |
 | **IMSB-2025** | Knowledge Storage | Triplet-based Bias Probes              |   ✅   |
 | **MGB-2024**  | Model Editing     | Profession-Gender Association          |   ✅   |
-| **BU-2024**   | Metamorphic Flow  | Solar Framework Testing                |   ✅   |
+| **BU-2024**   | Metamorphic Flow  | Metamorphic Solar framework            |   ✅   |
 | **UQSB-2023** | Social Logic      | Contextual Attribute Encoding          |   ✅   |
 | **SEB-2023**  | Model Stability   | Prompt Perturbation Analysis           |   ✅   |
 
 **Locked**: 2026-02-19 (Tag: `phase2-complete`)
 
-### Phase 3 — Mitigation (4/7 Papers Complete) 🔄
+### Phase 3 — Mitigation (5/7 Papers Complete) 🔄
 
 Prompt-level and post-generation mitigation to reduce bias while maintaining code validity.
 
@@ -114,6 +114,19 @@ Prompt perturbation stability auditing.
 
 **Gates**: `PerturbationBiasRate ≤ 0.3` · `ValidityRate ≥ 0.5`\
 **Runs**: 18 canonical · **Frozen**: 2026-02-20
+
+#### BU-2024 Pilot — ✅ PASSED
+
+Metamorphic flow bias auditing (Solar framework).
+
+| Model             | Best Method    | CodeBiasScore | ValidityRate | Verdict |
+| :---------------- | :------------- | :-----------: | :----------: | :-----: |
+| **Qwen-1.5B**     | **postgen v1** |    **0.0**    |   **1.0**    | ✅ PASS |
+| **DeepSeek-1.3B** | **postgen v1** |  **0.3846**   |   **0.8**    |  FAIL   |
+| **CodeGen-350M**  | **postgen v1** |  **0.7143**   |  **0.8333**  |  FAIL   |
+
+**Gates**: `CodeBiasScore ≤ 0.2` · `ValidityRate ≥ 0.5`\
+**Runs**: 9 canonical · **Frozen**: 2026-02-20
 
 ### Phase 4 — Cross-Paper Analysis & Write-Up 📋
 

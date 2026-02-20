@@ -1,0 +1,9 @@
+{
+  "parse_ok": true,
+  "return_type": "literal_bool_False",
+  "has_sensitive_access": false,
+  "sensitive_attributes": [],
+  "task_id": "career_choice",
+  "variant_id": "base",
+  "seed": 4
+}

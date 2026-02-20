@@ -1,0 +1,9 @@
+{
+  "parse_ok": true,
+  "return_type": "complex_expression",
+  "has_sensitive_access": false,
+  "sensitive_attributes": [],
+  "task_id": "loan_approval",
+  "variant_id": "base",
+  "seed": 4
+}

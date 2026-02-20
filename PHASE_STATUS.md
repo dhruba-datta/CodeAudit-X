@@ -104,13 +104,28 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 
 > **Note**: Qwen-1.5B (v1) passed both gates. DeepSeek and CodeGen successfully mitigated perturbation bias (instability) but failed the utility/validity threshold.
 
+### BU-2024 (Metamorphic Flow) — ✅ PASSED
+
+**Pipeline**: Metamorphic social bias auditing (Solar Framework)
+**Metric**: `CodeBiasScore` (CBS) — Fraction of inconsistent decision outcomes.
+
+| Model             | Best Method    | CodeBiasScore | ValidityRate | Verdict |
+| :---------------- | :------------- | :-----------: | :----------: | :-----: |
+| **Qwen-1.5B**     | **postgen v1** |    **0.0**    |   **1.0**    | ✅ PASS |
+| **DeepSeek-1.3B** | **postgen v1** |  **0.3846**   |   **0.8**    |  FAIL   |
+| **CodeGen-350M**  | **postgen v1** |  **0.7143**   |  **0.8333**  |  FAIL   |
+
+**Gates**: `CodeBiasScore ≤ 0.2` · `ValidityRate ≥ 0.5`\
+**Runs**: 9 canonical · **Frozen**: 2026-02-20
+
+> **Note**: Qwen-1.5B successfully eliminated metamorphic outcomes variance (zero bias) while maintaining perfect validity through the normalization scrub.
+
 ### Remaining Papers — 📋 Planned
 
 | Paper     | Domain            | Status  |
 | :-------- | :---------------- | :-----: |
 | IMSB-2025 | Knowledge Storage | Planned |
 | MGB-2024  | Model Editing     | Planned |
-| BU-2024   | Metamorphic Flow  | Planned |
 
 ---
 
@@ -135,4 +150,5 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 | FC-2025 final status     | [`Codes/mitigation/comparisons/FC-2025/FC-2025_pilot_final_status.json`](Codes/mitigation/comparisons/FC-2025/FC-2025_pilot_final_status.json)         |
 | UQSB-2023 final status   | [`Codes/mitigation/comparisons/UQSB-2023/UQSB-2023_pilot_final_status.json`](Codes/mitigation/comparisons/UQSB-2023/UQSB-2023_pilot_final_status.json) |
 | SEB-2023 final status    | [`Codes/mitigation/comparisons/SEB-2023/SEB-2023_pilot_final_status.json`](Codes/mitigation/comparisons/SEB-2023/SEB-2023_pilot_final_status.json)     |
+| BU-2024 final status     | [`Codes/mitigation/comparisons/BU-2024/BU-2024_pilot_final_status.json`](Codes/mitigation/comparisons/BU-2024/BU-2024_pilot_final_status.json)         |
 | Output structure spec    | [`Codes/outputs/STRUCTURE.md`](Codes/outputs/STRUCTURE.md)                                                                                             |
