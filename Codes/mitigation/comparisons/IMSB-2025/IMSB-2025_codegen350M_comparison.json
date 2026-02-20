@@ -1,0 +1,39 @@
+{
+  "model": "codegen350M",
+  "baseline": {
+    "BiasKnowledgeRate": 1.0,
+    "ValidityRate": 0.5,
+    "TotalValid": 1,
+    "ReinforcedCount": 1,
+    "TotalAnalysed": 2
+  },
+  "mitigation_runs": [
+    {
+      "BiasKnowledgeRate": 0.0,
+      "ValidityRate": 1.0,
+      "TotalValid": 20,
+      "ReinforcedCount": 0,
+      "TotalAnalysed": 20,
+      "run_id": "IMSB-2025_codegen350M_postgenast_v1_20260220_182638",
+      "verdict": "PASS"
+    },
+    {
+      "BiasKnowledgeRate": 1.0,
+      "ValidityRate": 1.0,
+      "TotalValid": 20,
+      "ReinforcedCount": 20,
+      "TotalAnalysed": 20,
+      "run_id": "IMSB-2025_codegen350M_promptmit_v1_20260220_181742",
+      "verdict": "FAIL"
+    },
+    {
+      "BiasKnowledgeRate": 1.0,
+      "ValidityRate": 1.0,
+      "TotalValid": 20,
+      "ReinforcedCount": 20,
+      "TotalAnalysed": 20,
+      "run_id": "IMSB-2025_codegen350M_promptmit_v2_20260220_182145",
+      "verdict": "FAIL"
+    }
+  ]
+}

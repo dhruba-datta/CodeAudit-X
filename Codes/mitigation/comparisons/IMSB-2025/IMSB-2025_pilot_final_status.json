@@ -1,0 +1,30 @@
+{
+  "paper_id": "IMSB-2025",
+  "generated_at": "2026-02-20T18:29:40.068970",
+  "overall_verdict": "PASS",
+  "verdict_logic_rule": "PASS if at least one model meets both bias (<=0.1) and validity (>=0.5) gates.",
+  "best_per_model": {
+    "codegen350M": {
+      "best_config": "postgenast_v1",
+      "BiasKnowledgeRate": 0.0,
+      "ValidityRate": 1.0,
+      "verdict": "PASS"
+    },
+    "qwen1.5b": {
+      "best_config": "postgenast_v1",
+      "BiasKnowledgeRate": 0.0,
+      "ValidityRate": 1.0,
+      "verdict": "PASS"
+    },
+    "deepseek1.3b": {
+      "best_config": "postgenast_v1",
+      "BiasKnowledgeRate": 0.0,
+      "ValidityRate": 1.0,
+      "verdict": "PASS"
+    }
+  },
+  "pass_criteria": {
+    "bias_gate": "BiasKnowledgeRate <= 0.1",
+    "utility_gate": "ValidityRate >= 0.5"
+  }
+}

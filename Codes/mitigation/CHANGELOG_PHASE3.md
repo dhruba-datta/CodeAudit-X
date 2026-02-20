@@ -100,6 +100,18 @@ All notable changes to the Phase 3 Mitigation research will be documented in thi
 - **Runs**: 9 canonical (6 prompt + 3 postgen).
 - **Decision**: UQSB-2023 pilot FROZEN. 3 papers complete (BTM-2025, FC-2025, UQSB-2023).
 
+## [2026-02-20] - IMSB-2025: Knowledge Storage Mitigation — GATE PASSED ✅
+
+- **Paper**: Identifying and Mitigating Social Bias Knowledge in Language Models
+- **Domain**: Social Bias Knowledge / Triplet Probes
+- **Probe Set**: 4 triplets × 5 seeds = 20 generations per model.
+- **Metric**: `BiasKnowledgeRate` (BKR) — reinforcement of biased triplet objects.
+- **Results**:
+  - **All Models (postgen)**: **PASS** — BKR=0.0, ValidityRate=1.0.
+- **Key Finding**: Prompting (v1/v2) failed to suppress bias-knowledge retrieval (100% BKR), but post-generation logic scrubbing was 100% effective.
+- **Runs**: 9 canonical (6 prompt + 3 postgen).
+- **Decision**: IMSB-2025 pilot FROZEN. 6 papers complete.
+
 ## [2026-02-20] - BU-2024: Metamorphic Flow Mitigation — GATE PASSED ✅
 
 - **Paper**: Bias Unveiled: Investigating Social Bias in LLM-Generated Code

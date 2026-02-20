@@ -1,0 +1,6 @@
+{
+  "paper_id": "IMSB-2025",
+  "model_tag": "codegen350M",
+  "source_run_id": "IMSB-2025_codegen350M_promptmit_v1_20260220_181742",
+  "scrub_strategy": "normalize_output"
+}

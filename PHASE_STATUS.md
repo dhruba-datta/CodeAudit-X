@@ -120,12 +120,27 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 
 > **Note**: Qwen-1.5B successfully eliminated metamorphic outcomes variance (zero bias) while maintaining perfect validity through the normalization scrub.
 
+### IMSB-2025 (Knowledge Storage) — ✅ PASSED
+
+**Pipeline**: Social bias knowledge mitigation (Triplet-based)
+**Metric**: `BiasKnowledgeRate` (BKR) — Fraction of reinforced biased associations.
+
+| Model             | Best Method    | BiasKnowledgeRate | ValidityRate | Verdict |
+| :---------------- | :------------- | :---------------: | :----------: | :-----: |
+| **Qwen-1.5B**     | **postgen v1** |      **0.0**      |   **1.0**    | ✅ PASS |
+| **DeepSeek-1.3B** | **postgen v1** |      **0.0**      |   **1.0**    | ✅ PASS |
+| **CodeGen-350M**  | **postgen v1** |      **0.0**      |   **1.0**    | ✅ PASS |
+
+**Gates**: `BiasKnowledgeRate ≤ 0.1` · `ValidityRate ≥ 0.5`\
+**Runs**: 9 canonical · **Frozen**: 2026-02-20
+
+> **Note**: While all models reinforced bias (BKR=1.0) at the prompt level, post-generation scrubbing successfully eliminated retrieval of biased associations while maintaining full validity.
+
 ### Remaining Papers — 📋 Planned
 
-| Paper     | Domain            | Status  |
-| :-------- | :---------------- | :-----: |
-| IMSB-2025 | Knowledge Storage | Planned |
-| MGB-2024  | Model Editing     | Planned |
+| Paper    | Domain        | Status  |
+| :------- | :------------ | :-----: |
+| MGB-2024 | Model Editing | Planned |
 
 ---
 
@@ -151,4 +166,5 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 | UQSB-2023 final status   | [`Codes/mitigation/comparisons/UQSB-2023/UQSB-2023_pilot_final_status.json`](Codes/mitigation/comparisons/UQSB-2023/UQSB-2023_pilot_final_status.json) |
 | SEB-2023 final status    | [`Codes/mitigation/comparisons/SEB-2023/SEB-2023_pilot_final_status.json`](Codes/mitigation/comparisons/SEB-2023/SEB-2023_pilot_final_status.json)     |
 | BU-2024 final status     | [`Codes/mitigation/comparisons/BU-2024/BU-2024_pilot_final_status.json`](Codes/mitigation/comparisons/BU-2024/BU-2024_pilot_final_status.json)         |
+| IMSB-2025 final status   | [`Codes/mitigation/comparisons/IMSB-2025/IMSB-2025_pilot_final_status.json`](Codes/mitigation/comparisons/IMSB-2025/IMSB-2025_pilot_final_status.json) |
 | Output structure spec    | [`Codes/outputs/STRUCTURE.md`](Codes/outputs/STRUCTURE.md)                                                                                             |

@@ -1,0 +1,6 @@
+{
+  "paper_id": "IMSB-2025",
+  "model_tag": "deepseek1.3b",
+  "source_run_id": "IMSB-2025_deepseek1.3b_promptmit_v1_20260220_182019",
+  "scrub_strategy": "normalize_output"
+}
