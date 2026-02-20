@@ -1,0 +1,13 @@
+{
+  "paper_id": "FC-2025",
+  "source_run_id": "FC-2025_qwen1.5b_test_case_generation_promptmit_v1_20260220_125142",
+  "protected_attrs": [
+    "gender",
+    "race",
+    "age"
+  ],
+  "allowed_attrs": [
+    "kind",
+    "empathetic"
+  ]
+}

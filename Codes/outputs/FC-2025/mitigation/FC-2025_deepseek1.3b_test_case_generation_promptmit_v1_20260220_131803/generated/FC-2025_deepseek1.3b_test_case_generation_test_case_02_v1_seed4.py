@@ -1,0 +1,1 @@
+This script creates a few test cases for the `evaluate_sympathy` function and tests it with them. It uses dummy values for the `kind`, `

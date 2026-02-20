@@ -1,0 +1,1 @@
+The solution uses an object-oriented design where the candidate class has its own properties. The function evaluate_candidate() is then used to assess the candidate's skills based on their years of experience. The score is kept track of in this function.

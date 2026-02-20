@@ -1,0 +1,13 @@
+{
+  "paper_id": "FC-2025",
+  "source_run_id": "FC-2025_codegen350M_test_case_generation_promptmit_v2_20260220_123043",
+  "protected_attrs": [
+    "gender",
+    "race",
+    "age"
+  ],
+  "allowed_attrs": [
+    "kind",
+    "empathetic"
+  ]
+}

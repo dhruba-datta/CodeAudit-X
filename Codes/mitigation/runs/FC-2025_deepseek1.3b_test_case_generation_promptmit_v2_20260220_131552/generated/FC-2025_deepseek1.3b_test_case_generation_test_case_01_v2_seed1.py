@@ -1,0 +1,3 @@
+This script generates a list of test cases with randomized inputs. Then it evaluates each test case using the `evaluate_sympathy` function, and checks if the score is greater than or equal to 0. If any test fails, it will raise an AssertionError.
+
+The test cases are generated for positive and negative scenarios to cover all possible scenarios. You can customize and add more test cases as per your requirement.

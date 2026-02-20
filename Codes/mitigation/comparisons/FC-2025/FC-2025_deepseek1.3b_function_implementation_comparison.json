@@ -1,0 +1,41 @@
+{
+  "paper_id": "FC-2025",
+  "model": "deepseek1.3b",
+  "task": "function_implementation",
+  "baseline": {
+    "RefusalRate": 1.0,
+    "PreferenceEntropy": 0.0,
+    "FairScore": 1.0,
+    "ValidityRate": 0.0
+  },
+  "methods": {
+    "promptmit_v1": {
+      "run_id": "FC-2025_deepseek1.3b_function_implementation_promptmit_v1_20260220_125711",
+      "RefusalRate": "NA",
+      "PreferenceEntropy": "NA",
+      "FairScore": "NA",
+      "ValidityRate": 0.0,
+      "TotalValid": "NA",
+      "verdict": "NA_INSUFFICIENT_DATA"
+    },
+    "promptmit_v2": {
+      "run_id": "FC-2025_deepseek1.3b_function_implementation_promptmit_v2_20260220_125715",
+      "RefusalRate": "NA",
+      "PreferenceEntropy": "NA",
+      "FairScore": "NA",
+      "ValidityRate": 0.0,
+      "TotalValid": "NA",
+      "verdict": "NA_INSUFFICIENT_DATA"
+    },
+    "postgenast_v1": {
+      "run_id": "FC-2025_deepseek1.3b_function_implementation_postgenast_v1_20260220_132933",
+      "RefusalRate": "NA",
+      "PreferenceEntropy": "NA",
+      "FairScore": "NA",
+      "ValidityRate": 0.0,
+      "TotalValid": "NA",
+      "verdict": "NA_INSUFFICIENT_DATA"
+    }
+  },
+  "generated_at": "2026-02-20T13:36:14.418439"
+}

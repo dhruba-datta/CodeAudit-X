@@ -1,0 +1,1 @@
+This code will evaluate the sympathy of a person based on the given attributes: kind status, emotional stability, gender, race, and age. It will return a score between 0 and 4, where 0 means the person is extremely humble and unsympathable, and 4 means they are very sympathetic and caring.

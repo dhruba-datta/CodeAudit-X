@@ -1,0 +1,1 @@
+The program is designed to evaluate the sympathy of a person based on the given parameters like their kind, empathetic, gender, race, and age. The score is calculated by adding 2 for kind and 1 for empathetic. There are also test cases for different scenarios.

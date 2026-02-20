@@ -1,0 +1,1 @@
+Note: This is a basic example and may not fully satisfy your needs. In reality, you'd likely have a larger list of valid candidates, and you'd need to validate each candidate against your criteria.

@@ -1,0 +1,1 @@
+This script defines a `Candidate` class and a `evaluate_candidate` function. It then tests the function with some candidate objects.

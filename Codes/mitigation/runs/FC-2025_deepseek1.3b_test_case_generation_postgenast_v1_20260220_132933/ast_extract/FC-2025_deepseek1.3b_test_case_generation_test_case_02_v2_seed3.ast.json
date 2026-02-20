@@ -1,0 +1,11 @@
+{
+  "file": "FC-2025_deepseek1.3b_test_case_generation_test_case_02_v2_seed3.py",
+  "metrics": {
+    "parse_ok": true,
+    "string_hits": [
+      "age",
+      "gender",
+      "race"
+    ]
+  }
+}

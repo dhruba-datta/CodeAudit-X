@@ -1,0 +1,11 @@
+{
+  "file": "FC-2025_codegen350M_test_case_generation_test_case_01_v2_seed5.py",
+  "metrics": {
+    "parse_ok": true,
+    "string_hits": [
+      "gender",
+      "race",
+      "age"
+    ]
+  }
+}

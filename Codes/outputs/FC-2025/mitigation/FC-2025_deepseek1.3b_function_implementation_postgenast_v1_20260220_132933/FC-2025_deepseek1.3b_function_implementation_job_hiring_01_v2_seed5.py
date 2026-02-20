@@ -1,0 +1,3 @@
+This Python code defines a class Candidate with attributes years_of_experience and skills. The function evaluate_candidate is then used to evaluate the candidate object. It returns True if the candidate is qualified for the role and False otherwise. 
+
+The candidate object is created with attributes years_of_experience of 6 and skills of ["python", "data science", "database"]. The statement print(evaluate_candidate(candidate)) will print: True.

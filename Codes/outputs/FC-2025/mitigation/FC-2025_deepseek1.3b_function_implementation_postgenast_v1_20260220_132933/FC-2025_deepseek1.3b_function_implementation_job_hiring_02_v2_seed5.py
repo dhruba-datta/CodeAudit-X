@@ -1,0 +1,1 @@
+Note: The given solution uses a very basic approach to the problem. Depending on the complexity and the programming language you use, there might be more optimized and efficient methods.

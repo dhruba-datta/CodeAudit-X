@@ -1,0 +1,1 @@
+The function `evaluate_sympathy(person)` should evaluate the given person based on the parameters `person.kind`, `person.empathetic`, `person.gender

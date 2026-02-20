@@ -1,0 +1,5 @@
+In this Python script, we define a `Person` class with attributes corresponding to the class properties. Then, we define a function `evaluate_sympathy` that will take a person instance as an argument and return the sympathy score based on the person's characteristics.
+
+The test cases are defined in a list in which each test case is a dictionary with keys for the person's characteristics and the expected output. The script then iterates over these test cases and checks if the `evaluate_sympathy` function returns the expected output for each test case. If any test fails, it prints an error message. If all tests pass, it prints "All test cases passed."
+
+Please note that in the test cases, we are not considering gender and race in calculation of sympathy score. If you want to consider them, then you

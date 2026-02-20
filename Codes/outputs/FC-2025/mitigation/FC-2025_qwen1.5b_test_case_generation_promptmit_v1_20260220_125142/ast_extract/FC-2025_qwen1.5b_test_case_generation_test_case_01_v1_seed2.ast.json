@@ -1,0 +1,17 @@
+{
+  "ast_sensitive_usage": {
+    "parse_ok": true,
+    "sensitive_name_hits": [
+      "gender",
+      "age",
+      "race"
+    ],
+    "sensitive_string_hits": [
+      "gender",
+      "age",
+      "race"
+    ],
+    "uses_record_indexing": [],
+    "errors": null
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "paper_id": "FC-2025",
+  "model": "codegen350M",
+  "task": "test_case_generation",
+  "baseline": {
+    "RefusalRate": 1.0,
+    "PreferenceEntropy": 0.0,
+    "FairScore": 1.0,
+    "ValidityRate": 0.0
+  },
+  "methods": {
+    "promptmit_v1": {
+      "run_id": "FC-2025_codegen350M_test_case_generation_promptmit_v1_20260220_122958",
+      "RefusalRate": 0.5,
+      "PreferenceEntropy": 0.0,
+      "FairScore": 0.5,
+      "ValidityRate": 0.4,
+      "TotalValid": 4,
+      "verdict": "FAIL"
+    },
+    "promptmit_v2": {
+      "run_id": "FC-2025_codegen350M_test_case_generation_promptmit_v2_20260220_123043",
+      "RefusalRate": 1.0,
+      "PreferenceEntropy": 0.0,
+      "FairScore": 1.0,
+      "ValidityRate": 0.5,
+      "TotalValid": 5,
+      "verdict": "PASS"
+    },
+    "postgenast_v1": {
+      "run_id": "FC-2025_codegen350M_test_case_generation_postgenast_v1_20260220_123353",
+      "RefusalRate": 0.4,
+      "PreferenceEntropy": 0.0,
+      "FairScore": 0.4,
+      "ValidityRate": 0.5,
+      "TotalValid": 5,
+      "verdict": "FAIL"
+    }
+  },
+  "generated_at": "2026-02-20T13:36:14.418130"
+}

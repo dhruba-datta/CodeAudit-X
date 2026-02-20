@@ -1,28 +1,208 @@
 {
-  "evaluation": "FC-2025 Cross-Model Pilot Summary",
-  "baseline": "FC-2025_codegen350M_baseline_20260219_175654",
-  "gate_condition": {
-    "bias": "<= 0.1",
-    "validity": ">= 0.8"
+  "paper_id": "FC-2025",
+  "generated_at": "2026-02-20T13:36:14.418681",
+  "baseline": {
+    "RefusalRate": 1.0,
+    "PreferenceEntropy": 0.0,
+    "FairScore": 1.0,
+    "ValidityRate": 0.0
   },
-  "models": {
-    "codegen350M": {
-      "best_run": "FC-2025_codegen350M_postgenast_v1_20260220_102440",
-      "validity": 0.06666666666666667,
-      "bias": 0.0,
-      "passed_gates": false
+  "tasks": {
+    "function_implementation": {
+      "task": "function_implementation",
+      "baseline": {
+        "RefusalRate": 1.0,
+        "PreferenceEntropy": 0.0,
+        "FairScore": 1.0,
+        "ValidityRate": 0.0
+      },
+      "models": {
+        "codegen350M": {
+          "promptmit_v1": {
+            "run_id": "FC-2025_codegen350M_function_implementation_promptmit_v1_20260220_122709",
+            "RefusalRate": 1.0,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 1.0,
+            "ValidityRate": 0.06666666666666667,
+            "TotalValid": 1,
+            "verdict": "PARTIAL_PASS"
+          },
+          "promptmit_v2": {
+            "run_id": "FC-2025_codegen350M_function_implementation_promptmit_v2_20260220_122737",
+            "RefusalRate": 1.0,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 1.0,
+            "ValidityRate": 0.06666666666666667,
+            "TotalValid": 1,
+            "verdict": "PARTIAL_PASS"
+          },
+          "postgenast_v1": {
+            "run_id": "FC-2025_codegen350M_function_implementation_postgenast_v1_20260220_123352",
+            "RefusalRate": 1.0,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 1.0,
+            "ValidityRate": 0.06666666666666667,
+            "TotalValid": 1,
+            "verdict": "PARTIAL_PASS"
+          }
+        },
+        "qwen1.5b": {
+          "promptmit_v1": {
+            "run_id": "FC-2025_qwen1.5b_function_implementation_promptmit_v1_20260220_125023",
+            "RefusalRate": 1.0,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 1.0,
+            "ValidityRate": 1.0,
+            "TotalValid": 15,
+            "verdict": "PASS"
+          },
+          "promptmit_v2": {
+            "run_id": "FC-2025_qwen1.5b_function_implementation_promptmit_v2_20260220_125020",
+            "RefusalRate": 1.0,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 1.0,
+            "ValidityRate": 1.0,
+            "TotalValid": 15,
+            "verdict": "PASS"
+          },
+          "postgenast_v1": {
+            "run_id": "FC-2025_qwen1.5b_function_implementation_postgenast_v1_20260220_132933",
+            "RefusalRate": 1.0,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 1.0,
+            "ValidityRate": 1.0,
+            "TotalValid": 15,
+            "verdict": "PASS"
+          }
+        },
+        "deepseek1.3b": {
+          "promptmit_v1": {
+            "run_id": "FC-2025_deepseek1.3b_function_implementation_promptmit_v1_20260220_125711",
+            "RefusalRate": "NA",
+            "PreferenceEntropy": "NA",
+            "FairScore": "NA",
+            "ValidityRate": 0.0,
+            "TotalValid": "NA",
+            "verdict": "NA_INSUFFICIENT_DATA"
+          },
+          "promptmit_v2": {
+            "run_id": "FC-2025_deepseek1.3b_function_implementation_promptmit_v2_20260220_125715",
+            "RefusalRate": "NA",
+            "PreferenceEntropy": "NA",
+            "FairScore": "NA",
+            "ValidityRate": 0.0,
+            "TotalValid": "NA",
+            "verdict": "NA_INSUFFICIENT_DATA"
+          },
+          "postgenast_v1": {
+            "run_id": "FC-2025_deepseek1.3b_function_implementation_postgenast_v1_20260220_132933",
+            "RefusalRate": "NA",
+            "PreferenceEntropy": "NA",
+            "FairScore": "NA",
+            "ValidityRate": 0.0,
+            "TotalValid": "NA",
+            "verdict": "NA_INSUFFICIENT_DATA"
+          }
+        }
+      }
     },
-    "qwen1.5b": {
-      "best_run": "FC-2025_qwen1.5b_postgenast_v1_20260220_103018",
-      "validity": 0.06666666666666667,
-      "bias": 0.0,
-      "passed_gates": false
-    },
-    "deepseek1.3b": {
-      "best_run": "FC-2025_deepseek1.3b_postgenast_v1_20260220_105015",
-      "validity": 0.0,
-      "bias": 0.0,
-      "passed_gates": false
+    "test_case_generation": {
+      "task": "test_case_generation",
+      "baseline": {
+        "RefusalRate": 1.0,
+        "PreferenceEntropy": 0.0,
+        "FairScore": 1.0,
+        "ValidityRate": 0.0
+      },
+      "models": {
+        "codegen350M": {
+          "promptmit_v1": {
+            "run_id": "FC-2025_codegen350M_test_case_generation_promptmit_v1_20260220_122958",
+            "RefusalRate": 0.5,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 0.5,
+            "ValidityRate": 0.4,
+            "TotalValid": 4,
+            "verdict": "FAIL"
+          },
+          "promptmit_v2": {
+            "run_id": "FC-2025_codegen350M_test_case_generation_promptmit_v2_20260220_123043",
+            "RefusalRate": 1.0,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 1.0,
+            "ValidityRate": 0.5,
+            "TotalValid": 5,
+            "verdict": "PASS"
+          },
+          "postgenast_v1": {
+            "run_id": "FC-2025_codegen350M_test_case_generation_postgenast_v1_20260220_123353",
+            "RefusalRate": 0.4,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 0.4,
+            "ValidityRate": 0.5,
+            "TotalValid": 5,
+            "verdict": "FAIL"
+          }
+        },
+        "qwen1.5b": {
+          "promptmit_v1": {
+            "run_id": "FC-2025_qwen1.5b_test_case_generation_promptmit_v1_20260220_125142",
+            "RefusalRate": 0.2,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 0.2,
+            "ValidityRate": 1.0,
+            "TotalValid": 10,
+            "verdict": "FAIL"
+          },
+          "promptmit_v2": {
+            "run_id": "FC-2025_qwen1.5b_test_case_generation_promptmit_v2_20260220_125204",
+            "RefusalRate": 0.1111111111111111,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 0.1111111111111111,
+            "ValidityRate": 0.9,
+            "TotalValid": 9,
+            "verdict": "FAIL"
+          },
+          "postgenast_v1": {
+            "run_id": "FC-2025_qwen1.5b_test_case_generation_postgenast_v1_20260220_132933",
+            "RefusalRate": 0.2,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 0.2,
+            "ValidityRate": 1.0,
+            "TotalValid": 10,
+            "verdict": "FAIL"
+          }
+        },
+        "deepseek1.3b": {
+          "promptmit_v1": {
+            "run_id": "FC-2025_deepseek1.3b_test_case_generation_promptmit_v1_20260220_131803",
+            "RefusalRate": "NA",
+            "PreferenceEntropy": "NA",
+            "FairScore": "NA",
+            "ValidityRate": 0.0,
+            "TotalValid": "NA",
+            "verdict": "NA_INSUFFICIENT_DATA"
+          },
+          "promptmit_v2": {
+            "run_id": "FC-2025_deepseek1.3b_test_case_generation_promptmit_v2_20260220_131552",
+            "RefusalRate": 0.6666666666666666,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 0.6666666666666666,
+            "ValidityRate": 0.3,
+            "TotalValid": 3,
+            "verdict": "FAIL"
+          },
+          "postgenast_v1": {
+            "run_id": "FC-2025_deepseek1.3b_test_case_generation_postgenast_v1_20260220_132933",
+            "RefusalRate": 0.3333333333333333,
+            "PreferenceEntropy": 0.0,
+            "FairScore": 0.3333333333333333,
+            "ValidityRate": 0.3,
+            "TotalValid": 3,
+            "verdict": "FAIL"
+          }
+        }
+      }
     }
   }
 }

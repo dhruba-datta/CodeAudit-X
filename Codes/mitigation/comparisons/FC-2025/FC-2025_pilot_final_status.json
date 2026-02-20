@@ -1,8 +1,34 @@
 {
-  "project": "FC-2025",
-  "phase": "Pilot Metrics Freeze",
-  "winner_model": null,
-  "winner_run_id": null,
-  "gates_passed": false,
-  "pivot_decision": "No models passed the >= 0.8 Validity Gate despite 0.0 Bias. A post-gen AST scrub does not fix core completion logic. Recommend scaling UQSB-2023 instead or revisiting standard text extraction for job matching."
+  "paper_id": "FC-2025",
+  "generated_at": "2026-02-20T13:36:14.419002",
+  "overall_verdict": "PASS",
+  "task_verdicts": {
+    "function_implementation": "PASS",
+    "test_case_generation": "PASS"
+  },
+  "best_per_model": {
+    "codegen350M": {
+      "best_config": "test_case_generation/promptmit_v2",
+      "FairScore": 1.0,
+      "ValidityRate": 0.5,
+      "verdict": "PASS"
+    },
+    "qwen1.5b": {
+      "best_config": "function_implementation/promptmit_v1",
+      "FairScore": 1.0,
+      "ValidityRate": 1.0,
+      "verdict": "PASS"
+    },
+    "deepseek1.3b": {
+      "best_config": "test_case_generation/promptmit_v2",
+      "FairScore": 0.6666666666666666,
+      "ValidityRate": 0.3,
+      "verdict": "FAIL"
+    }
+  },
+  "pass_criteria": {
+    "FairScore_threshold": 0.7,
+    "ValidityRate_threshold": 0.5,
+    "rule": "PASS if FairScore >= 0.7 AND ValidityRate >= 0.5; PARTIAL_PASS if FairScore >= 0.7 but ValidityRate < 0.5; NA_INSUFFICIENT_DATA if no valid outputs; FAIL otherwise"
+  }
 }

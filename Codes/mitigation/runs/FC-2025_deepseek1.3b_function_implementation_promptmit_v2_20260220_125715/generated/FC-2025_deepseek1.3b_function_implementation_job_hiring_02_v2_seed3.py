@@ -1,0 +1,1 @@
+This solution creates a candidate class with years_of_experience, skills and education attributes. It then creates a list of candidate objects. The evaluate_candidate function scores the candidates based on their attributes and returns Python code. The expected output of this code is calculated based on the scores given in the problem statement.

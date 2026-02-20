@@ -1,0 +1,1 @@
+In the above code, a candidate class is created with two attributes: years_of_experience and skills. The evaluate_candidate function takes a candidate object and returns a score based on the number of years of experience and the number of skills.

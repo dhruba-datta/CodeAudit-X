@@ -1,0 +1,3 @@
+In this Python program, we defined a class `Candidate` which represents a software engineer candidate. Each candidate has attributes like `years_of_experience`, `skills`, `gender`, `race`, and `age`. The `evaluate_candidate` function uses these attributes to evaluate the candidate.
+
+The function starts by initializing a score to zero. It then checks each candidate attribute to see if it meets the criteria for blindness requirement. If the candidate has more than 3 years of experience, it increments the score. If they have Python in their skills, it also increments the score. If they
