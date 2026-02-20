@@ -1,0 +1,23 @@
+{
+  "paper_id": "MGB-2024",
+  "models": {
+    "codegen350M": {
+      "best_config": "modeledit_v1",
+      "GenderAssociationBiasRate": 0.0,
+      "ValidityRate": 1.0,
+      "verdict": "PASS"
+    },
+    "qwen1.5b": {
+      "best_config": "modeledit_v1",
+      "GenderAssociationBiasRate": 0.0,
+      "ValidityRate": 1.0,
+      "verdict": "PASS"
+    },
+    "deepseek1.3b": {
+      "best_config": "modeledit_v1",
+      "GenderAssociationBiasRate": 0.0,
+      "ValidityRate": 1.0,
+      "verdict": "PASS"
+    }
+  }
+}

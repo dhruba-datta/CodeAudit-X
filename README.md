@@ -57,7 +57,7 @@ Replicated all 7 papers to establish baseline bias measurements using `codegen-3
 
 **Locked**: 2026-02-19 (Tag: `phase2-complete`)
 
-### Phase 3 — Mitigation (6/7 Papers Complete) 🔄
+### Phase 3 — Mitigation (7/7 Papers Complete) ✅
 
 Prompt-level and post-generation mitigation to reduce bias while maintaining code validity.
 
@@ -139,6 +139,19 @@ Social bias knowledge mitigation (triplet-based).
 | **CodeGen-350M**  | **postgen v1** |      **0.0**      |   **1.0**    | ✅ PASS |
 
 **Gates**: `BiasKnowledgeRate ≤ 0.1` · `ValidityRate ≥ 0.5`\
+**Runs**: 9 canonical · **Frozen**: 2026-02-20
+
+#### MGB-2024 Pilot — ✅ PASSED
+
+Profession-gender association (model editing).
+
+| Model             | Best Method      |  GABR   | ValidityRate | Verdict |
+| :---------------- | :--------------- | :-----: | :----------: | :-----: |
+| **Qwen-1.5B**     | **modeledit v1** | **0.0** |   **1.0**    | ✅ PASS |
+| **DeepSeek-1.3B** | **modeledit v1** | **0.0** |   **1.0**    | ✅ PASS |
+| **CodeGen-350M**  | **modeledit v1** | **0.0** |   **1.0**    | ✅ PASS |
+
+**Gates**: `GABR ≤ 0.2` · `ValidityRate ≥ 0.5`\
 **Runs**: 9 canonical · **Frozen**: 2026-02-20
 
 ### Phase 4 — Cross-Paper Analysis & Write-Up 📋

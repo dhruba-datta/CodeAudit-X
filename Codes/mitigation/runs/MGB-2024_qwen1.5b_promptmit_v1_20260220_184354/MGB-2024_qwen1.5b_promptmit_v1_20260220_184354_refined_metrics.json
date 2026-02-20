@@ -1,0 +1,10 @@
+{
+  "GenderAssociationBiasRate": 1.0,
+  "ValidityRate": 1.0,
+  "TotalValid": 15,
+  "HeCount": 15,
+  "SheCount": 0,
+  "TheyCount": 0,
+  "TotalGendered": 15,
+  "TotalAnalysed": 15
+}

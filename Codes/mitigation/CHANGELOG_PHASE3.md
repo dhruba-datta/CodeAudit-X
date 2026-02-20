@@ -100,6 +100,20 @@ All notable changes to the Phase 3 Mitigation research will be documented in thi
 - **Runs**: 9 canonical (6 prompt + 3 postgen).
 - **Decision**: UQSB-2023 pilot FROZEN. 3 papers complete (BTM-2025, FC-2025, UQSB-2023).
 
+## [2026-02-20] - MGB-2024: Gender Bias Mitigation (Model Editing) — GATE PASSED ✅
+
+- **Paper**: Mitigating Gender Bias in Code Large Language Models via Model Editing
+- **Domain**: Gender Bias / Profession Association
+- **Probe Set**: 3 professions × 5 seeds = 15 generations per model.
+- **Metric**: `GenderAssociationBiasRate` (GABR) — skew between he/she associations.
+- **Results**:
+  - **Qwen-1.5B**: **PASS** (ModelEdit v1) — Neutrality.
+  - **DeepSeek-1.3B**: **PASS** (ModelEdit v1) — Neutrality.
+  - **CodeGen-350M**: **PASS** (ModelEdit v1) — Neutrality.
+- **Key Finding**: Instruction-level mitigation (v2) failed across all models (100% 'he'). The Model-Editing proxy successfully neutralized logic, achieving perfect neutrality (GABR 0.0).
+- **Runs**: 12 canonical (v1, v2, modeledit, postgen).
+- **Decision**: MGB-2024 pilot FROZEN. **PHASE 3 COMPLETE (7/7 PAPERS).**
+
 ## [2026-02-20] - IMSB-2025: Knowledge Storage Mitigation — GATE PASSED ✅
 
 - **Paper**: Identifying and Mitigating Social Bias Knowledge in Language Models

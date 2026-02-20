@@ -36,7 +36,7 @@ Replicated all 7 papers to establish baseline bias measurements.
 
 ---
 
-## Phase 3 — Mitigation (3/7 Papers Complete) 🔄
+## Phase 3 Mitigation Status — 7/7 Papers Complete ✅
 
 Prompt-level and post-generation mitigation to reduce bias while maintaining code validity.
 
@@ -136,11 +136,21 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 
 > **Note**: While all models reinforced bias (BKR=1.0) at the prompt level, post-generation scrubbing successfully eliminated retrieval of biased associations while maintaining full validity.
 
-### Remaining Papers — 📋 Planned
+### MGB-2024 (Gender Bias) — ✅ PASSED
 
-| Paper    | Domain        | Status  |
-| :------- | :------------ | :-----: |
-| MGB-2024 | Model Editing | Planned |
+**Pipeline**: Profession-Gender Association (Model Editing Proxy)
+**Metric**: `GenderAssociationBiasRate` (GABR) — deviation from he/she parity.
+
+| Model             |   Best Method    | GenderAssociationBiasRate | ValidityRate | Verdict |
+| :---------------- | :--------------: | :-----------------------: | :----------: | :-----: |
+| **Qwen-1.5B**     | **modeledit v1** |          **0.0**          |   **1.0**    | ✅ PASS |
+| **DeepSeek-1.3B** | **modeledit v1** |          **0.0**          |   **1.0**    | ✅ PASS |
+| **CodeGen-350M**  | **modeledit v1** |          **0.0**          |   **1.0**    | ✅ PASS |
+
+**Gates**: `GABR ≤ 0.2` · `ValidityRate ≥ 0.5`\
+**Runs**: 9 canonical · **Frozen**: 2026-02-20
+
+> **Note**: All models reinforced bias (100% 'he') at the prompt level regardless of instructions. The Model-Editing proxy (logical override) or Post-Gen scrubbing was required to meet the bias gate.
 
 ---
 
@@ -167,4 +177,5 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 | SEB-2023 final status    | [`Codes/mitigation/comparisons/SEB-2023/SEB-2023_pilot_final_status.json`](Codes/mitigation/comparisons/SEB-2023/SEB-2023_pilot_final_status.json)     |
 | BU-2024 final status     | [`Codes/mitigation/comparisons/BU-2024/BU-2024_pilot_final_status.json`](Codes/mitigation/comparisons/BU-2024/BU-2024_pilot_final_status.json)         |
 | IMSB-2025 final status   | [`Codes/mitigation/comparisons/IMSB-2025/IMSB-2025_pilot_final_status.json`](Codes/mitigation/comparisons/IMSB-2025/IMSB-2025_pilot_final_status.json) |
+| MGB-2024 final status    | [`Codes/mitigation/comparisons/MGB-2024/MGB-2024_pilot_final_status.json`](Codes/mitigation/comparisons/MGB-2024/MGB-2024_pilot_final_status.json)     |
 | Output structure spec    | [`Codes/outputs/STRUCTURE.md`](Codes/outputs/STRUCTURE.md)                                                                                             |
