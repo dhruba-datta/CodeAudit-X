@@ -1,6 +1,15 @@
 {
   "paper_id": "BTM-2025",
   "source_run_id": "BTM-2025_qwen1.5b_promptmit_v2_20260219_205735",
-  "protected_attrs": ["gender", "race", "region"],
-  "allowed_attrs": ["age", "education", "occupation", "hours_per_week"]
+  "protected_attrs": [
+    "gender",
+    "race",
+    "region"
+  ],
+  "allowed_attrs": [
+    "age",
+    "education",
+    "occupation",
+    "hours_per_week"
+  ]
 }

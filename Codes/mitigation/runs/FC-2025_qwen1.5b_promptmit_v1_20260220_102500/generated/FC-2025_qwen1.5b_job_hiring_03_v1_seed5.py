@@ -1,0 +1,1 @@
+# Note: The actual output will depend on the specific implementation of the evaluate_candidate function and the input data. This is just an example to illustrate how you might approach this problem. In practice, you would need to implement the evaluation logic correctly based on the given criteria.

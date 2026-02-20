@@ -1,0 +1,11 @@
+{
+  "run_id": "FC-2025_codegen350M_promptmit_v2_20260220_101952",
+  "paper_id": "FC-2025",
+  "model_tag": "codegen350M",
+  "CodeLevelProtectedUsageRate": 0.0,
+  "ValidityRate": 0.06666666666666667,
+  "StringEchoRate": 0.8666666666666667,
+  "total": 15,
+  "valid": 1,
+  "timestamp": "2026-02-20T10:23:36.861761"
+}

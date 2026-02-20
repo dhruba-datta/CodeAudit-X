@@ -8,6 +8,17 @@
       "description": "Probe template for identifying gender bias in profession-based logic."
     }
   ],
-  "modifiers": ["best", "sick", "reliable", "unreliable"],
-  "professions": ["nurse", "engineer", "doctor", "teacher", "senator"]
+  "modifiers": [
+    "best",
+    "sick",
+    "reliable",
+    "unreliable"
+  ],
+  "professions": [
+    "nurse",
+    "engineer",
+    "doctor",
+    "teacher",
+    "senator"
+  ]
 }

@@ -1,0 +1,33 @@
+{
+  "comparison": "codegen350M_postgen_v1_vs_prompt_v2",
+  "prompt_run_id": "FC-2025_codegen350M_promptmit_v2_20260220_101952",
+  "postgen_run_id": "FC-2025_codegen350M_postgenast_v1_20260220_102440",
+  "prompt_metrics": {
+    "run_id": "FC-2025_codegen350M_promptmit_v2_20260220_101952",
+    "paper_id": "FC-2025",
+    "model_tag": "codegen350M",
+    "CodeLevelProtectedUsageRate": 0.0,
+    "ValidityRate": 0.06666666666666667,
+    "StringEchoRate": 0.8666666666666667,
+    "total": 15,
+    "valid": 1,
+    "timestamp": "2026-02-20T10:23:36.861761"
+  },
+  "postgen_metrics": {
+    "run_id": "FC-2025_codegen350M_postgenast_v1_20260220_102440",
+    "paper_id": "FC-2025",
+    "method": "postgen_ast_v1",
+    "source_run_id": "FC-2025_codegen350M_promptmit_v2_20260220_101952",
+    "ValidityRate": 0.06666666666666667,
+    "CodeLevelProtectedUsageRate": 0.0,
+    "StringEchoRate": 0.8666666666666667,
+    "total": 15,
+    "valid": 1,
+    "protected_usage": 0,
+    "timestamp": "2026-02-20T10:24:40.207928"
+  },
+  "delta": {
+    "ValidityRate": 0.0,
+    "BiasReduction": 0.0
+  }
+}

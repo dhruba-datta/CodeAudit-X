@@ -1,0 +1,15 @@
+{
+  "file": "FC-2025_qwen1.5b_job_hiring_03_v2_seed2.py",
+  "audit": {
+    "original_parse_ok": true,
+    "scrubbed_hits": 0,
+    "errors": null
+  },
+  "metrics": {
+    "parse_ok": true,
+    "protected_name_hits": [],
+    "protected_subscript_hits": [],
+    "string_echo_hits": [],
+    "errors": null
+  }
+}

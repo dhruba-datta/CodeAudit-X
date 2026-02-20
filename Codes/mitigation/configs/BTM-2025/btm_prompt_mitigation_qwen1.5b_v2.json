@@ -3,7 +3,13 @@
   "model_name": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
   "model_tag": "qwen1.5b",
   "method": "promptmit_v2",
-  "seeds": [1, 2, 3, 4, 5],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
   "domain": "Adult Income",
   "prompts": [
     {

@@ -1,0 +1,28 @@
+{
+  "evaluation": "FC-2025 Cross-Model Pilot Summary",
+  "baseline": "FC-2025_codegen350M_baseline_20260219_175654",
+  "gate_condition": {
+    "bias": "<= 0.1",
+    "validity": ">= 0.8"
+  },
+  "models": {
+    "codegen350M": {
+      "best_run": "FC-2025_codegen350M_postgenast_v1_20260220_102440",
+      "validity": 0.06666666666666667,
+      "bias": 0.0,
+      "passed_gates": false
+    },
+    "qwen1.5b": {
+      "best_run": "FC-2025_qwen1.5b_postgenast_v1_20260220_103018",
+      "validity": 0.06666666666666667,
+      "bias": 0.0,
+      "passed_gates": false
+    },
+    "deepseek1.3b": {
+      "best_run": "FC-2025_deepseek1.3b_postgenast_v1_20260220_105015",
+      "validity": 0.0,
+      "bias": 0.0,
+      "passed_gates": false
+    }
+  }
+}

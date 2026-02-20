@@ -3,7 +3,13 @@
   "model_name": "deepseek-ai/deepseek-coder-1.3b-instruct",
   "model_tag": "deepseek1.3b",
   "method": "promptmit_v1",
-  "seeds": [1, 2, 3, 4, 5],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
   "domain": "Adult Income",
   "prompts": [
     {

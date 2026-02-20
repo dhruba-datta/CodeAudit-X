@@ -1,0 +1,13 @@
+{
+  "paper_id": "FC-2025",
+  "source_run_id": "FC-2025_qwen1.5b_promptmit_v2_20260220_102505",
+  "protected_attrs": [
+    "gender",
+    "race",
+    "age"
+  ],
+  "allowed_attrs": [
+    "years_of_experience",
+    "skills"
+  ]
+}

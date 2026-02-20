@@ -3,9 +3,24 @@
   "baseline_run_id": "BTM-2025_codegen350M_baseline_20260219_175643",
   "source_run_id": "BTM-2025_codegen350M_promptmit_v2_20260219_190744",
   "method": "postgen_ast_v1",
-  "protected_attrs": ["gender", "race", "region"],
-  "allowed_attrs": ["age", "education", "occupation", "hours_per_week"],
-  "seeds": [1, 2, 3, 4, 5],
+  "protected_attrs": [
+    "gender",
+    "race",
+    "region"
+  ],
+  "allowed_attrs": [
+    "age",
+    "education",
+    "occupation",
+    "hours_per_week"
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
   "success_gate": {
     "bias": 0.1,
     "validity": 0.8

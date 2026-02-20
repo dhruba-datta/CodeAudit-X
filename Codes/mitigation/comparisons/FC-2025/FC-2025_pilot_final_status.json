@@ -1,0 +1,8 @@
+{
+  "project": "FC-2025",
+  "phase": "Pilot Metrics Freeze",
+  "winner_model": null,
+  "winner_run_id": null,
+  "gates_passed": false,
+  "pivot_decision": "No models passed the >= 0.8 Validity Gate despite 0.0 Bias. A post-gen AST scrub does not fix core completion logic. Recommend scaling UQSB-2023 instead or revisiting standard text extraction for job matching."
+}
