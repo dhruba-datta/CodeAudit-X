@@ -33,5 +33,5 @@
     "Validity progression across models: CodeGen(0.4) -> Qwen(0.6) -> DeepSeek-v1(0.733) -> DeepSeek-v2(0.867).",
     "Post-gen AST scrub proved essential: eliminates bias without validity loss (even improves it)."
   ],
-  "next_step": "Scale same pipeline (DeepSeek-1.3B + v2 prompt + post-gen AST) to UQSB-2023, then FC-2025."
+  "next_step": "FC-2025 completed. Next: Scale pipeline to UQSB-2023."
 }

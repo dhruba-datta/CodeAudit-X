@@ -7,14 +7,22 @@ This directory contains all Phase 3 mitigation experiments for CodeAudit X.
 ```mermaid
 graph LR
     A[Prompt Config] --> B[Prompt Mitigation Run]
-    B --> C{Bias <= 0.1?}
-    C -->|Yes| D{Validity >= 0.8?}
-    C -->|No| E[Post-Gen AST Scrub]
-    E --> D
-    D -->|Yes| F[✅ GATE PASSED — Freeze]
-    D -->|No| G[Refine Prompt / Pivot Model]
-    G --> A
+    B --> C[AST Metric Extraction]
+    C --> D{Fairness Gate}
+    D -->|Pass| E{Utility Gate}
+    D -->|Fail| F[Post-Gen AST Scrub]
+    F --> E
+    E -->|Pass| G["✅ GATE PASSED — Freeze"]
+    E -->|Fail| H[Refine Prompt / Pivot Model]
+    H --> A
 ```
+
+**Paper-Specific Gates:**
+
+| Paper        | Fairness Gate                       | Utility Gate         |
+| :----------- | :---------------------------------- | :------------------- |
+| **BTM-2025** | `CodeLevelProtectedUsageRate ≤ 0.1` | `ValidityRate ≥ 0.8` |
+| **FC-2025**  | `FairScore ≥ 0.7`                   | `ValidityRate ≥ 0.5` |
 
 ## BTM-2025 Pilot (PASSED ✅)
 
@@ -34,6 +42,29 @@ graph LR
 | Qwen-1.5B         |     0.60      | Placeholder hallucination        |
 | **DeepSeek-1.3B** |   **0.867**   | Winner after v2 prompt + postgen |
 
+## FC-2025 Pilot (PASSED ✅)
+
+Task-based evaluation with FC-specific metrics (RefusalRate, PreferenceEntropy, FairScore).
+
+### Function Implementation
+
+| Model         | Best Method | FairScore | ValidityRate | Verdict |
+| :------------ | :---------- | :-------: | :----------: | :-----: |
+| CodeGen-350M  | v1/v2       |    1.0    |    0.067     | PARTIAL |
+| **Qwen-1.5B** | **v1**      |  **1.0**  |   **1.0**    | **✅**  |
+| DeepSeek-1.3B | v1/v2       |    NA     |     0.0      |   NA    |
+
+### Test Case Generation
+
+| Model            | Best Method | FairScore | ValidityRate | Verdict |
+| :--------------- | :---------- | :-------: | :----------: | :-----: |
+| **CodeGen-350M** | **v2**      |  **1.0**  |   **0.5**    | **✅**  |
+| Qwen-1.5B        | v1          |    0.2    |     1.0      |  FAIL   |
+| DeepSeek-1.3B    | v2          |   0.667   |     0.3      |  FAIL   |
+
+**Gates**: `FairScore ≥ 0.7` · `ValidityRate ≥ 0.5`\
+**Runs**: 18 canonical · **Frozen**: 2026-02-20
+
 ## Directory Structure
 
 ```text
@@ -43,23 +74,29 @@ mitigation/
 ├── RUN_REGISTRY.csv          # All registered runs
 ├── requirements_phase3.txt   # Dependencies
 ├── scripts/                  # Runner & postgen scripts (per paper)
-│   └── BTM-2025/
-│       ├── run_btm_pilot.py
-│       ├── run_btm_pilot_deepseek1.3b.py
-│       ├── run_btm_pilot_deepseek1.3b_v2.py
-│       ├── run_btm_pilot_qwen1.5b.py
-│       ├── run_btm_pilot_qwen1.5b_v2.py
-│       ├── postgen_btm_ast_v1.py
-│       ├── postgen_btm_deepseek_v1.py
-│       ├── postgen_btm_deepseek_v2.py
-│       └── postgen_btm_qwen_v2.py
-├── configs/BTM-2025/         # Experiment configs (JSON)
-├── comparisons/BTM-2025/     # Status & comparison JSONs
-├── runs/                     # 12 registered run folders
-│   ├── BTM-2025_codegen350M_*/
-│   ├── BTM-2025_qwen1.5b_*/
-│   ├── BTM-2025_deepseek1.3b_*/
-│   └── _archive/             # 10 intermediate/failed runs
+│   ├── BTM-2025/
+│   │   ├── run_btm_pilot*.py
+│   │   └── postgen_btm_*.py
+│   └── FC-2025/
+│       ├── run_fc_pilot.py         # Prompt mitigation runner
+│       ├── postgen_fc_ast.py       # Post-gen AST scrubber
+│       ├── fc_metrics.py           # RefusalRate/PreferenceEntropy/FairScore
+│       ├── extract_ast.py          # AST sensitive attribute extraction
+│       ├── extract_baseline_fc.py  # Baseline metric retroactive extraction
+│       ├── generate_configs.py     # Config generator (per task/model)
+│       ├── build_comparisons.py    # Cross-model comparison builder
+│       └── patch_and_archive.py    # Metric fix & run archival utility
+├── configs/                  # Experiment configs (JSON)
+│   ├── BTM-2025/
+│   └── FC-2025/
+│       ├── function_implementation/
+│       └── test_case_generation/
+├── comparisons/              # Status & comparison JSONs
+│   ├── BTM-2025/
+│   └── FC-2025/
+├── runs/                     # Run folders (paper/model/method/task specific)
+│   ├── BTM-2025_*/
+│   └── FC-2025_*/
 ├── metrics/                  # Per-paper metric scaffolds
 └── tools/                    # Shared utilities
 ```
@@ -71,14 +108,21 @@ All runs are tracked in [`RUN_REGISTRY.csv`](RUN_REGISTRY.csv) with columns:
 
 ## Key Files
 
-| File                                                                                                                           | Purpose                          |
-| :----------------------------------------------------------------------------------------------------------------------------- | :------------------------------- |
-| [`CHANGELOG_PHASE3.md`](CHANGELOG_PHASE3.md)                                                                                   | Chronological experiment log     |
-| [`RUN_REGISTRY.csv`](RUN_REGISTRY.csv)                                                                                         | All registered runs (12 entries) |
-| [`comparisons/BTM-2025/BTM-2025_pilot_final_status.json`](comparisons/BTM-2025/BTM-2025_pilot_final_status.json)               | Final gate evaluation            |
-| [`comparisons/BTM-2025/BTM-2025_deepseek1.3b_v2_vs_v1_all.json`](comparisons/BTM-2025/BTM-2025_deepseek1.3b_v2_vs_v1_all.json) | Comprehensive comparison         |
+| File                                                                                                                           | Purpose                      |
+| :----------------------------------------------------------------------------------------------------------------------------- | :--------------------------- |
+| [`CHANGELOG_PHASE3.md`](CHANGELOG_PHASE3.md)                                                                                   | Chronological experiment log |
+| [`RUN_REGISTRY.csv`](RUN_REGISTRY.csv)                                                                                         | All registered runs          |
+| [`comparisons/BTM-2025/BTM-2025_pilot_final_status.json`](comparisons/BTM-2025/BTM-2025_pilot_final_status.json)               | Final gate evaluation        |
+| [`comparisons/BTM-2025/BTM-2025_deepseek1.3b_v2_vs_v1_all.json`](comparisons/BTM-2025/BTM-2025_deepseek1.3b_v2_vs_v1_all.json) | Comprehensive comparison     |
+| [`comparisons/FC-2025/FC-2025_pilot_final_status.json`](comparisons/FC-2025/FC-2025_pilot_final_status.json)                   | FC pilot final status        |
+| [`comparisons/FC-2025/FC-2025_cross_model_summary.json`](comparisons/FC-2025/FC-2025_cross_model_summary.json)                 | FC cross-model summary       |
+
+## Completed Papers
+
+- [x] **BTM-2025** — Income Prediction (DeepSeek-1.3B + v2 prompt + postgen AST)
+- [x] **FC-2025** — Software Pipeline (task-based: Qwen-1.5B for functions, CodeGen-350M for test cases)
 
 ## Next Steps
 
 - [ ] Scale pipeline to **UQSB-2023** (Social Logic)
-- [ ] Scale pipeline to **FC-2025** (Software Pipeline)
+- [ ] Revisit FC-2025 for additional scenarios (`college_admission`, `medical_treatment`) if required by milestone

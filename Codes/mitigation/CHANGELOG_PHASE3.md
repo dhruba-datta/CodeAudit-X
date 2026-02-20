@@ -60,3 +60,28 @@ All notable changes to the Phase 3 Mitigation research will be documented in thi
 - **Post-Gen Result**: `ValidityRate: 0.867`, `CodeLevelProtectedUsageRate: 0.0`, `StringEchoRate: 0.133`.
 - **Gate**: Bias PASSED (0.0 ≤ 0.1). Validity PASSED (0.867 ≥ 0.8).
 - **Decision**: BTM-2025 pilot FROZEN. Pipeline ready for cross-paper scaling to UQSB-2023 and FC-2025.
+
+## [2026-02-20] - FC-2025: Task-Based Refactor & Full Execution
+
+- **Refactored** FC-2025 pipeline into two explicit tasks: `function_implementation` and `test_case_generation`.
+- **Metrics**: Swapped generic bias metrics for paper-specific `RefusalRate`, `PreferenceEntropy`, and `FairScore` (R + E − R×E).
+- **Configs**: Created per-task directories under `configs/FC-2025/` with prompt and postgen configs per model.
+- **Scripts**: Built `fc_metrics.py` (metric engine), `run_fc_pilot.py` (runner), `postgen_fc_ast.py` (scrubber), `build_comparisons.py` (comparison builder).
+- **Executed**: v1 and v2 prompt mitigations + postgen AST scrub across all 3 models (codegen350M, qwen1.5b, deepseek1.3b) for both tasks.
+- **Baseline**: Retroactively extracted FC metrics from the codegen350M baseline run.
+
+## [2026-02-20] - FC-2025: Edge Case Fix & Cleanup
+
+- **Fixed `fc_metrics.py`**: FairScore now returns `"NA"` (instead of 1.0) when ValidityRate=0.0 — prevents over-crediting failed runs.
+- **Patched**: 6 existing metrics files corrected in-place.
+- **Archived & Deleted**: 19 old/superseded runs removed (pre-refactor and duplicate retries). No `_archive` folder kept.
+- **Legacy Cleanup**: Removed 9 obsolete comparison files (`*_vs_baseline`, `*_vs_v1`, `*_vs_prompt_best`).
+- **Task-Separated Reporting**: Rebuilt all comparisons with per-task verdicts in the final status JSON.
+
+## [2026-02-20] - FC-2025: GATE PASSED ✅
+
+- **Overall Verdict**: PASS
+- **Function Implementation**: Qwen-1.5B achieved FairScore=1.0, ValidityRate=1.0 (PASS). DeepSeek-1.3B returned NA (zero valid outputs).
+- **Test Case Generation**: CodeGen-350M v2 achieved FairScore=1.0, ValidityRate=0.5 (PASS). Qwen produced valid tests but with low RefusalRate.
+- **DeepSeek-1.3B**: FAIL — best real FairScore=0.667 with 0.3 validity (below 0.7 threshold after edge-case correction).
+- **Decision**: FC-2025 pilot FROZEN. 18 canonical runs preserved. Next paper: UQSB-2023.

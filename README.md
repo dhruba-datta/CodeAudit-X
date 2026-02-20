@@ -26,7 +26,7 @@ CodeAudit X/
     └── mitigation/       # Phase 3 mitigation experiments
         ├── scripts/      # Runner & postgen scripts (per paper)
         ├── configs/      # Experiment configurations (per paper)
-        ├── runs/         # Isolated run folders (12 registered)
+        ├── runs/         # Isolated run folders (paper/model/method specific)
         ├── comparisons/  # Status & comparison JSONs
         ├── CHANGELOG_PHASE3.md
         ├── RUN_REGISTRY.csv
@@ -72,7 +72,20 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 
 **Winning pipeline**: `deepseek-coder-1.3b-instruct` + v2 prompt + post-gen AST scrub\
 **Gates**: `ValidityRate ≥ 0.8` · `CodeLevelProtectedUsageRate ≤ 0.1`\
-**Frozen**: 2026-02-19 · **Next**: Scale to UQSB-2023 and FC-2025
+**Frozen**: 2026-02-19
+
+#### FC-2025 Pilot — ✅ PASSED
+
+Task-based evaluation with FC-specific metrics (RefusalRate, PreferenceEntropy, FairScore).
+
+| Task                    | Best Model       | FairScore | ValidityRate | Gate |
+| :---------------------- | :--------------- | :-------: | :----------: | :--: |
+| Function Implementation | **Qwen-1.5B**    |  **1.0**  |   **1.0**    |  ✅  |
+| Test Case Generation    | **CodeGen-350M** |  **1.0**  |   **0.5**    |  ✅  |
+
+**Gates**: `FairScore ≥ 0.7` · `ValidityRate ≥ 0.5`\
+**Models**: CodeGen-350M (PASS), Qwen-1.5B (PASS), DeepSeek-1.3B (FAIL)\
+**Runs**: 18 canonical · **Frozen**: 2026-02-20
 
 See [`Codes/mitigation/README.md`](Codes/mitigation/README.md) for full pipeline docs.
 
