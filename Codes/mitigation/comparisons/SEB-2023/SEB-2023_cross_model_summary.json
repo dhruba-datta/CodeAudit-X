@@ -1,0 +1,92 @@
+{
+  "paper_id": "SEB-2023",
+  "generated_at": "2026-02-20T15:38:17.146759",
+  "baseline": {
+    "StructuralConsistencyRate": 0.0,
+    "PerturbationBiasRate": 1.0,
+    "ValidityRate": 1.0,
+    "TotalValid": 4,
+    "ConsistentGroups": 0,
+    "TotalGroups": 1
+  },
+  "models": {
+    "codegen350M": {
+      "promptmit_v1": {
+        "run_id": "SEB-2023_codegen350M_promptmit_v1_20260220_151152",
+        "StructuralConsistencyRate": 0.4444,
+        "PerturbationBiasRate": 0.5556,
+        "ValidityRate": 0.3833,
+        "TotalValid": 23,
+        "verdict": "FAIL"
+      },
+      "promptmit_v2": {
+        "run_id": "SEB-2023_codegen350M_promptmit_v2_20260220_152321",
+        "StructuralConsistencyRate": 0.75,
+        "PerturbationBiasRate": 0.25,
+        "ValidityRate": 0.2833,
+        "TotalValid": 17,
+        "verdict": "PARTIAL_PASS"
+      },
+      "postgenast_v1": {
+        "run_id": "SEB-2023_codegen350M_postgenast_v1_20260220_153238",
+        "StructuralConsistencyRate": 0.4444,
+        "PerturbationBiasRate": 0.5556,
+        "ValidityRate": 0.3833,
+        "TotalValid": 23,
+        "verdict": "FAIL"
+      }
+    },
+    "qwen1.5b": {
+      "promptmit_v1": {
+        "run_id": "SEB-2023_qwen1.5b_promptmit_v1_20260220_151217",
+        "StructuralConsistencyRate": 0.7692,
+        "PerturbationBiasRate": 0.2308,
+        "ValidityRate": 0.55,
+        "TotalValid": 33,
+        "verdict": "PASS"
+      },
+      "promptmit_v2": {
+        "run_id": "SEB-2023_qwen1.5b_promptmit_v2_20260220_152344",
+        "StructuralConsistencyRate": 0.625,
+        "PerturbationBiasRate": 0.375,
+        "ValidityRate": 0.4,
+        "TotalValid": 24,
+        "verdict": "FAIL"
+      },
+      "postgenast_v1": {
+        "run_id": "SEB-2023_qwen1.5b_postgenast_v1_20260220_153238",
+        "StructuralConsistencyRate": 0.7692,
+        "PerturbationBiasRate": 0.2308,
+        "ValidityRate": 0.55,
+        "TotalValid": 33,
+        "verdict": "PASS"
+      }
+    },
+    "deepseek1.3b": {
+      "promptmit_v1": {
+        "run_id": "SEB-2023_deepseek1.3b_promptmit_v1_20260220_151204",
+        "StructuralConsistencyRate": 1.0,
+        "PerturbationBiasRate": 0.0,
+        "ValidityRate": 0.3167,
+        "TotalValid": 19,
+        "verdict": "PARTIAL_PASS"
+      },
+      "promptmit_v2": {
+        "run_id": "SEB-2023_deepseek1.3b_promptmit_v2_20260220_152331",
+        "StructuralConsistencyRate": 1.0,
+        "PerturbationBiasRate": 0.0,
+        "ValidityRate": 0.4,
+        "TotalValid": 24,
+        "verdict": "PARTIAL_PASS"
+      },
+      "postgenast_v1": {
+        "run_id": "SEB-2023_deepseek1.3b_postgenast_v1_20260220_153238",
+        "StructuralConsistencyRate": 1.0,
+        "PerturbationBiasRate": 0.0,
+        "ValidityRate": 0.4,
+        "TotalValid": 24,
+        "verdict": "PARTIAL_PASS"
+      }
+    }
+  }
+}

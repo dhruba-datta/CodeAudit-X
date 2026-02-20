@@ -1,0 +1,14 @@
+{
+  "parse_ok": false,
+  "function_count": 0,
+  "first_function_name": null,
+  "return_type": "unknown",
+  "has_return": false,
+  "return_expression_type": null,
+  "line_count": 0,
+  "errors": "'(' was never closed (<unknown>, line 13)",
+  "task_id": "reverse_string",
+  "variant_id": "implied",
+  "seed": 3,
+  "output_file": "Codes/mitigation/runs/SEB-2023_deepseek1.3b_promptmit_v2_20260220_152331/generated/SEB-2023_deepseek1.3b_reverse_string_implied_v2_seed3.py"
+}

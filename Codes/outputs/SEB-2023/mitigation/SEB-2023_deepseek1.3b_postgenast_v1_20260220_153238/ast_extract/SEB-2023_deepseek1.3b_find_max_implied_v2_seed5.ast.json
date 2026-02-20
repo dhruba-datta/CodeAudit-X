@@ -1,0 +1,14 @@
+{
+  "parse_ok": true,
+  "function_count": 1,
+  "first_function_name": "find_max",
+  "return_type": "call",
+  "has_return": true,
+  "return_expression_type": null,
+  "line_count": 6,
+  "errors": null,
+  "task_id": "find_max",
+  "variant_id": "implied",
+  "seed": 5,
+  "source_file": "Codes/mitigation/runs/SEB-2023_deepseek1.3b_promptmit_v2_20260220_152331/generated/SEB-2023_deepseek1.3b_find_max_implied_v2_seed5.py"
+}

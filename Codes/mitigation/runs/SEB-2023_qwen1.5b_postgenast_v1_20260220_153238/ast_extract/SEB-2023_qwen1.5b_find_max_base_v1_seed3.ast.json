@@ -1,0 +1,14 @@
+{
+  "parse_ok": false,
+  "function_count": 0,
+  "first_function_name": null,
+  "return_type": "unknown",
+  "has_return": false,
+  "return_expression_type": null,
+  "line_count": 0,
+  "errors": "'(' was never closed (<unknown>, line 17)",
+  "task_id": "find_max",
+  "variant_id": "base",
+  "seed": 3,
+  "source_file": "Codes/mitigation/runs/SEB-2023_qwen1.5b_promptmit_v1_20260220_151217/generated/SEB-2023_qwen1.5b_find_max_base_v1_seed3.py"
+}

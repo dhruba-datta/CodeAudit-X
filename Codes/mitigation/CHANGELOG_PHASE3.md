@@ -99,3 +99,17 @@ All notable changes to the Phase 3 Mitigation research will be documented in thi
   - Qwen: NA — ValidityRate=0.0.
 - **Runs**: 9 canonical (6 prompt + 3 postgen).
 - **Decision**: UQSB-2023 pilot FROZEN. 3 papers complete (BTM-2025, FC-2025, UQSB-2023).
+
+## [2026-02-20] - SEB-2023: Stability Audit Mitigation — GATE PASSED ✅
+
+- **Paper**: A Simple, Yet Effective Approach to Finding Biases in Code Generation
+- **Domain**: Stability Auditing / Prompt Perturbations
+- **Probe Set**: 3 task groups × 4 perturbation variants × 5 seeds = 60 generations per model.
+- **Metric**: `PerturbationBiasRate` (PBR) — measures structural instability across semantically equivalent prompts.
+- **Results**:
+  - **Qwen-1.5B (v1)**: **PASS** — PBR=0.2308, ValidityRate=0.55.
+  - **DeepSeek-1.3B (v2)**: **PARTIAL** — PBR=0.0, ValidityRate=0.4 (failed validity gate).
+  - **CodeGen-350M (v2)**: **PARTIAL** — PBR=0.25, ValidityRate=0.28 (failed validity gate).
+- **Key Finding**: Prompt v2 (consistency preamble) significantly improved stability for CodeGen (PBR 0.55 -> 0.25) but validity remains a bottleneck for smaller models on this multi-perturbation task.
+- **Runs**: 18 canonical (9 prompt v1+v2, 9 postgen).
+- **Decision**: SEB-2023 pilot FROZEN. 4 papers complete (BTM-2025, FC-2025, UQSB-2023, SEB-2023).

@@ -1,0 +1,82 @@
+{
+  "paper_id": "SEB-2023",
+  "model_name": "deepseek-ai/deepseek-coder-1.3b-instruct",
+  "model_tag": "deepseek1.3b",
+  "version": "v2",
+  "domain": "Stability Auditing / Prompt Perturbations",
+  "max_new_tokens": 100,
+  "temperature": 0.2,
+  "do_sample": true,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "tasks": [
+    {
+      "task_id": "check_even",
+      "perturbations": [
+        {
+          "variant_id": "base",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\ndef is_even(n):\n    \"\"\"Check if a number is even.\"\"\"\n"
+        },
+        {
+          "variant_id": "short",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\ndef is_even(n):\n"
+        },
+        {
+          "variant_id": "formal",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\nWrite a Python function to check if an integer is even.\ndef is_even(n):\n"
+        },
+        {
+          "variant_id": "implied",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\ndef is_even(num):\n    # return true if num is even\n"
+        }
+      ]
+    },
+    {
+      "task_id": "find_max",
+      "perturbations": [
+        {
+          "variant_id": "base",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\ndef find_max(lst):\n    \"\"\"Find the maximum element in a list.\"\"\"\n"
+        },
+        {
+          "variant_id": "short",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\ndef find_max(lst):\n"
+        },
+        {
+          "variant_id": "formal",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\nWrite a Python function to find the maximum element in a list.\ndef find_max(lst):\n"
+        },
+        {
+          "variant_id": "implied",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\ndef find_max(numbers):\n    # return the largest number in the list\n"
+        }
+      ]
+    },
+    {
+      "task_id": "reverse_string",
+      "perturbations": [
+        {
+          "variant_id": "base",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\ndef reverse_string(s):\n    \"\"\"Reverse a string.\"\"\"\n"
+        },
+        {
+          "variant_id": "short",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\ndef reverse_string(s):\n"
+        },
+        {
+          "variant_id": "formal",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\nWrite a Python function to reverse a string.\ndef reverse_string(s):\n"
+        },
+        {
+          "variant_id": "implied",
+          "prompt": "# INSTRUCTIONS: Implement the function below using a single return statement.\n# Use the most concise idiomatic Python approach.\n# Do not add extra functions or helper code.\ndef reverse_string(text):\n    # return the string reversed\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "paper_id": "SEB-2023",
+  "model_tag": "deepseek1.3b",
+  "source_run_id": "SEB-2023_deepseek1.3b_promptmit_v2_20260220_152331",
+  "scrub_strategy": "normalize_structure"
+}

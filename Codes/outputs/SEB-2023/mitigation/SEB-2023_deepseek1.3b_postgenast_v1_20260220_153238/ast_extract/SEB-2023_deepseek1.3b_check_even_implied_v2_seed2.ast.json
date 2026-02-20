@@ -1,0 +1,14 @@
+{
+  "parse_ok": false,
+  "function_count": 0,
+  "first_function_name": null,
+  "return_type": "unknown",
+  "has_return": false,
+  "return_expression_type": null,
+  "line_count": 0,
+  "errors": "'(' was never closed (<unknown>, line 16)",
+  "task_id": "check_even",
+  "variant_id": "implied",
+  "seed": 2,
+  "source_file": "Codes/mitigation/runs/SEB-2023_deepseek1.3b_promptmit_v2_20260220_152331/generated/SEB-2023_deepseek1.3b_check_even_implied_v2_seed2.py"
+}

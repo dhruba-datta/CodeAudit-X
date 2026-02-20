@@ -1,0 +1,8 @@
+{
+  "StructuralConsistencyRate": 0.625,
+  "PerturbationBiasRate": 0.375,
+  "ValidityRate": 0.4,
+  "TotalValid": 24,
+  "ConsistentGroups": 5,
+  "TotalGroups": 8
+}

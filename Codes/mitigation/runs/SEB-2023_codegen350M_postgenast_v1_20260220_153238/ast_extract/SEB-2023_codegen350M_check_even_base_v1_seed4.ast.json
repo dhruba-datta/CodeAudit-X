@@ -1,0 +1,14 @@
+{
+  "parse_ok": false,
+  "function_count": 0,
+  "first_function_name": null,
+  "return_type": "unknown",
+  "has_return": false,
+  "return_expression_type": null,
+  "line_count": 0,
+  "errors": "unterminated triple-quoted string literal (detected at line 19) (<unknown>, line 19)",
+  "task_id": "check_even",
+  "variant_id": "base",
+  "seed": 4,
+  "source_file": "Codes/mitigation/runs/SEB-2023_codegen350M_promptmit_v1_20260220_151152/generated/SEB-2023_codegen350M_check_even_base_v1_seed4.py"
+}

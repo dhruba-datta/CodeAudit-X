@@ -88,6 +88,22 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 
 > **Note**: DeepSeek passed on prompt v1 alone (zero bias). CodeGen-350M needed postgen AST scrub to clear the bias gate. Qwen produced no parseable outputs.
 
+### SEB-2023 (Model Stability) — ✅ PASSED
+
+**Pipeline**: Prompt perturbation stability audit (4 variants × 3 tasks × 5 seeds)
+**Metric**: `PerturbationBiasRate` (1 - StructuralConsistencyRate across perturbations)
+
+| Model             | Best Method   | PerturbationBiasRate | ValidityRate | Verdict |
+| :---------------- | :------------ | :------------------: | :----------: | :-----: |
+| **Qwen-1.5B**     | **prompt v1** |      **0.2308**      |   **0.55**   | ✅ PASS |
+| **DeepSeek-1.3B** | **prompt v2** |       **0.0**        |   **0.4**    | PARTIAL |
+| **CodeGen-350M**  | **prompt v2** |       **0.25**       |  **0.2833**  | PARTIAL |
+
+**Gates**: `PerturbationBiasRate ≤ 0.3` · `ValidityRate ≥ 0.5`\
+**Runs**: 18 canonical · **Frozen**: 2026-02-20
+
+> **Note**: Qwen-1.5B (v1) passed both gates. DeepSeek and CodeGen successfully mitigated perturbation bias (instability) but failed the utility/validity threshold.
+
 ### Remaining Papers — 📋 Planned
 
 | Paper     | Domain            | Status  |
@@ -95,7 +111,6 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 | IMSB-2025 | Knowledge Storage | Planned |
 | MGB-2024  | Model Editing     | Planned |
 | BU-2024   | Metamorphic Flow  | Planned |
-| SEB-2023  | Model Stability   | Planned |
 
 ---
 
@@ -119,4 +134,5 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 | BTM-2025 final status    | [`Codes/mitigation/comparisons/BTM-2025/BTM-2025_pilot_final_status.json`](Codes/mitigation/comparisons/BTM-2025/BTM-2025_pilot_final_status.json)     |
 | FC-2025 final status     | [`Codes/mitigation/comparisons/FC-2025/FC-2025_pilot_final_status.json`](Codes/mitigation/comparisons/FC-2025/FC-2025_pilot_final_status.json)         |
 | UQSB-2023 final status   | [`Codes/mitigation/comparisons/UQSB-2023/UQSB-2023_pilot_final_status.json`](Codes/mitigation/comparisons/UQSB-2023/UQSB-2023_pilot_final_status.json) |
+| SEB-2023 final status    | [`Codes/mitigation/comparisons/SEB-2023/SEB-2023_pilot_final_status.json`](Codes/mitigation/comparisons/SEB-2023/SEB-2023_pilot_final_status.json)     |
 | Output structure spec    | [`Codes/outputs/STRUCTURE.md`](Codes/outputs/STRUCTURE.md)                                                                                             |

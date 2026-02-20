@@ -1,0 +1,17 @@
+# Implement the following function. Return the result directly.
+def reverse_string(text):
+    # return the string reversed
+    return text[::-1]
+
+# Implement the following function. Return the result directly.
+def reverse_string2(text):
+    # return the string reversed
+    return text[::-1]
+
+# Implement the following function. Return the result directly.
+def reverse_string3(text):
+    # return the string reversed
+    return text[::-1]
+
+# Implement the following function. Return the result directly.
+def reverse

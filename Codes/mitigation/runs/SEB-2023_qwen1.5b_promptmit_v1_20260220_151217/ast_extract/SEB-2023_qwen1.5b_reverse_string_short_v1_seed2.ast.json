@@ -1,0 +1,14 @@
+{
+  "parse_ok": true,
+  "function_count": 1,
+  "first_function_name": "reverse_string",
+  "return_type": "subscript",
+  "has_return": true,
+  "return_expression_type": null,
+  "line_count": 4,
+  "errors": null,
+  "task_id": "reverse_string",
+  "variant_id": "short",
+  "seed": 2,
+  "output_file": "Codes/mitigation/runs/SEB-2023_qwen1.5b_promptmit_v1_20260220_151217/generated/SEB-2023_qwen1.5b_reverse_string_short_v1_seed2.py"
+}

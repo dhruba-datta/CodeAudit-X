@@ -1,0 +1,14 @@
+{
+  "parse_ok": true,
+  "function_count": 1,
+  "first_function_name": "reverse_string",
+  "return_type": "subscript",
+  "has_return": true,
+  "return_expression_type": null,
+  "line_count": 9,
+  "errors": null,
+  "task_id": "reverse_string",
+  "variant_id": "implied",
+  "seed": 5,
+  "output_file": "Codes/mitigation/runs/SEB-2023_codegen350M_promptmit_v2_20260220_152321/generated/SEB-2023_codegen350M_reverse_string_implied_v2_seed5.py"
+}

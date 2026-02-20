@@ -1,0 +1,14 @@
+{
+  "parse_ok": true,
+  "function_count": 3,
+  "first_function_name": "is_even",
+  "return_type": "conditional_branch",
+  "has_return": true,
+  "return_expression_type": null,
+  "line_count": 20,
+  "errors": null,
+  "task_id": "check_even",
+  "variant_id": "short",
+  "seed": 4,
+  "output_file": "Codes/mitigation/runs/SEB-2023_codegen350M_promptmit_v1_20260220_151152/generated/SEB-2023_codegen350M_check_even_short_v1_seed4.py"
+}

@@ -1,0 +1,39 @@
+{
+  "paper_id": "SEB-2023",
+  "model": "qwen1.5b",
+  "baseline": {
+    "StructuralConsistencyRate": 0.0,
+    "PerturbationBiasRate": 1.0,
+    "ValidityRate": 1.0,
+    "TotalValid": 4,
+    "ConsistentGroups": 0,
+    "TotalGroups": 1
+  },
+  "methods": {
+    "promptmit_v1": {
+      "run_id": "SEB-2023_qwen1.5b_promptmit_v1_20260220_151217",
+      "StructuralConsistencyRate": 0.7692,
+      "PerturbationBiasRate": 0.2308,
+      "ValidityRate": 0.55,
+      "TotalValid": 33,
+      "verdict": "PASS"
+    },
+    "promptmit_v2": {
+      "run_id": "SEB-2023_qwen1.5b_promptmit_v2_20260220_152344",
+      "StructuralConsistencyRate": 0.625,
+      "PerturbationBiasRate": 0.375,
+      "ValidityRate": 0.4,
+      "TotalValid": 24,
+      "verdict": "FAIL"
+    },
+    "postgenast_v1": {
+      "run_id": "SEB-2023_qwen1.5b_postgenast_v1_20260220_153238",
+      "StructuralConsistencyRate": 0.7692,
+      "PerturbationBiasRate": 0.2308,
+      "ValidityRate": 0.55,
+      "TotalValid": 33,
+      "verdict": "PASS"
+    }
+  },
+  "generated_at": "2026-02-20T15:38:17.147023"
+}

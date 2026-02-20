@@ -1,0 +1,14 @@
+{
+  "parse_ok": true,
+  "function_count": 1,
+  "first_function_name": "find_max",
+  "return_type": "ternary",
+  "has_return": true,
+  "return_expression_type": null,
+  "line_count": 13,
+  "errors": null,
+  "task_id": "find_max",
+  "variant_id": "short",
+  "seed": 1,
+  "output_file": "Codes/mitigation/runs/SEB-2023_qwen1.5b_promptmit_v2_20260220_152344/generated/SEB-2023_qwen1.5b_find_max_short_v2_seed1.py"
+}
