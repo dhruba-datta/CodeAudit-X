@@ -26,10 +26,10 @@ This note documents the end-to-end lifecycle for **UQSB-2023**, focusing on cont
   - Utility Gate: `ValidityRate ≥ 0.5`
 - **Final Result**: **PASS**
 - **Best Pipelines**:
-  - `deepseek-coder-1.3b` (CBR: 0.0, Validity: 0.933)
-  - `codegen-350M` + Post-Gen (CBR: 0.0, Validity: 0.6)
+  - `deepseek-coder-1.3b` (CBR: 0.0, Validity: 0.93)
+  - `codegen-350M` + Post-Gen (CBR: 0.0, Validity: 0.60)
 - **Final Metrics**:
-  - **ValidityRate**: 0.933 (PASSED)
+  - **ValidityRate**: 0.93 (PASSED)
   - **ContextBiasRate**: 0.0 (PASSED)
 - **Winning Run**: `UQSB-2023_deepseek1.3b_promptmit_v1_20260220_1443`
 

@@ -18,7 +18,6 @@ Social Bias Mitigation in Code-Generating Large Language Models*.
 - [Reproducibility](#reproducibility)
 - [Reviewed Literature](#reviewed-literature)
 - [Getting Started](#getting-started)
-- [Research Tracking](#research-tracking)
 
 ## Overview
 
@@ -106,9 +105,9 @@ All values are taken from the per-benchmark final-status records in
 
 | Benchmark | Bias metric | Best configuration | Bias (baseline to best) | ValidityRate | Gate (bias / validity) | Outcome |
 | :-------- | :---------- | :----------------- | :---------------------- | :----------: | :--------------------- | :-----: |
-| BTM-2025  | CodeLevelProtectedUsageRate | DeepSeek-1.3B, prompt v2 + post-gen AST | 1.0 to 0.0 | 0.867 | ≤ 0.1 / ≥ 0.8 | Pass |
-| UQSB-2023 | ContextBiasRate             | DeepSeek-1.3B, prompt v1                | high to 0.0 | 0.933 | ≤ 0.2 / ≥ 0.5 | Pass |
-| SEB-2023  | PerturbationBiasRate        | Qwen-1.5B, prompt v1                    | high to 0.231 | 0.55 | ≤ 0.3 / ≥ 0.5 | Pass |
+| BTM-2025  | CodeLevelProtectedUsageRate | DeepSeek-1.3B, prompt v2 + post-gen AST | 1.0 to 0.0 | 0.87 | ≤ 0.1 / ≥ 0.8 | Pass |
+| UQSB-2023 | ContextBiasRate             | DeepSeek-1.3B, prompt v1                | high to 0.0 | 0.93 | ≤ 0.2 / ≥ 0.5 | Pass |
+| SEB-2023  | PerturbationBiasRate        | Qwen-1.5B, prompt v1                    | high to 0.23 | 0.55 | ≤ 0.3 / ≥ 0.5 | Pass |
 | BU-2024   | CodeBiasScore               | Qwen-1.5B, post-gen AST                 | high to 0.0 | 1.00 | ≤ 0.2 / ≥ 0.5 | Pass |
 | IMSB-2025 | BiasKnowledgeRate           | post-gen AST (all three models)         | 1.0 to 0.0 | 1.00 | ≤ 0.1 / ≥ 0.5 | Pass |
 
@@ -162,9 +161,3 @@ repository.
 3. **Baselines.** Run any notebook in `Codes/notebooks/` to replicate a
    benchmark's baseline.
 4. **Mitigation.** See `Codes/mitigation/README.md` for the Phase 3 pipeline.
-
-## Research Tracking
-
-Literature review, experimental parameters, and cross-paper comparisons are
-maintained in the master tracking sheet:
-<https://docs.google.com/spreadsheets/d/1YM4XGUpOzRfAgSBrqOyoCf4SFBqjLXbwuYKMuCNvcr8/edit?usp=sharing>

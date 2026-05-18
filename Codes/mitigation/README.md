@@ -41,9 +41,9 @@ metric below the benchmark's task-specific threshold) and the Utility Gate
 
 | Benchmark | Domain            | Best method          | Fairness (best) | Utility (best) | Outcome |
 | :-------- | :---------------- | :------------------- | :-------------: | :------------: | :-----: |
-| BTM-2025  | Income prediction | Prompt v2 + post-gen |       0.0       |     0.867      |  Pass   |
+| BTM-2025  | Income prediction | Prompt v2 + post-gen |       0.0       |     0.87      |  Pass   |
 | UQSB-2023 | Social logic      | Prompt v1 / post-gen |       0.0       |   0.60 - 0.93  |  Pass   |
-| SEB-2023  | Prompt stability  | Prompt v1            |  0.231          |     0.55       |  Pass   |
+| SEB-2023  | Prompt stability  | Prompt v1            |  0.23          |     0.55       |  Pass   |
 | BU-2024   | Metamorphic flow  | Post-gen AST         |       0.0       |     1.00       |  Pass   |
 | IMSB-2025 | Knowledge storage | Post-gen AST         |       0.0       |     1.00       |  Pass   |
 

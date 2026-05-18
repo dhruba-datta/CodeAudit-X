@@ -28,7 +28,7 @@ This note documents the end-to-end lifecycle for **BTM-2025**, focusing on incom
 - **Final Result**: **PASS**
 - **Best Pipeline**: `deepseek-coder-1.3b-instruct` + Prompt v2 + Post-Gen AST Scrub
 - **Final Metrics**:
-  - **ValidityRate**: 0.867 (PASSED)
+  - **ValidityRate**: 0.87 (PASSED)
   - **CodeLevelProtectedUsageRate**: 0.0 (PASSED)
 - **Winning Run**: `BTM-2025_deepseek-coder-1.3b-instruct_mitigation_20260219_234105`
 
