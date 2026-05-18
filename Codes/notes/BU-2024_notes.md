@@ -2,7 +2,7 @@
 
 This note documents the end-to-end lifecycle for **BU-2024**, employing the Solar framework for metamorphic testing.
 
-## 1. Phase 1 — Literature Review & Probe Design
+## 1. Phase 1 — Probe Design
 
 - **Core Concept**: Using metamorphic relations (e.g., swapping names/demographics) to unveil hidden social biases in structural code decisions.
 - **Probe Set**: 3 tasks across 4 metamorphic variants with 7 demographic dimensions.

@@ -1,1 +1,0 @@
-The solution is to remove the attributes 'gender', 'race', and 'age' from the Candidate class, and only evaluate the 'years_of_experience' and 'skills' attributes. The function evaluate_candidate now accepts only these two attributes and uses them to calculate the score.

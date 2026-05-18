@@ -1,19 +1,26 @@
-# Phase 3 Mitigation — Final Progress Walkthrough (7/7)
+# Phase 3 Mitigation — Final Progress Walkthrough
 
 ## Overview
 
-We have completed the mitigation pipeline for **all 7** research papers. Each paper follows a strict "Pilot" phase consisting of v1/v2 prompt strategies and a post-generation AST normalization stage.
+We completed the mitigation pipeline for all 7 implemented benchmarks. Each follows a strict "Pilot" phase consisting of v1/v2 prompt strategies and a post-generation AST normalization stage. Five benchmarks are peer-reviewed and reported in the paper; **FC-2025** and **MGB-2024** are arXiv preprints, run for completeness but excluded from the paper's reported results.
 
 ## Mitigation Status Summary
+
+Peer-reviewed (reported in the paper):
 
 | Paper ID      | Domain            | Key Metric                  | Global Verdict |
 | :------------ | :---------------- | :-------------------------- | :------------: |
 | **BTM-2025**  | Income Prediction | CodeLevelProtectedUsageRate |    ✅ PASS     |
-| **FC-2025**   | Software Pipeline | FairScore                   |    ✅ PASS     |
 | **UQSB-2023** | Social Logic      | ContextBiasRate             |    ✅ PASS     |
 | **SEB-2023**  | Model Stability   | PerturbationBiasRate        |    ✅ PASS     |
 | **BU-2024**   | Metamorphic Flow  | CodeBiasScore               |    ✅ PASS     |
 | **IMSB-2025** | Knowledge Storage | BiasKnowledgeRate           |    ✅ PASS     |
+
+arXiv preprints (excluded from the paper's reported results):
+
+| Paper ID      | Domain            | Key Metric                  | Global Verdict |
+| :------------ | :---------------- | :-------------------------- | :------------: |
+| **FC-2025**   | Software Pipeline | FairScore                   |    ✅ PASS     |
 | **MGB-2024**  | Model Editing     | GABR                        |    ✅ PASS     |
 
 ---
@@ -110,18 +117,23 @@ We have completed the mitigation pipeline for **all 7** research papers. Each pa
 
 The following summarized reports contain the full model matrix for each paper:
 
-- [BTM-2025 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/BTM-2025/BTM-2025_pilot_final_status.json)
-- [FC-2025 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/FC-2025/FC-2025_pilot_final_status.json)
-- [MGB-2024 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/MGB-2024/MGB-2024_pilot_final_status.json)
-- [IMSB-2025 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/IMSB-2025/IMSB-2025_pilot_final_status.json)
-- [BU-2024 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/BU-2024/BU-2024_pilot_final_status.json)
-- [SEB-2023 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/SEB-2023/SEB-2023_pilot_final_status.json)
-- [UQSB-2023 Final Status](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/mitigation/comparisons/UQSB-2023/UQSB-2023_pilot_final_status.json)
+Peer-reviewed (reported):
+
+- [BTM-2025 Final Status](comparisons/BTM-2025/BTM-2025_pilot_final_status.json)
+- [UQSB-2023 Final Status](comparisons/UQSB-2023/UQSB-2023_pilot_final_status.json)
+- [SEB-2023 Final Status](comparisons/SEB-2023/SEB-2023_pilot_final_status.json)
+- [BU-2024 Final Status](comparisons/BU-2024/BU-2024_pilot_final_status.json)
+- [IMSB-2025 Final Status](comparisons/IMSB-2025/IMSB-2025_pilot_final_status.json)
+
+arXiv preprints (excluded from reported results):
+
+- [FC-2025 Final Status](comparisons/FC-2025/FC-2025_pilot_final_status.json)
+- [MGB-2024 Final Status](comparisons/MGB-2024/MGB-2024_pilot_final_status.json)
 
 ## Phase 3 Summary
 
-- **Total Papers**: 7/7 Complete
-- **Total Capability**: High (all papers passed for at least one capable model)
-- **Primary Method**: Post-Generation Scrubbing / Model Editing Proxy was the most robust mitigation path across all papers.
+- **Pilots run**: 7 (5 peer-reviewed and reported in the paper; FC-2025 and MGB-2024 are arXiv preprints, excluded from reported results).
+- **Capability**: each pilot passed for at least one capable model.
+- **Primary method**: post-generation AST scrubbing was the most robust mitigation path across the peer-reviewed benchmarks; the model-editing proxy was used only on MGB-2024.
 
-**Phase 3 is now FROZEN. Proceeding to Phase 4 (Cross-Paper Analysis).**
+**Phase 3 is FROZEN. Proceeding to Phase 4 (Cross-Paper Analysis and Write-Up).**

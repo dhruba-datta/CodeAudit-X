@@ -2,7 +2,7 @@
 
 This note documents the end-to-end lifecycle for **SEB-2023**, investigating structural instability across prompt variants.
 
-## 1. Phase 1 — Literature Review & Probe Design
+## 1. Phase 1 — Probe Design
 
 - **Core Concept**: Stability auditing — measuring whether an LLM produces structurally different code for semantically identical prompts.
 - **Probe Set**: 3 task groups with 4 perturbation variants each (base, short, formal, implied).

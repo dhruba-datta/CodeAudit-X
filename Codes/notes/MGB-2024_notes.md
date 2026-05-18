@@ -1,8 +1,10 @@
 # MGB-2024 Research Note: Gender Bias Mitigation (Model Editing)
 
+> **Not peer-reviewed.** MGB-2024 is an arXiv preprint. It was implemented and run in the same pipeline for completeness but is **excluded from the paper's reported results**; it appears only as work performed. This is also the only benchmark on which the model-editing proxy was applied.
+
 This note documents the end-to-end lifecycle for **MGB-2024**, focusing on neutralizing gender-profession associations.
 
-## 1. Phase 1 — Literature Review & Probe Design
+## 1. Phase 1 — Probe Design
 
 - **Core Concept**: Multi-Granularity Model Editing (MG-Editing) to neutralize gender bias in code large language models.
 - **Probe Set**: Template-based probes with profession modifiers (e.g., "The [MODIFIER] [PROFESSION] said that [PRONOUN]...") where the model must complete the pronoun.

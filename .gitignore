@@ -1,15 +1,90 @@
-# Python
+# =============================================================
+# CodeAudit-X .gitignore
+# Goal: the public repo should contain exactly what a reviewer
+# needs to understand and reproduce the paper:
+#   - probe library, notebooks, notes
+#   - mitigation scripts / configs / tools
+#   - the run registry, comparison verdicts, manifests, structure docs
+# and NOT the multi-thousand-file raw generation dumps, copyrighted
+# source PDFs, private review notes, or local environment cruft.
+# =============================================================
+
+# --- Python ---
 __pycache__/
 *.py[cod]
 *$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.ipynb_checkpoints/
+
+# --- Virtual environments ---
 venv/
+.venv/
+env/
+ENV/
+.python-version
+
+# --- Secrets / local config (never publish) ---
 .env
+.env.*
+*.local
+secrets.*
+*credentials*
+*.pem
+*.key
 
-# Project Specific
-Presentation/
-CodeAudit\ X\ -\ Presentation.pdf
+# --- Model weights / caches (large, regenerated, not source) ---
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.h5
+.cache/
+hf_cache/
+models_cache/
 
-# OS Specific
+# --- Raw per-seed experiment outputs (bloat: ~8k files) ---
+# Reviewers use the registry + comparison JSONs + manifests instead.
+# The small paper-referenced index/spec files are re-included below.
+Codes/mitigation/runs/
+Codes/outputs/**/runs/
+Codes/outputs/**/baseline/
+**/ast_extract/
+**/generated/
+
+# Re-include the small, paper-referenced index/spec files even though
+# they live under otherwise-ignored output trees:
+!Codes/outputs/STRUCTURE.md
+!Codes/outputs/run_manifest_all.csv
+!Codes/outputs/**/manifests/
+!Codes/outputs/**/manifests/**
+
+# --- Copyrighted third-party PDFs (do not redistribute) ---
+# The 21 reviewed papers are cited in the bibliography; reviewers
+# access them via their DOIs / arXiv links, not from this repo.
+Papers/
+*.pdf
+
+# --- Private working documents (not for the public repo) ---
+PAPER_REVISION_PLAN.md
+paper.md
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# --- Tooling / agent / IDE internals ---
+.claude/
+.idea/
+.vscode/
+*.iml
+
+# --- OS files ---
 .DS_Store
 .DS_Store?
 ._*
@@ -17,3 +92,7 @@ CodeAudit\ X\ -\ Presentation.pdf
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# --- Presentation material (was already excluded) ---
+Presentation/
+CodeAudit\ X\ -\ Presentation.pdf

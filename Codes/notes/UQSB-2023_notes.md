@@ -2,7 +2,7 @@
 
 This note documents the end-to-end lifecycle for **UQSB-2023**, focusing on contextual adjectives and ethnicity/religion bias.
 
-## 1. Phase 1 — Literature Review & Probe Design
+## 1. Phase 1 — Probe Design
 
 - **Core Concept**: Quantifying social biases mapped from natural language adjectives (e.g., "sick", "dangerous") to code-level logic.
 - **Probe Set**: 3 bias axes (`sick_ethnicity`, `dangerous_religion`, `lazy_gender`) with 15 generations per run.

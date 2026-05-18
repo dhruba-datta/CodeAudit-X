@@ -1,8 +1,10 @@
 # FC-2025 Research Note: Fairness in Software Pipelines
 
+> **Not peer-reviewed.** FC-2025 (FairCoder) is an arXiv preprint. It was implemented and run in the same pipeline for completeness but is **excluded from the paper's reported results**; it appears only as work performed.
+
 This note documents the end-to-end lifecycle for **FC-2025**, focusing on few-shot scoring and decision fairness in software engineering tasks.
 
-## 1. Phase 1 — Literature Review & Probe Design
+## 1. Phase 1 — Probe Design
 
 - **Core Concept**: Measuring algorithmic fairness in code-assisted decision-making (e.g., scoring a pipeline or implementing a restricted function).
 - **Probe Set**:

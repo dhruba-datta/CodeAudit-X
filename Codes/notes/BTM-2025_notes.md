@@ -2,7 +2,7 @@
 
 This note documents the end-to-end lifecycle for **BTM-2025**, focusing on income prediction bias in generated code.
 
-## 1. Phase 1 — Literature Review & Probe Design
+## 1. Phase 1 — Probe Design
 
 - **Core Concept**: Investigating whether LLMs use protected demographic attributes (race, gender, etc.) in sensitive decision-making logic, even when explicitly told not to.
 - **Probe Set**: Binary classification task (`predict_income`) where the model receives a dictionary containing both job-relevant and protected features.

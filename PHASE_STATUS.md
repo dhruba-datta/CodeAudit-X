@@ -2,24 +2,33 @@
 
 > Last updated: 2026-02-20 (Phase 3 Complete)
 
+> **Reported set.** Five peer-reviewed benchmarks are reported in the paper:
+> BTM-2025, UQSB-2023, SEB-2023, BU-2024, IMSB-2025. FC-2025 and MGB-2024 are
+> arXiv preprints (not peer-reviewed); they were implemented and run for
+> completeness but are excluded from the paper's reported results.
+
 ---
 
-## Phase 1 — Literature Review & Probe Design ✅
+## Phase 1 — Probe Design ✅
 
-| Task                                              |   Status    |
-| :------------------------------------------------ | :---------: |
-| Survey 22+ papers on LLM code-generation bias     | ✅ Complete |
-| Define bias probe templates per domain            | ✅ Complete |
-| Design structured JSON prompts (`Codes/prompts/`) | ✅ Complete |
-| Set up Python 3.11 orchestration environment      | ✅ Complete |
+| Task                                                |   Status    |
+| :-------------------------------------------------- | :---------: |
+| Review 21 papers on LLM code-generation bias        | ✅ Complete |
+| Define bias probe templates per domain              | ✅ Complete |
+| Design structured JSON prompts (`Codes/prompts/`)   | ✅ Complete |
+| Set up Python 3.11 orchestration environment        | ✅ Complete |
 
-**Output**: `Papers/` (22 reference PDFs), `Codes/prompts/` (structured probes)
+The review is curated, not a systematic literature review, and is not a
+separate study phase: the probes are derived from prior work. The 21 reviewed
+papers are cited (with DOIs) in the paper's bibliography.
+
+**Output**: `Codes/prompts/` (structured probes)
 
 ---
 
 ## Phase 2 — Baseline Replications ✅
 
-Replicated all 7 papers to establish baseline bias measurements.
+Replicated all 7 implemented benchmarks to establish baseline bias measurements (5 peer-reviewed + FC-2025 and MGB-2024, the latter two excluded from the paper's reported results).
 
 | Paper         | Domain            | Model        | Methodology                   | Status |
 | :------------ | :---------------- | :----------- | :---------------------------- | :----: |
@@ -36,7 +45,7 @@ Replicated all 7 papers to establish baseline bias measurements.
 
 ---
 
-## Phase 3 Mitigation Status — 7/7 Papers Complete ✅
+## Phase 3 Mitigation Status — 7 pilots run; 5 peer-reviewed reported ✅
 
 Prompt-level and post-generation mitigation to reduce bias while maintaining code validity.
 
@@ -54,7 +63,7 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 **Runs**: 12 registered\
 **Frozen**: 2026-02-19
 
-### FC-2025 (Software Pipeline) — ✅ PASSED
+### FC-2025 (Software Pipeline) — ✅ PASSED *(arXiv preprint — not peer-reviewed; excluded from the paper's reported results)*
 
 **Pipeline**: Task-based evaluation with FC-specific metrics (RefusalRate, PreferenceEntropy, FairScore)\
 **Tasks**: `function_implementation`, `test_case_generation`\
@@ -136,7 +145,7 @@ Prompt-level and post-generation mitigation to reduce bias while maintaining cod
 
 > **Note**: While all models reinforced bias (BKR=1.0) at the prompt level, post-generation scrubbing successfully eliminated retrieval of biased associations while maintaining full validity.
 
-### MGB-2024 (Gender Bias) — ✅ PASSED
+### MGB-2024 (Gender Bias) — ✅ PASSED *(arXiv preprint — not peer-reviewed; excluded from the paper's reported results)*
 
 **Pipeline**: Profession-Gender Association (Model Editing Proxy)
 **Metric**: `GenderAssociationBiasRate` (GABR) — deviation from he/she parity.

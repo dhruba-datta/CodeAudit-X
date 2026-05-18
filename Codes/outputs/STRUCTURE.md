@@ -33,9 +33,14 @@ Codes/outputs/
 
 - **Example:** `MGB-2024_codegen350M_baseline_20260219_172808`
 
+> **Note.** The `generated/`, `ast_extract/`, and `tests_generated/` raw
+> folders are produced locally and are *not* committed to the public
+> repository. The repository ships the manifests, this structure spec, the
+> run registry, and the per-paper comparison JSONs.
+
 ## Global Indices
 
-- **Global Manifest**: [run_manifest_all.csv](file:///Users/dhrubadatta/Documents/Research/CodeAudit%20X/Codes/outputs/run_manifest_all.csv)
+- **Global Manifest**: [run_manifest_all.csv](run_manifest_all.csv)
 
 ## Execution Workflow
 
