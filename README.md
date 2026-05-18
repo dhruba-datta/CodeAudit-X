@@ -1,206 +1,170 @@
-# CodeAudit X
+# CodeAudit-X
 
-**CodeAudit X** is a research initiative focused on identifying, quantifying, and mitigating social biases in Large Language Models (LLMs) specialized for code generation. The project replicates and extends state-of-the-art methodologies to evaluate fairness across various domains, including banking, healthcare, and software engineering.
+CodeAudit-X is a framework and open repository for identifying, quantifying, and
+mitigating social bias in code-generating large language models (LLMs). It
+consolidates probes and metrics from peer-reviewed code-bias benchmarks into a
+single orchestration pipeline and evaluates every mitigation under a double-gate
+criterion that scores fairness and code utility jointly.
 
----
+This repository accompanies the paper *CodeAudit-X: A Multi-Benchmark Study of
+Social Bias Mitigation in Code-Generating Large Language Models*.
 
-## 📊 Research Tracking
+## Contents
 
-All literature reviews, experimental parameters, and cross-paper comparisons are maintained in the master tracking sheet:
-**[CodeAudit X - Master Research Sheet](https://docs.google.com/spreadsheets/d/1YM4XGUpOzRfAgSBrqOyoCf4SFBqjLXbwuYKMuCNvcr8/edit?usp=sharing)**
+- [Overview](#overview)
+- [Repository Structure](#repository-structure)
+- [Methodology](#methodology)
+- [Results](#results)
+- [Reproducibility](#reproducibility)
+- [Reviewed Literature](#reviewed-literature)
+- [Getting Started](#getting-started)
+- [Research Tracking](#research-tracking)
 
----
+## Overview
 
-## 📁 Repository Structure
+LLM-generated code increasingly drives socio-technical decisions in domains such
+as hiring, lending, and insurance, where biased logic that still compiles and
+passes tests can cause real allocational harm. CodeAudit-X addresses two gaps in
+prior work: code-bias benchmarks are usually run in isolation with
+heterogeneous metrics, and general LLM-fairness frameworks rarely reason about
+executable code and fairness together. The framework provides:
+
+- a model-agnostic probe library derived from peer-reviewed code-bias
+  benchmarks;
+- a shared metric layer (bias and utility) with a double-gate controller;
+- three mitigation families: prompt engineering, post-generation Abstract
+  Syntax Tree (AST) scrubbing, and a model-editing proxy;
+- a run registry and per-benchmark comparison records that make every reported
+  result traceable.
+
+**Reported scope.** Five peer-reviewed benchmarks are reported in the paper:
+BTM-2025, UQSB-2023, SEB-2023, BU-2024, and IMSB-2025. FC-2025 and MGB-2024 are
+arXiv preprints; they were implemented and run in the same pipeline for
+completeness but are excluded from the paper's reported results.
+
+## Repository Structure
 
 ```text
-CodeAudit X/
-├── PHASE_STATUS.md       # Comprehensive phase tracker
+CodeAudit-X/
+├── README.md                     # This document
 └── Codes/
-    ├── notebooks/        # Jupyter Notebooks for each paper replication
-    ├── prompts/          # Structured JSON probes and bias-sensitive templates
-    ├── outputs/          # Run manifests, structure spec, and per-paper indices
-    ├── notes/            # Markdown logs and execution summaries
-    └── mitigation/       # Phase 3 mitigation experiments
-        ├── scripts/      # Runner & postgen scripts (per paper)
-        ├── configs/      # Experiment configurations (per paper)
-        ├── comparisons/  # Per-paper final-status & comparison JSONs
-        ├── CHANGELOG_PHASE3.md
-        ├── RUN_REGISTRY.csv
-        └── README.md     # Pipeline documentation
+    ├── notebooks/                # Baseline-replication notebooks (one per benchmark)
+    ├── prompts/                  # Structured JSON probes and bias-sensitive templates
+    ├── notes/                    # Per-benchmark methodology and lifecycle notes
+    ├── outputs/                  # Run manifests, per-paper metrics, structure spec
+    └── mitigation/               # Phase 3 mitigation pipeline
+        ├── scripts/              # Runner and post-generation scripts (per benchmark)
+        ├── configs/              # Experiment configurations (per benchmark)
+        ├── comparisons/          # Per-benchmark final-status and comparison JSONs
+        ├── RUN_REGISTRY.csv      # Canonical index of every registered run
+        └── README.md             # Mitigation pipeline documentation
 ```
 
-> **Repository scope.** The raw per-run output folders (the thousands of
-> per-seed generations and AST extracts) are produced locally and are *not*
-> shipped in this public repository; reviewers work from the run registry,
-> the per-paper comparison JSONs, and the manifests instead. The 21 reviewed
-> papers are not redistributed here; they are cited (with DOIs) in the paper's
-> bibliography.
->
-> **Reported set.** Five benchmarks are peer-reviewed and reported in the
-> paper: **BTM-2025, UQSB-2023, SEB-2023, BU-2024, IMSB-2025**. **FC-2025**
-> and **MGB-2024** are arXiv preprints (not peer-reviewed); they were
-> implemented and run in the same pipeline but are excluded from the paper's
-> reported results and appear below only as work performed.
+The raw per-run output folders (per-seed generations and AST extracts) and the
+third-party reference PDFs are produced or held locally and are intentionally
+not committed; the reviewed papers are cited, with DOIs, in the paper's
+bibliography. Reviewers work from the run registry, the comparison JSONs, and
+the manifests.
 
----
+## Methodology
 
-## 🔄 Research Pipeline
+The study proceeds in three phases.
 
-### Phase 1 — Probe Design ✅
+### Phase 1: Probe Design
 
-Reviewed 21 papers on LLM code-generation bias (cited in the paper's bibliography), and defined structured JSON probes per domain.
+Bias scenarios drawn from a curated review of 21 papers are encoded as
+reusable, model-agnostic JSON probes. Each probe specifies the protected
+attributes, the input/output schema, and the invariances expected of unbiased
+code. The review is curated rather than systematic and is not treated as a
+separate study phase; the probes are derived from prior work.
 
-### Phase 2 — Baseline Replications ✅
+### Phase 2: Baseline Replication
 
-Replicated all 7 implemented benchmarks to establish baseline bias measurements using `codegen-350M` (5 peer-reviewed + the 2 arXiv preprints, FC-2025 and MGB-2024, kept for completeness).
+The benchmarks are replicated in a shared Python 3.11 orchestration environment
+using CodeGen-350M-mono as the reference model, re-implementing each
+benchmark's own metric to establish baseline bias and code validity.
 
-| Paper         | Domain            | Methodology                            | Status |
-| :------------ | :---------------- | :------------------------------------- | :----: |
-| **BTM-2025**  | Income Prediction | Sensitive token usage via AST Visitors |   ✅   |
-| **FC-2025**   | Software Pipeline | Few-shot Scoring Logic Fairness        |   ✅   |
-| **IMSB-2025** | Knowledge Storage | Triplet-based Bias Probes              |   ✅   |
-| **MGB-2024**  | Model Editing     | Profession-Gender Association          |   ✅   |
-| **BU-2024**   | Metamorphic Flow  | Metamorphic Solar framework            |   ✅   |
-| **UQSB-2023** | Social Logic      | Contextual Attribute Encoding          |   ✅   |
-| **SEB-2023**  | Model Stability   | Prompt Perturbation Analysis           |   ✅   |
+### Phase 3: Mitigation and Comparison
 
-**Locked**: 2026-02-19 (Tag: `phase2-complete`)
+Mitigation methods are applied across three open-weight models
+(CodeGen-350M-mono, Qwen2.5-Coder-1.5B-Instruct, DeepSeek-Coder-1.3B-Instruct).
+Every run is scored and passed through the double-gate controller:
 
-### Phase 3 — Mitigation (7 pilots run; 5 peer-reviewed reported) ✅
+- **Fairness Gate**: the benchmark's bias metric must fall below its
+  task-specific threshold (inherited from the source benchmark).
+- **Utility Gate**: `ValidityRate` must exceed an empirically set floor
+  (0.5 in general; 0.8 for benchmarks whose baseline already exceeds 0.8).
 
-Prompt-level and post-generation mitigation to reduce bias while maintaining code validity. The five peer-reviewed pilots below are the ones reported in the paper; FC-2025 and MGB-2024 are shown as completed work but are excluded from the paper's reported results (not peer-reviewed).
+A configuration is successful only if it clears both gates.
 
-#### BTM-2025 Pilot — ✅ PASSED
+## Results
 
-| Model             | Method                  | Validity  |  Bias   |  Gate  |
-| :---------------- | :---------------------- | :-------: | :-----: | :----: |
-| CodeGen-350M      | Prompt v2               |   0.40    |   0.0   |   ❌   |
-| Qwen-1.5B         | Prompt v1               |   0.60    |   0.0   |   ❌   |
-| DeepSeek-1.3B     | Prompt v1 + PostGen     |   0.733   |   0.0   |   ❌   |
-| **DeepSeek-1.3B** | **Prompt v2 + PostGen** | **0.867** | **0.0** | **✅** |
+All values are taken from the per-benchmark final-status records in
+`Codes/mitigation/comparisons/`. "Baseline" is the unmitigated reference model.
 
-**Winning pipeline**: `deepseek-coder-1.3b-instruct` + v2 prompt + post-gen AST scrub\
-**Gates**: `ValidityRate ≥ 0.8` · `CodeLevelProtectedUsageRate ≤ 0.1`\
-**Frozen**: 2026-02-19
+### Peer-reviewed benchmarks (reported)
 
-#### FC-2025 Pilot — ✅ PASSED *(arXiv preprint — not peer-reviewed; excluded from the paper's reported results)*
+| Benchmark | Bias metric | Best configuration | Bias (baseline to best) | ValidityRate | Gate (bias / validity) | Outcome |
+| :-------- | :---------- | :----------------- | :---------------------- | :----------: | :--------------------- | :-----: |
+| BTM-2025  | CodeLevelProtectedUsageRate | DeepSeek-1.3B, prompt v2 + post-gen AST | 1.0 to 0.0 | 0.867 | ≤ 0.1 / ≥ 0.8 | Pass |
+| UQSB-2023 | ContextBiasRate             | DeepSeek-1.3B, prompt v1                | high to 0.0 | 0.933 | ≤ 0.2 / ≥ 0.5 | Pass |
+| SEB-2023  | PerturbationBiasRate        | Qwen-1.5B, prompt v1                    | high to 0.231 | 0.55 | ≤ 0.3 / ≥ 0.5 | Pass |
+| BU-2024   | CodeBiasScore               | Qwen-1.5B, post-gen AST                 | high to 0.0 | 1.00 | ≤ 0.2 / ≥ 0.5 | Pass |
+| IMSB-2025 | BiasKnowledgeRate           | post-gen AST (all three models)         | 1.0 to 0.0 | 1.00 | ≤ 0.1 / ≥ 0.5 | Pass |
 
-Task-based evaluation with FC-specific metrics (RefusalRate, PreferenceEntropy, FairScore).
+Each benchmark is cleared by at least one capable model. Model capacity matters
+independently of the mitigation family: on BU-2024 the same post-generation
+pipeline passes on Qwen-1.5B but leaves residual bias on the weaker models.
 
-| Task                    | Best Model       | FairScore | ValidityRate | Gate |
-| :---------------------- | :--------------- | :-------: | :----------: | :--: |
-| Function Implementation | **Qwen-1.5B**    |  **1.0**  |   **1.0**    |  ✅  |
-| Test Case Generation    | **CodeGen-350M** |  **1.0**  |   **0.5**    |  ✅  |
+### Mitigation families (peer-reviewed benchmarks, all runs)
 
-**Gates**: `FairScore ≥ 0.7` · `ValidityRate ≥ 0.5`\
-**Models**: CodeGen-350M (PASS), Qwen-1.5B (PASS), DeepSeek-1.3B (FAIL)\
-**Runs**: 18 canonical · **Frozen**: 2026-02-20
+| Mitigation family       | Pass both gates | Partial (bias only) | Fail / no valid output |
+| :---------------------- | :-------------: | :-----------------: | :--------------------: |
+| Prompt engineering      |        2        |          5          |           22           |
+| Post-generation AST     |        8        |          2          |            6           |
 
-See [`Codes/mitigation/README.md`](Codes/mitigation/README.md) for full pipeline docs.
+Post-generation AST scrubbing is the most reliable family; prompt engineering
+helps on contextual and perturbation bias with capable models but frequently
+trades code utility for fairness. The model-editing proxy was applied only to
+the excluded MGB-2024 benchmark.
 
-#### UQSB-2023 Pilot — ✅ PASSED
+### arXiv preprints (excluded from reported results)
 
-Context injection probes for social bias leakage in code logic.
+FC-2025 (FairCoder) and MGB-2024 were implemented and run for completeness.
+Their per-benchmark records are available under
+`Codes/mitigation/comparisons/` but are excluded from the paper's reported
+results because the source papers are not peer-reviewed.
 
-| Model             | Best Method   | ContextBiasRate | ValidityRate | Verdict |
-| :---------------- | :------------ | :-------------: | :----------: | :-----: |
-| **DeepSeek-1.3B** | **prompt v1** |     **0.0**     |  **0.933**   | ✅ PASS |
-| **CodeGen-350M**  | **postgen**   |     **0.0**     |   **0.6**    | ✅ PASS |
-| Qwen-1.5B         | —             |       NA        |     0.0      |   NA    |
+## Reproducibility
 
-**Gates**: `ContextBiasRate ≤ 0.2` · `ValidityRate ≥ 0.5`\
-**Runs**: 9 canonical · **Frozen**: 2026-02-20
+- `Codes/mitigation/RUN_REGISTRY.csv` is the canonical index. Each row links a
+  `(benchmark, model, method, seed)` configuration to its config file, output
+  location, and computed metrics.
+- `Codes/mitigation/comparisons/<BENCHMARK>/<BENCHMARK>_pilot_final_status.json`
+  is the authoritative verdict per benchmark, including the pass criteria.
+- `Codes/outputs/STRUCTURE.md` documents the output layout and naming
+  conventions. Per-paper manifests and metrics are under
+  `Codes/outputs/<BENCHMARK>/`.
+- All paths in the registry are repository-relative. The raw per-seed
+  generations and AST extracts are regenerated locally and are not committed.
 
-#### SEB-2023 Pilot — ✅ PASSED
+## Reviewed Literature
 
-Prompt perturbation stability auditing.
+The 21 reviewed papers (peer-reviewed code-bias and LLM-fairness work plus
+provider/multilingual studies) are cited with DOIs or arXiv identifiers in the
+paper's bibliography. The reference PDFs are not redistributed in this
+repository.
 
-| Model             | Best Method   | PerturbationBiasRate | ValidityRate | Verdict |
-| :---------------- | :------------ | :------------------: | :----------: | :-----: |
-| **Qwen-1.5B**     | **prompt v1** |      **0.2308**      |   **0.55**   | ✅ PASS |
-| **DeepSeek-1.3B** | **prompt v2** |       **0.0**        |   **0.4**    | PARTIAL |
-| **CodeGen-350M**  | **prompt v2** |       **0.25**       |  **0.2833**  | PARTIAL |
+## Getting Started
 
-**Gates**: `PerturbationBiasRate ≤ 0.3` · `ValidityRate ≥ 0.5`\
-**Runs**: 18 canonical · **Frozen**: 2026-02-20
+1. **Environment.** Python 3.11 or later.
+2. **Dependencies.** `pip install -r Codes/mitigation/requirements_phase3.txt`
+3. **Baselines.** Run any notebook in `Codes/notebooks/` to replicate a
+   benchmark's baseline.
+4. **Mitigation.** See `Codes/mitigation/README.md` for the Phase 3 pipeline.
 
-#### BU-2024 Pilot — ✅ PASSED
+## Research Tracking
 
-Metamorphic flow bias auditing (Solar framework).
-
-| Model             | Best Method    | CodeBiasScore | ValidityRate | Verdict |
-| :---------------- | :------------- | :-----------: | :----------: | :-----: |
-| **Qwen-1.5B**     | **postgen v1** |    **0.0**    |   **1.0**    | ✅ PASS |
-| **DeepSeek-1.3B** | **postgen v1** |  **0.3846**   |   **0.8**    |  FAIL   |
-| **CodeGen-350M**  | **postgen v1** |  **0.7143**   |  **0.8333**  |  FAIL   |
-
-**Gates**: `CodeBiasScore ≤ 0.2` · `ValidityRate ≥ 0.5`\
-**Runs**: 9 canonical · **Frozen**: 2026-02-20
-
-#### IMSB-2025 Pilot — ✅ PASSED
-
-Social bias knowledge mitigation (triplet-based).
-
-| Model             | Best Method    | BiasKnowledgeRate | ValidityRate | Verdict |
-| :---------------- | :------------- | :---------------: | :----------: | :-----: |
-| **Qwen-1.5B**     | **postgen v1** |      **0.0**      |   **1.0**    | ✅ PASS |
-| **DeepSeek-1.3B** | **postgen v1** |      **0.0**      |   **1.0**    | ✅ PASS |
-| **CodeGen-350M**  | **postgen v1** |      **0.0**      |   **1.0**    | ✅ PASS |
-
-**Gates**: `BiasKnowledgeRate ≤ 0.1` · `ValidityRate ≥ 0.5`\
-**Runs**: 9 canonical · **Frozen**: 2026-02-20
-
-#### MGB-2024 Pilot — ✅ PASSED *(arXiv preprint — not peer-reviewed; excluded from the paper's reported results)*
-
-Profession-gender association (model editing). This is the only benchmark on which the model-editing proxy was applied; the five peer-reviewed pilots use prompt and post-generation AST scrubbing only.
-
-| Model             | Best Method      |  GABR   | ValidityRate | Verdict |
-| :---------------- | :--------------- | :-----: | :----------: | :-----: |
-| **Qwen-1.5B**     | **modeledit v1** | **0.0** |   **1.0**    | ✅ PASS |
-| **DeepSeek-1.3B** | **modeledit v1** | **0.0** |   **1.0**    | ✅ PASS |
-| **CodeGen-350M**  | **modeledit v1** | **0.0** |   **1.0**    | ✅ PASS |
-
-**Gates**: `GABR ≤ 0.2` · `ValidityRate ≥ 0.5`\
-**Runs**: 9 canonical · **Frozen**: 2026-02-20
-
-### Phase 4 — Cross-Paper Analysis & Write-Up 🔄
-
-Cross-paper aggregation and comparison are complete; the research paper is currently being drafted and revised. See [`PHASE_STATUS.md`](PHASE_STATUS.md) for the detailed task breakdown.
-
----
-
-## 📦 Output Layout
-
-Each run *locally* produces the following structure. Only the manifests and
-the structure spec are shipped in this repository; the `generated/`,
-`ast_extract/`, and `tests_generated/` raw folders are excluded (see
-*Repository scope* above).
-
-```text
-Codes/outputs/<PAPER_ID>/
-├── manifests/run_manifest.csv      # shipped
-├── metrics/                        # shipped
-└── baseline/runs/<RUN_ID>/         # local only (not in repo)
-    ├── generated/
-    ├── ast_extract/
-    └── tests_generated/
-```
-
-Global run index: `Codes/outputs/run_manifest_all.csv`\
-Format spec: `Codes/outputs/STRUCTURE.md`\
-Authoritative results: `Codes/mitigation/RUN_REGISTRY.csv` and the per-paper
-`Codes/mitigation/comparisons/<PAPER>/<PAPER>_pilot_final_status.json`
-
----
-
-## 🚀 Getting Started
-
-1. **Environment**: Ensure Python 3.11+ is installed.
-2. **Setup**: Create a virtual environment and install dependencies with `pip install -r Codes/mitigation/requirements_phase3.txt`.
-3. **Baselines**: Execute any notebook in `Codes/notebooks/` to replicate paper findings.
-4. **Mitigation**: See `Codes/mitigation/README.md` for Phase 3 pipeline instructions.
-
----
-
-For detailed phase tracking, see [`PHASE_STATUS.md`](PHASE_STATUS.md).
+Literature review, experimental parameters, and cross-paper comparisons are
+maintained in the master tracking sheet:
+<https://docs.google.com/spreadsheets/d/1YM4XGUpOzRfAgSBrqOyoCf4SFBqjLXbwuYKMuCNvcr8/edit?usp=sharing>

@@ -1,46 +1,62 @@
-# Mitigation Pipeline — Phase 3
+# Phase 3: Mitigation Pipeline
 
-This directory contains all Phase 3 mitigation experiments for CodeAudit X (7 pilots run). Five benchmarks are peer-reviewed and reported in the paper (BTM-2025, UQSB-2023, SEB-2023, BU-2024, IMSB-2025); FC-2025 and MGB-2024 are arXiv preprints, run for completeness but excluded from the paper's reported results.
+This directory contains the Phase 3 mitigation experiments for CodeAudit-X.
+Seven benchmarks were implemented and run. Five are peer-reviewed and reported
+in the paper (BTM-2025, UQSB-2023, SEB-2023, BU-2024, IMSB-2025); FC-2025 and
+MGB-2024 are arXiv preprints, run for completeness but excluded from the
+paper's reported results.
 
-## Pipeline Overview
+## Pipeline
 
 ```mermaid
 graph LR
-    A[Prompt Config] --> B[Prompt Mitigation Run]
-    B --> C[AST Metric Extraction]
+    A[Prompt config] --> B[Prompt mitigation run]
+    B --> C[AST metric extraction]
     C --> D{Fairness Gate}
-    D -->|Pass| E{Utility Gate}
-    D -->|Fail| F[Post-Gen AST Scrub / Model Edit Proxy]
+    D -->|pass| E{Utility Gate}
+    D -->|fail| F[Post-generation AST scrub / model-edit proxy]
     F --> E
-    E -->|Pass| G["✅ GATE PASSED — Freeze"]
-    E -->|Fail| H[Refine Prompt / Pivot Model]
+    E -->|pass| G[Accepted configuration]
+    E -->|fail| H[Refine prompt / pivot model]
     H --> A
 ```
 
+A configuration is accepted only if it clears both the Fairness Gate (bias
+metric below the benchmark's task-specific threshold) and the Utility Gate
+(`ValidityRate` above the floor).
+
+## Directory Layout
+
+| Path | Contents |
+| :--- | :------- |
+| `scripts/<BENCHMARK>/`     | Runner and post-generation scripts per benchmark |
+| `configs/<BENCHMARK>/`     | Experiment configurations per benchmark |
+| `comparisons/<BENCHMARK>/` | Per-benchmark final-status and comparison JSONs |
+| `RUN_REGISTRY.csv`         | Canonical index of every registered run |
+| `requirements_phase3.txt`  | Python dependencies for the pipeline |
+
 ## Pilot Status Summary
 
-Peer-reviewed (reported in the paper):
+### Peer-reviewed benchmarks (reported)
 
-| Paper         | Domain            | Best Method         | Fairness (Best) | Utility (Best) | Verdict |
-| :------------ | :---------------- | :------------------ | :-------------: | :------------: | :-----: |
-| **BTM-2025**  | Income Prediction | Prompt v2 + PostGen |       0.0       |     0.867      | ✅ PASS |
-| **UQSB-2023** | Social Logic      | Prompt v1 / PostGen |       0.0       |   0.6 - 0.93   | ✅ PASS |
-| **SEB-2023**  | Prompt Stability  | Prompt v1/v2        |   0.0 - 0.23    |   0.4 - 0.55   | ✅ PASS |
-| **BU-2024**   | Metamorphic Flow  | PostGen v1          |       0.0       |      1.0       | ✅ PASS |
-| **IMSB-2025** | Knowledge Storage | PostGen v1          |       0.0       |      1.0       | ✅ PASS |
+| Benchmark | Domain            | Best method          | Fairness (best) | Utility (best) | Outcome |
+| :-------- | :---------------- | :------------------- | :-------------: | :------------: | :-----: |
+| BTM-2025  | Income prediction | Prompt v2 + post-gen |       0.0       |     0.867      |  Pass   |
+| UQSB-2023 | Social logic      | Prompt v1 / post-gen |       0.0       |   0.60 - 0.93  |  Pass   |
+| SEB-2023  | Prompt stability  | Prompt v1            |  0.231          |     0.55       |  Pass   |
+| BU-2024   | Metamorphic flow  | Post-gen AST         |       0.0       |     1.00       |  Pass   |
+| IMSB-2025 | Knowledge storage | Post-gen AST         |       0.0       |     1.00       |  Pass   |
 
-arXiv preprints (run for completeness, excluded from the paper's reported results):
+### arXiv preprints (excluded from reported results)
 
-| Paper         | Domain            | Best Method         | Fairness (Best) | Utility (Best) | Verdict |
-| :------------ | :---------------- | :------------------ | :-------------: | :------------: | :-----: |
-| **FC-2025**   | Software Pipeline | Prompt v1/v2        |       1.0       |   0.5 - 1.0    | ✅ PASS |
-| **MGB-2024**  | Model Editing     | ModelEdit v1        |       0.0       |      1.0       | ✅ PASS |
+| Benchmark | Domain            | Best method  | Fairness (best) | Utility (best) | Outcome |
+| :-------- | :---------------- | :----------- | :-------------: | :------------: | :-----: |
+| FC-2025   | Software pipeline | Prompt v1/v2 |   FairScore 1.0 |   0.5 - 1.0    |  Pass   |
+| MGB-2024  | Model editing     | Model-edit   |       0.0       |     1.00       |  Pass   |
 
-## Final Walkthrough
+## Authoritative Records
 
-A comprehensive walkthrough of all Phase 3 results is available at:
-[walkthrough_phase3.md](walkthrough_phase3.md)
-
-## Next Steps
-
-Phase 3 is now complete. For the cross-paper analysis and statistical comparisons, see the Phase 4 status in the root [PHASE_STATUS.md](../../PHASE_STATUS.md).
+- Per-benchmark verdicts and pass criteria:
+  `comparisons/<BENCHMARK>/<BENCHMARK>_pilot_final_status.json`
+- Canonical run index: `RUN_REGISTRY.csv`
+- Output layout and naming conventions: `../outputs/STRUCTURE.md`

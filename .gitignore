@@ -72,6 +72,11 @@ Papers/
 # --- Private working documents (not for the public repo) ---
 PAPER_REVISION_PLAN.md
 paper.md
+
+# --- Internal progress trackers (kept local, not for the public repo) ---
+PHASE_STATUS.md
+Codes/mitigation/CHANGELOG_PHASE3.md
+Codes/mitigation/walkthrough_phase3.md
 *.aux
 *.log
 *.out

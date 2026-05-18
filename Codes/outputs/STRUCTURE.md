@@ -1,4 +1,4 @@
-# Research Output Structure (CodeAudit X)
+# Research Output Structure (CodeAudit-X)
 
 This document defines the standardized layout for all experiment outputs.
 
