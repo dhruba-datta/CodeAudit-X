@@ -9,6 +9,9 @@ criterion that scores fairness and code utility jointly.
 This repository accompanies the paper *CodeAudit-X: A Multi-Benchmark Study of
 Social Bias Mitigation in Code-Generating Large Language Models*.
 
+Literature review, experimental parameters, and cross-paper comparisons are
+maintained in the [CodeAudit X - Master Research Sheet](https://docs.google.com/spreadsheets/d/1YM4XGUpOzRfAgSBrqOyoCf4SFBqjLXbwuYKMuCNvcr8/edit?usp=sharing).
+
 ## Contents
 
 - [Overview](#overview)
