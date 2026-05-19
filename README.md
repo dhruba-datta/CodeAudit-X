@@ -122,8 +122,8 @@ pipeline passes on Qwen-1.5B but leaves residual bias on the weaker models.
 
 | Mitigation family       | Pass both gates | Partial (bias only) | Fail / no valid output |
 | :---------------------- | :-------------: | :-----------------: | :--------------------: |
-| Prompt engineering      |        2        |          5          |           22           |
-| Post-generation AST     |        8        |          2          |            6           |
+| Prompt engineering      |        2        |          7          |           20           |
+| Post-generation AST     |        8        |          4          |            4           |
 
 Post-generation AST scrubbing is the most reliable family; prompt engineering
 helps on contextual and perturbation bias with capable models but frequently
