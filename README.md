@@ -54,12 +54,24 @@ CodeAudit-X/
     ├── prompts/                  # Structured JSON probes and bias-sensitive templates
     ├── notes/                    # Per-benchmark methodology and lifecycle notes
     ├── outputs/                  # Run manifests, per-paper metrics, structure spec
-    └── mitigation/               # Phase 3 mitigation pipeline
-        ├── scripts/              # Runner and post-generation scripts (per benchmark)
-        ├── configs/              # Experiment configurations (per benchmark)
-        ├── comparisons/          # Per-benchmark final-status and comparison JSONs
-        ├── RUN_REGISTRY.csv      # Canonical index of every registered run
-        └── README.md             # Mitigation pipeline documentation
+    ├── requirements.txt          # Python dependencies
+    ├── mitigation/               # Phase 3 mitigation pipeline
+    │   ├── scripts/              # Runner and post-generation scripts (per benchmark)
+    │   ├── configs/              # Experiment configurations (per benchmark)
+    │   ├── comparisons/          # Per-benchmark final-status and comparison JSONs
+    │   ├── RUN_REGISTRY.csv      # Canonical index of every registered run
+    │   └── README.md             # Mitigation pipeline documentation
+    └── analysis/                 # Phase 4 re-analysis and probe-expansion study
+        ├── reanalyze.py          # Per-piece reconstruction, validated against frozen metrics
+        ├── stats.py              # Question-level paired tests
+        ├── stats_gen.py          # Generation-level paired (McNemar) tests
+        ├── out/                  # Consolidated per-piece tables and test results
+        └── expansion/            # Expanded-probe sweep (3 models, 3 seeds)
+            ├── probes/           # Expanded probe library (15 to 18 probes per benchmark)
+            ├── run_expansion.py  # Resumable generation runner
+            ├── reextract.py      # Robust AST re-extraction (prefix truncation, validity gate)
+            ├── analyze_expansion.py  # Consolidated metrics and significance tests
+            └── out/              # Expanded metrics and per-dataset test results
 ```
 
 The raw per-run output folders (per-seed generations and AST extracts) and the
@@ -159,8 +171,12 @@ repository.
 
 ## Getting Started
 
-1. **Environment.** Python 3.11 or later.
-2. **Dependencies.** `pip install -r Codes/mitigation/requirements_phase3.txt`
+1. **Environment.** Python 3.9 or later.
+2. **Dependencies.** `pip install -r Codes/requirements.txt` (the Phase 3
+   mitigation pipeline additionally uses
+   `Codes/mitigation/requirements_phase3.txt`).
 3. **Baselines.** Run any notebook in `Codes/notebooks/` to replicate a
    benchmark's baseline.
 4. **Mitigation.** See `Codes/mitigation/README.md` for the Phase 3 pipeline.
+5. **Re-analysis.** See `Codes/analysis/` for the per-piece re-analysis and the
+   expanded-probe sweep.
