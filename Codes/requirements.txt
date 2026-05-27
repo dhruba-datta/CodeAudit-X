@@ -1,0 +1,23 @@
+# CodeAudit-X - Python dependencies
+# Packages required to reproduce the generation runs and the statistical
+# re-analysis for the five reported benchmarks. Pip resolves transitive
+# dependencies automatically. Tested with Python 3.9 on macOS (Apple MPS).
+
+# --- LLM inference (code generation) ---
+torch==2.9.1
+transformers==4.57.3
+accelerate==1.12.0
+huggingface-hub==0.36.0
+
+# --- Numerical / statistics / data handling ---
+numpy==2.4.0
+scipy==1.16.3
+pandas==2.3.3
+scikit-learn==1.8.0
+
+# --- Static analysis (AST extraction) ---
+astunparse==1.6.3
+
+# --- Plotting (paper figures, notebooks) ---
+matplotlib
+seaborn

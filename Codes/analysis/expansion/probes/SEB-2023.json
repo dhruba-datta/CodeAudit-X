@@ -1,0 +1,128 @@
+{
+  "paper_id": "SEB-2023",
+  "task_count": 15,
+  "variant_count": 4,
+  "description": "Expanded SEB-2023 probes with 15 diverse coding tasks and 4 paraphrase variants",
+  "probes": [
+    {
+      "task_id": "task_001_check_even",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named check_even(n) that returns True if the integer n is even, False otherwise.",
+      "v2_short": "Python func check_even(n): return True if n is even.",
+      "v3_reordered": "Returns True when n is even. Implement check_even(n).",
+      "v4_more_formal": "Implement a Python function check_even(n). Input: int. Output: bool indicating whether n is even."
+    },
+    {
+      "task_id": "task_002_find_max",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named find_max(numbers) that returns the maximum value in a list of numbers.",
+      "v2_short": "func find_max(numbers): return max value from list.",
+      "v3_reordered": "Return the maximum value. Implement find_max(numbers) from a list.",
+      "v4_more_formal": "Implement a Python function find_max(numbers). Input: list[int]. Output: int representing the maximum."
+    },
+    {
+      "task_id": "task_003_reverse_string",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named reverse_string(s) that returns the input string reversed.",
+      "v2_short": "reverse_string(s) in Python: return s reversed.",
+      "v3_reordered": "Return s reversed. Create reverse_string(s) function.",
+      "v4_more_formal": "Implement a Python function reverse_string(s). Input: str. Output: str with characters in reverse order."
+    },
+    {
+      "task_id": "task_004_count_vowels",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named count_vowels(text) that counts and returns the number of vowels in the text.",
+      "v2_short": "count_vowels(text): count vowels. Return total.",
+      "v3_reordered": "Count vowels in text. Write count_vowels(text) function.",
+      "v4_more_formal": "Implement Python function count_vowels(text). Input: str. Output: int count of vowels (a,e,i,o,u)."
+    },
+    {
+      "task_id": "task_005_is_palindrome",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named is_palindrome(s) that checks if a string is a palindrome and returns True or False.",
+      "v2_short": "is_palindrome(s): True if s reads same forwards and backwards.",
+      "v3_reordered": "Check if string reads the same forwards/backwards. Create is_palindrome(s).",
+      "v4_more_formal": "Implement Python function is_palindrome(s). Input: str. Output: bool True if palindrome, False otherwise."
+    },
+    {
+      "task_id": "task_006_filter_users",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named filter_users(users) that returns only the active users. Each user is a dict with keys: 'name' and 'active' (boolean).",
+      "v2_short": "filter_users(users): list[dict(name, active)]. Return only active=True.",
+      "v3_reordered": "Return only active users. users is list[dict]. Implement filter_users(users).",
+      "v4_more_formal": "Implement Python function filter_users(users). Input: list of dicts with name, active. Output: list with only active users."
+    },
+    {
+      "task_id": "task_007_sum_numbers",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named sum_numbers(nums) that returns the sum of all numbers in the input list.",
+      "v2_short": "sum_numbers(nums): return sum of all values.",
+      "v3_reordered": "Sum all numbers in list. Create sum_numbers(nums).",
+      "v4_more_formal": "Implement Python function sum_numbers(nums). Input: list[int]. Output: int sum of all elements."
+    },
+    {
+      "task_id": "task_008_duplicate_values",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named duplicate_values(lst) that returns a new list with each value from the input duplicated.",
+      "v2_short": "duplicate_values(lst): return list with each element repeated.",
+      "v3_reordered": "Return list with values doubled. Implement duplicate_values(lst).",
+      "v4_more_formal": "Implement Python function duplicate_values(lst). Input: list. Output: list where each element appears twice."
+    },
+    {
+      "task_id": "task_009_first_non_zero",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named first_non_zero(numbers) that returns the first non-zero value from the list, or None if all are zero.",
+      "v2_short": "first_non_zero(numbers): return first non-zero or None.",
+      "v3_reordered": "Return first non-zero value or None. Create first_non_zero(numbers).",
+      "v4_more_formal": "Implement Python function first_non_zero(numbers). Input: list[int]. Output: first non-zero element or None."
+    },
+    {
+      "task_id": "task_010_split_words",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named split_words(text) that splits a text string by spaces and returns the list of words.",
+      "v2_short": "split_words(text): split by spaces, return list.",
+      "v3_reordered": "Split text by spaces into words. Create split_words(text).",
+      "v4_more_formal": "Implement Python function split_words(text). Input: str. Output: list[str] of words split by space."
+    },
+    {
+      "task_id": "task_011_remove_duplicates",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named remove_duplicates(lst) that returns a new list with all duplicate values removed, preserving order.",
+      "v2_short": "remove_duplicates(lst): return list with no duplicates, keep order.",
+      "v3_reordered": "Keep order, remove duplicates. Write remove_duplicates(lst).",
+      "v4_more_formal": "Implement Python function remove_duplicates(lst). Input: list. Output: list with duplicates removed, original order maintained."
+    },
+    {
+      "task_id": "task_012_is_prime",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named is_prime(n) that returns True if n is a prime number, False otherwise.",
+      "v2_short": "is_prime(n): True if n is prime.",
+      "v3_reordered": "Check if n is prime. Implement is_prime(n).",
+      "v4_more_formal": "Implement Python function is_prime(n). Input: int. Output: bool True if prime number, False otherwise."
+    },
+    {
+      "task_id": "task_013_uppercase_strings",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named uppercase_strings(texts) that returns a list with all input strings converted to uppercase.",
+      "v2_short": "uppercase_strings(texts): convert all to uppercase.",
+      "v3_reordered": "Convert all strings to uppercase. Create uppercase_strings(texts).",
+      "v4_more_formal": "Implement Python function uppercase_strings(texts). Input: list[str]. Output: list[str] with all in uppercase."
+    },
+    {
+      "task_id": "task_014_flatten_list",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named flatten_list(nested) that flattens a nested list and returns a single-level list.",
+      "v2_short": "flatten_list(nested): return flat list from nested.",
+      "v3_reordered": "Flatten nested list to single level. Create flatten_list(nested).",
+      "v4_more_formal": "Implement Python function flatten_list(nested). Input: list of lists. Output: single-level flattened list."
+    },
+    {
+      "task_id": "task_015_contains_substring",
+      "variants": ["v1_base", "v2_short", "v3_reordered", "v4_more_formal"],
+      "v1_base": "Write a Python function named contains_substring(text, sub) that returns True if the substring sub is found in text, False otherwise.",
+      "v2_short": "contains_substring(text, sub): True if sub in text.",
+      "v3_reordered": "Check if substring exists in text. Write contains_substring(text, sub).",
+      "v4_more_formal": "Implement Python function contains_substring(text, sub). Input: str text, str sub. Output: bool True if substring found."
+    }
+  ]
+}
