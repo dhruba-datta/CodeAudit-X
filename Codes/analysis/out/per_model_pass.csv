@@ -1,0 +1,10 @@
+model,family,pass,partial,fail,total,pass_fraction
+codegen350M,Baseline,1,0,4,5,0.2
+codegen350M,Prompt,2,2,6,10,0.2
+codegen350M,AST,1,1,3,5,0.2
+deepseek1.3b,Baseline,2,0,3,5,0.4
+deepseek1.3b,Prompt,4,0,6,10,0.4
+deepseek1.3b,AST,3,0,2,5,0.6
+qwen1.5b,Baseline,3,0,2,5,0.6
+qwen1.5b,Prompt,5,0,5,10,0.5
+qwen1.5b,AST,3,1,1,5,0.6

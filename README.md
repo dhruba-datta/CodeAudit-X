@@ -65,17 +65,20 @@ CodeAudit-X/
         ├── reanalyze.py          # Per-piece reconstruction, validated against frozen metrics
         ├── stats.py              # Question-level paired tests
         ├── stats_gen.py          # Generation-level paired (McNemar) tests
-        ├── PARAMETER_ATTRIBUTION.md  # Per-benchmark decoding-settings disclosure
-        ├── THRESHOLD_SENSITIVITY.md  # Validity-floor and bias-gate sensitivity
-        ├── REANALYSIS_SUMMARY.md     # Phase 4 summary
+        ├── PARAMETER_ATTRIBUTION.md           # Per-benchmark decoding-settings disclosure
+        ├── THRESHOLD_SENSITIVITY.md           # Validity-floor and bias-gate sensitivity
+        ├── MAJORITY_VOTE_AND_PER_MODEL.md     # Majority voting + per-model PASS breakdown
+        ├── REANALYSIS_SUMMARY.md              # Phase 4 summary
         ├── out/                  # Per-piece tables, sensitivity sweeps, hyperparameters
         └── expansion/            # Expanded-probe sweep (3 models, 3 seeds)
             ├── probes/           # Expanded probe library (15 to 18 probes per benchmark)
-            ├── run_expansion.py  # Resumable generation runner
-            ├── reextract.py      # Robust AST re-extraction (prefix truncation, validity gate)
-            ├── apply_scrub.py    # Post-generation AST scrubbing on expanded baselines
-            ├── analyze_expansion.py     # Consolidated metrics and significance tests
+            ├── run_expansion.py        # Resumable generation runner
+            ├── reextract.py            # Robust AST re-extraction (prefix truncation, validity gate)
+            ├── apply_scrub.py          # Post-generation AST scrubbing on expanded baselines
+            ├── analyze_expansion.py    # Consolidated metrics and significance tests
             ├── threshold_sensitivity.py # Double-gate threshold sweep
+            ├── majority_vote.py        # Majority voting across the three seeds
+            ├── per_model_pass.py       # Per-model PASS / partial / fail breakdown
             └── out/              # Expanded metrics and per-dataset test results
 ```
 
@@ -210,9 +213,12 @@ results because the source papers are not peer-reviewed.
   generations and AST extracts are regenerated locally and are not committed.
 - `Codes/analysis/expansion/out/expanded_all_metrics.csv` is the consolidated
   per-piece results table from Phase 4 (3 models x 5 benchmarks x 4 methods);
-  `Codes/analysis/expansion/out/expanded_tests.csv` carries the per-dataset
-  paired McNemar tests; `Codes/analysis/out/` holds the threshold sensitivity
-  sweep and the per-benchmark hyperparameter disclosure.
+  `Codes/analysis/expansion/out/expanded_tests.csv` carries the per-(probe,
+  seed) paired McNemar tests; `Codes/analysis/out/` holds the threshold
+  sensitivity sweep, the per-benchmark hyperparameter disclosure, the
+  majority-voted bias rates and probe-level paired tests
+  (`majority_vote.csv`, `majority_vote_tests.csv`), and the per-model
+  Pass / Partial / Fail breakdown (`per_model_pass.csv`).
 
 ## Reviewed Literature
 
