@@ -1,0 +1,8 @@
+# Generated artifacts. Regenerate with build_full_probes.py / run_full.py /
+# extract_and_score.py. Nothing here is source.
+runs/
+runs_clean/
+out/
+probes_full/
+sources/
+*.log

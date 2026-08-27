@@ -80,6 +80,15 @@ CodeAudit-X/
             ├── majority_vote.py        # Majority voting across the three seeds
             ├── per_model_pass.py       # Per-model PASS / partial / fail breakdown
             └── out/              # Expanded metrics and per-dataset test results
+    └── fullrun/                  # Phase 5 full-dataset run (~180k generations)
+        ├── config.py             # Grid, standardized decoding, gates, full-set targets
+        ├── build_full_probes.py  # Full-size probe sets + provenance manifest
+        ├── prompts.py            # Prompt construction (verbatim from Phase 4)
+        ├── run_full.py           # vLLM / transformers / stub backends, resumable
+        ├── extract_and_score.py  # Extraction, postgenast derivation, double-gate metrics
+        ├── run_phase4_analysis.sh # Phase-4 scripts over the full run, frozen CSVs protected
+        ├── LAUNCH.md             # Where to run it, with Hugging Face tiers costed out
+        └── README.md             # Phase 5 documentation and probe provenance
 ```
 
 The raw per-run output folders (per-seed generations and AST extracts) and the
@@ -137,6 +146,32 @@ the prompt-engineering and AST-scrubbing families can be compared at scale,
 with per-dataset paired McNemar tests. Threshold sensitivity, per-benchmark
 hyperparameter disclosure, and the corrected per-dataset numbers all draw
 from this phase.
+
+### Phase 5: Full-dataset run
+
+Phase 5 (`Codes/fullrun/`) removes the two remaining scope limitations of
+Phase 4. The curated 15-18 probes per benchmark are replaced by the full
+source sets (BTM-2025 334, UQSB-2023 392, SEB-2023 1138 = HumanEval 164 +
+MBPP 974, BU-2024 343, IMSB-2025 1000 CrowS-Pairs items), and the
+per-benchmark decoding settings of Phase 3 are replaced by a single
+standardized configuration, which is what makes cross-benchmark statements
+defensible. The grid is 5 benchmarks x 3 models x 3 generation methods x 3
+seeds, approximately 180,000 generations; `postgenast` adds none, since it is
+a deterministic AST scrub derived from the baseline outputs.
+
+Extraction, scrubbing, and the metric layer are imported unchanged from Phase
+4 rather than reimplemented, and the output is written in the layout the
+Phase-4 analysis scripts already read, so any movement in the numbers is
+attributable to the data rather than to the scorer. Provenance is recorded per
+benchmark in `Codes/fullrun/probes_full/MANIFEST.json`: SEB-2023 and IMSB-2025
+are drawn from their public source datasets, while BTM-2025, UQSB-2023 and
+BU-2024 are reconstructed combinatorially from each benchmark's own declared
+dimensions and sized to the counts reported in the source papers, pending the
+authors' release files.
+
+Phase 5 does not supersede Phase 4. The frozen Phase-4 artifacts remain the
+cited results until the full run completes and is validated against them under
+`--legacy-decoding`.
 
 ## Results
 

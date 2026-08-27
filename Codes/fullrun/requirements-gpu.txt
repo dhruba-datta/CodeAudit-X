@@ -1,0 +1,11 @@
+# CodeAudit-X full-dataset run, GPU box (CUDA).
+# vLLM pulls its own pinned torch; install it FIRST and let it win, then add
+# the rest. Installing torch separately beforehand is the usual cause of a
+# broken CUDA/vLLM pairing.
+vllm>=0.6.0
+transformers>=4.44
+datasets>=2.20
+huggingface_hub>=0.24
+scipy>=1.11
+pandas>=2.0
+numpy>=1.26
