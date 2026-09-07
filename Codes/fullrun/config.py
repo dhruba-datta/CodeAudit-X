@@ -46,6 +46,20 @@ MODELS = {
 # --------------------------------------------------------------------------
 BENCHMARKS = ["BTM-2025", "UQSB-2023", "SEB-2023", "BU-2024", "IMSB-2025"]
 
+# Models that CANNOT run on vLLM and must fall back to transformers.
+#
+# CodeGen-350M is `CodeGenForCausalLM`, which vLLM does not implement. Verified
+# on Kaggle 2026-08-27 against vLLM 0.11:
+#   1. native   -> "Model architectures ['CodeGenForCausalLM'] are not
+#                   supported for now" (the arch is absent from the registry)
+#   2. fallback -> model_impl="transformers" gives "The Transformers
+#                   implementation of 'CodeGenForCausalLM' is not compatible
+#                   with vLLM"
+# Both routes are closed, so this is not a flag-tuning problem. The transformers
+# backend handles it instead, batched (see HFBackend) so it stays practical at
+# ~78k generations.
+MODEL_BACKEND = {"codegen350M": "hf"}
+
 # Only three methods require generation. postgenast is a deterministic AST
 # scrub applied to the *baseline* outputs after the fact (apply_scrub.py), so
 # it costs zero GPU time. This is also the evidence that no method touches

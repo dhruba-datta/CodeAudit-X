@@ -38,8 +38,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
-from config import (BENCHMARKS, FULL_PROBES, GEN_METHODS, MODELS, RUNS, SEEDS,  # noqa: E402
-                    decoding_for)
+from config import (BENCHMARKS, FULL_PROBES, GEN_METHODS, MODEL_BACKEND, MODELS,  # noqa: E402
+                    RUNS, SEEDS, decoding_for)
 from prompts import clean_code, iter_jobs  # noqa: E402
 import sharding  # noqa: E402
 
@@ -173,7 +173,7 @@ class StubBackend:
 class VLLMBackend:
     name = "vllm"
 
-    def __init__(self, model_id, max_model_len=2048, gpu_mem=0.90, dtype="auto"):
+    def __init__(self, model_id, max_model_len=2048, gpu_mem=0.90, dtype="auto", **_):
         from vllm import LLM
         self.LLM = LLM
         self.llm = LLM(model=model_id, dtype=dtype, max_model_len=max_model_len,
@@ -189,12 +189,18 @@ class VLLMBackend:
 
 
 class HFBackend:
+    """Batched transformers generation, for models vLLM cannot load.
+
+    One-at-a-time generation would make CodeGen-350M's ~78k generations take
+    most of a day. Batching brings it into the same order as the vLLM models.
+    """
     name = "hf"
 
-    def __init__(self, model_id, device=None, dtype="auto", **_):
+    def __init__(self, model_id, device=None, dtype="auto", hf_batch_size=32, **_):
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
         self.torch = torch
+        self.batch_size = hf_batch_size
         if device is None:
             device = ("cuda" if torch.cuda.is_available()
                       else "mps" if torch.backends.mps.is_available() else "cpu")
@@ -202,6 +208,11 @@ class HFBackend:
         self.tok = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
         if self.tok.pad_token is None:
             self.tok.pad_token = self.tok.eos_token
+        # Decoder-only models MUST left-pad for batched generation. Right
+        # padding puts pad tokens between the prompt and the continuation, and
+        # the model happily continues from the padding instead of the prompt --
+        # producing plausible-looking garbage rather than an error.
+        self.tok.padding_side = "left"
         self.model = AutoModelForCausalLM.from_pretrained(
             model_id, trust_remote_code=True,
             torch_dtype=torch.float16 if device != "cpu" else torch.float32).to(device)
@@ -210,17 +221,21 @@ class HFBackend:
     def generate(self, prompts, seeds, params):
         from transformers import set_seed
         outs = []
-        for prompt, seed in zip(prompts, seeds):
-            set_seed(int(seed))
-            enc = self.tok(prompt, return_tensors="pt", truncation=True,
-                           max_length=1024).to(self.device)
+        for i in range(0, len(prompts), self.batch_size):
+            chunk = prompts[i:i + self.batch_size]
+            # Callers group jobs by seed, so every item in a chunk shares one
+            # seed and a single set_seed is correct here.
+            set_seed(int(seeds[i]))
+            enc = self.tok(chunk, return_tensors="pt", padding=True,
+                           truncation=True, max_length=1024).to(self.device)
             with self.torch.no_grad():
                 gen = self.model.generate(
                     **enc, do_sample=True, temperature=params["temperature"],
                     top_p=params["top_p"], max_new_tokens=params["max_tokens"],
                     pad_token_id=self.tok.pad_token_id)
-            outs.append(self.tok.decode(gen[0][enc["input_ids"].shape[1]:],
-                                        skip_special_tokens=True))
+            plen = enc["input_ids"].shape[1]
+            for row in gen:
+                outs.append(self.tok.decode(row[plen:], skip_special_tokens=True))
         return outs
 
 
@@ -260,6 +275,9 @@ def main():
     ap.add_argument("--limit", type=int, default=None,
                     help="cap probes per benchmark (smoke tests only)")
     ap.add_argument("--batch-size", type=int, default=256)
+    ap.add_argument("--hf-batch-size", type=int, default=32,
+                    help="batch size for the transformers backend (CodeGen-350M). "
+                         "Lower it if you hit CUDA OOM on a small card.")
     ap.add_argument("--legacy-decoding", action="store_true",
                     help="use the frozen Phase-3 per-benchmark settings instead of the "
                          "standardized ones")
@@ -348,17 +366,22 @@ def main():
                 already = done_ids(path)
                 todo = [j for j in jobs_by_seed[seed] if j["job_id"] not in already]
                 if not todo:
-                    print(f"[skip] {bm} {model_tag} seed{seed}: {len(already)} already done")
+                    print(f"[skip] {bm} {model_tag} seed{seed}: {len(already)} already done", flush=True)
                     continue
                 if backend is None:
                     t0 = time.time()
-                    backend = BACKENDS[args.backend](
+                    # Per-model override: some architectures vLLM cannot load.
+                    chosen = MODEL_BACKEND.get(model_tag, args.backend) \
+                        if args.backend == "vllm" else args.backend
+                    backend = BACKENDS[chosen](
                         model_id, max_model_len=args.max_model_len,
-                        gpu_mem=args.gpu_mem, dtype=args.dtype)
-                    print(f"[load] {model_id} on {args.backend} in {time.time()-t0:.1f}s")
+                        gpu_mem=args.gpu_mem, dtype=args.dtype,
+                        hf_batch_size=args.hf_batch_size)
+                    print(f"[load] {model_id} on {chosen} in {time.time()-t0:.1f}s",
+                          flush=True)
 
                 print(f"[run ] {bm} {model_tag} seed{seed}: {len(todo)} jobs "
-                      f"({len(already)} resumed) params={params}")
+                      f"({len(already)} resumed) params={params}", flush=True)
                 t0 = time.time()
                 with path.open("a") as fh:
                     for i in range(0, len(todo), args.batch_size):
@@ -380,7 +403,7 @@ def main():
                         eta = (len(todo) - done) / max(rate, 1e-6)
                         print(f"       {done}/{len(todo)}  {rate:.1f} gen/s  eta {eta/60:.1f} min",
                               flush=True)
-                print(f"[done] {path.name} in {(time.time()-t0)/60:.1f} min")
+                print(f"[done] {path.name} in {(time.time()-t0)/60:.1f} min", flush=True)
 
         # Release the weights before loading the next model. Dropping the last
         # Python reference is not enough for vLLM -- without the collect + empty
