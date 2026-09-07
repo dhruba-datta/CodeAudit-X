@@ -88,30 +88,42 @@ repartitions everything and orphans what is already on disk.
 
 ## Probe provenance — read before quoting anything
 
-`probes_full/MANIFEST.json` records, per benchmark, whether the set is:
+`probes_full/MANIFEST.json` records a `provenance` value per benchmark. Four
+levels, in descending authority:
 
-- **`official-source-datasets`** — pulled from the Hub.
-  - `SEB-2023` ← HumanEval (164) + MBPP (974). The four perturbation variants
-    are generated here, as in the curated set, because SEB contributes a
-    perturbation *protocol*, not a fixed prompt file.
-  - `IMSB-2025` ← CrowS-Pairs, filtered to the gender / race-color / religion
-    axes IMSB declares, converted to (subject, relation, object) by diffing each
-    stereotypical / counter-stereotypical sentence pair.
-- **`reconstructed`** — no public release file exists in this repo, so the set is
-  built combinatorially from the benchmark's own declared dimensions and sized
-  to the count reported in the source paper.
-  - `BTM-2025` (334) = 48 allocational decision tasks × 7 surface phrasings
-  - `UQSB-2023` (392) = 56 evaluative adjectives × 7 protected attributes
-  - `BU-2024` (343) = 49 role-suitability tasks × 7 sensitive dimensions
+| Level | Benchmark | Source |
+| :-- | :-- | :-- |
+| `official-authors-release` | **BTM-2025** (334) | [`huangd1999/CBS`](https://github.com/huangd1999/CBS) `dataset/dataset.json`, Apache-2.0, pinned commit |
+| `official-authors-release` | **BU-2024** (343) | [`janeeyre912/fairness_testing_code_generation`](https://github.com/janeeyre912/fairness_testing_code_generation) `dataset/tasks.json`, AAAI-25 artifact |
+| `paper-exact` | **UQSB-2023** (392) | one template × 49 modifiers × 8 dimensions, all reproduced verbatim from the paper |
+| `official-source-datasets` | SEB-2023 (1138) | HumanEval + MBPP from the Hub — **but see the warning** |
+| `official-source-datasets` | IMSB-2025 (1000) | CrowS-Pairs, verified mirror — **but see the warning** |
+| `reconstructed` | `--offline` only | combinatorial stand-in. **Never report these numbers.** |
 
-**A reconstruction is not the authors' artifact.** It is a defensible full-scale
-instrument built to the benchmark's own specification, and the paper must say so
-in those words. If you obtain an official file, drop it at
-`sources/<BENCHMARK>.json` — the builder uses it verbatim and flips the
-provenance flag to `official`.
+Three of the five now use the authors' own material. BTM and BU are fetched at
+build time rather than vendored — BU's repo carries **no license**, so it is
+usable but not redistributable. UQSB's repo ships the bias classifier and its
+training corpus but not the prompts; the paper specifies them completely
+(one template, 49 modifiers, 8 dimensions), so this is exact, not approximate.
 
-Chasing those three files from the original authors is worth more to the
-revision than any amount of extra compute.
+### Two warnings that affect the paper, not just this code
+
+**SEB-2023 does not introduce a "Code of Many Colors" dataset.** The word
+"color" does not appear in [the paper](https://aclanthology.org/2023.findings-acl.718/)
+(arXiv:2211.00609). There is no 8-domain, 1000-prompt corpus. It applies prompt
+perturbations to HumanEval, MBPP and DeepMind Code Contests. More seriously, the
+biases it measures are **cognitive** — keyword reliance, function-name
+memorisation — not **social**. Citing it as a social-bias benchmark
+misrepresents it, and the project's literature table currently does.
+
+**IMSB-2025 is not a code benchmark.** [Chen et al.](https://aclanthology.org/2025.findings-naacl.39/)
+(arXiv:2408.11843) edit bias knowledge in BERT and GPT-2; there is no code
+generation in the paper at all. It also does not use BiasNLI, which the
+literature table claims. Its own artifact was never released, so only the
+upstream CrowS-Pairs and StereoSet corpora are reusable.
+
+Both need resolving before submission — either by re-describing them accurately
+as what they are, or by replacing them.
 
 ## Known gotcha
 
