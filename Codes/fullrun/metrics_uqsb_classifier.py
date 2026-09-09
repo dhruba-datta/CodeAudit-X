@@ -55,6 +55,7 @@ from config import MODELS, OUT, RUNS  # noqa: E402
 sys.path.insert(0, str(HERE.parent / "analysis" / "expansion"))
 import reextract as RX  # noqa: E402
 import apply_scrub as AS  # noqa: E402
+from extract_and_score import completion_code  # noqa: E402  same code as the study scores
 
 CODEBIAS_REPO = "https://github.com/theNamek/Code-Bias"
 CODEBIAS_DIR = HERE / "sources" / "Code-Bias"
@@ -80,7 +81,12 @@ def load_generations():
         with path.open() as fh:
             for line in fh:
                 r = json.loads(line)
-                code = RX.robust_clean(r.get("code") or r.get("raw") or "")
+                # UQSB is completion-style: the target signature is in the prompt
+                # and the model appends further functions. completion_code()
+                # puts the signature back and cuts at the next top-level def, so
+                # the classifier sees the target function, not a hallucinated
+                # neighbour (which is what the `code` field holds).
+                code = completion_code("UQSB-2023", r)
                 pid = r["probe"]["probe_id"]
                 out[(r["model"], r["method"])].append((pid, r["seed"], code))
                 if r["method"] == "baseline":

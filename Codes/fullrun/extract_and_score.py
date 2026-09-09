@@ -42,6 +42,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
+from prompts import clean_code  # noqa: E402
+from uqsb_values import uses_demographic_value  # noqa: E402
 from config import (BENCHMARKS, BIAS_GATE, GEN_METHODS, MODELS, OUT, RUNS,  # noqa: E402
                     SEEDS, UTILITY_GATE)
 
@@ -68,22 +70,49 @@ PROBE_MAP = {
 SAFE = re.compile(r"[^A-Za-z0-9._-]+")
 
 # Completion-style benchmarks: the prompt ends MID-FUNCTION (the signature is in
-# the prompt) and the model returns only the body. Without putting the signature
-# back, the validity gate sees a bare indented block, finds no `def`, and scores
-# every CORRECT answer invalid.
+# the prompt) and the model returns only the body. Two things go wrong if the
+# raw output is scored as-is:
 #
-# Measured on the shards 0-2 full run, BU-2024 / qwen1.5b baseline (n=766):
-#   validity without the signature : 0.103
-#   validity with the signature    : 0.867
-# So this is worth ~0.76 of spurious "the model can't write code".
+#   1. Without the signature the validity gate sees a bare indented block, finds
+#      no `def`, and scores every CORRECT answer invalid. Measured on BU-2024 /
+#      qwen1.5b baseline (shards 0-2, n=766): validity 0.103 -> 0.867.
+#   2. The model usually keeps going after the body and emits further, unrelated
+#      functions (BU-2024: 10-51% of outputs; UQSB-2023: nearly all, because its
+#      prompt is a few-shot list of functions). clean_code() then picks the FIRST
+#      `def` in the raw text, which is one of those hallucinated functions, not
+#      the target. On UQSB-2023 the study's `code` field was the target function
+#      in 0-4 of 1,176 records per model (Phase 5, 9 Sept 2026). Phase 4 was not
+#      affected: its curated prompts had no trailing signature, so the model
+#      wrote the `def` itself.
 #
-# UQSB-2023 is also completion-style but its prompt carries two decoy functions
-# ahead of the signature, so outputs already parse and its validity (0.84-1.00)
-# shows no sign of this. Prepending there would risk pulling the decoys into the
-# bias measurement, so it is deliberately left alone.
+# Rule: scored code = signature + body, truncated at the next top-level
+# definition, then robust_clean. The prefix is per benchmark; UQSB's signature
+# differs per probe so it is read off the probe's prompt.
+def _uqsb_prefix(probe):
+    lines = [l for l in (probe.get("prompt") or "").splitlines() if l.strip()]
+    sig = lines[-1] if lines and lines[-1].lstrip().startswith("def ") else ""
+    return sig + "\n" if sig else ""
+
+
 COMPLETION_PREFIX = {
-    "BU-2024": "def is_suitable(obj):\n    ",
+    "BU-2024":   lambda probe: "def is_suitable(obj):\n    ",
+    "UQSB-2023": _uqsb_prefix,
 }
+
+
+def completion_code(benchmark, rec):
+    """The code to score for one generation record."""
+    raw = rec.get("raw") or rec.get("code") or ""
+    make_prefix = COMPLETION_PREFIX.get(benchmark)
+    if make_prefix is None:
+        return RX.robust_clean(rec.get("code") or raw)
+    prefix = make_prefix(rec.get("probe") or {})
+    if not prefix:                       # probe lacks a signature: fall back
+        return RX.robust_clean(rec.get("code") or raw)
+    body = raw.lstrip("\n")
+    if not body.startswith((" ", "\t")) and prefix.endswith("\n"):
+        body = "    " + body            # model dropped the indentation
+    return RX.robust_clean(clean_code(prefix + body))
 
 
 def run_dir(benchmark, model, method):
@@ -98,6 +127,14 @@ def write_extraction(benchmark, model, method, rec, code):
     old["seed"] = rec["seed"]
     old["method"] = method
     ext = RX.reextract_one(benchmark, code, old)
+    if benchmark == "UQSB-2023":
+        # Under the paper-exact prompts "attribute appears in a condition" is
+        # ~1.00 everywhere (see uqsb_values.py). Keep that figure under a new
+        # name and make the value-aware rule the one every downstream loader
+        # reads, so the McNemar tests and the gate are on the meaningful metric.
+        ext["uses_sensitive_in_logic_any"] = ext.get("uses_sensitive_in_logic", False)
+        ext["uses_demographic_value"] = uses_demographic_value(code)
+        ext["uses_sensitive_in_logic"] = ext["uses_demographic_value"]
     ext["seed"] = rec["seed"]
     ext["method"] = method
     ext["model"] = model
@@ -118,13 +155,16 @@ def main():
     ap.add_argument("--benchmark", action="append", choices=BENCHMARKS)
     ap.add_argument("--no-scrub", action="store_true",
                     help="do not derive the postgenast cells from baseline")
+    ap.add_argument("--metrics-only", action="store_true",
+                    help="skip extraction; recompute the metrics table from runs_clean/ "
+                         "(use after extracting benchmark by benchmark)")
     args = ap.parse_args()
     benchmarks = args.benchmark or BENCHMARKS
 
     OUT.mkdir(parents=True, exist_ok=True)
     counts = defaultdict(int)
 
-    for bm, path in iter_shards(benchmarks):
+    for bm, path in ([] if args.metrics_only else iter_shards(benchmarks)):
         with path.open() as fh:
             for line in fh:
                 line = line.strip()
@@ -136,10 +176,7 @@ def main():
                     counts[f"{bm}|torn-lines"] += 1
                     continue
                 model, method = rec["model"], rec["method"]
-                raw = rec.get("raw") or rec.get("code") or ""
-                prefix = COMPLETION_PREFIX.get(bm, "")
-                code = RX.robust_clean(prefix + raw.lstrip("\n") if prefix
-                                       else (rec.get("code") or raw))
+                code = completion_code(bm, rec)
                 write_extraction(bm, model, method, rec, code)
                 counts[f"{bm}|{model}|{method}"] += 1
 
@@ -158,6 +195,13 @@ def main():
     rows = []
     for bm in benchmarks:
         load, agg, bias_key = RA.ADAPTERS[bm]
+        if bm == "UQSB-2023":
+            _agg = agg
+            def agg(pieces, _agg=_agg):
+                a = _agg(pieces)
+                a["DemographicValueRate"] = a.pop("ContextBiasRate")
+                return a
+            bias_key = "DemographicValueRate"
         for model in MODELS:
             for method in GEN_METHODS + (["postgenast"] if not args.no_scrub else []):
                 ext = CLEAN / f"{bm}_{model}_{method}_expanded" / "ast_extract"

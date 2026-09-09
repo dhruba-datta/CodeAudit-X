@@ -38,8 +38,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
-from config import (ALL_BENCHMARKS, BENCHMARKS, FULL_PROBES, GEN_METHODS,  # noqa: E402
-                    MODEL_BACKEND, MODELS, RUNS, SEEDS, decoding_for)
+from config import (ALL_BENCHMARKS, ALL_GEN_METHODS, BENCHMARKS, FULL_PROBES,  # noqa: E402
+                    GEN_METHODS, MODEL_BACKEND, MODELS, RUNS, SEEDS, decoding_for)
 from prompts import clean_code, iter_jobs  # noqa: E402
 import sharding  # noqa: E402
 
@@ -271,7 +271,9 @@ def main():
     ap.add_argument("--benchmark", action="append", choices=ALL_BENCHMARKS)
     ap.add_argument("--model", action="append", choices=list(MODELS))
     ap.add_argument("--seed", action="append", type=int)
-    ap.add_argument("--method", action="append", choices=GEN_METHODS)
+    ap.add_argument("--method", action="append", choices=ALL_GEN_METHODS,
+                    help="default: the three grid methods; promptmit_v3/v4 are the SBB-2026 "
+                         "replication prompts (BU-2024A only)")
     ap.add_argument("--limit", type=int, default=None,
                     help="cap probes per benchmark (smoke tests only)")
     ap.add_argument("--batch-size", type=int, default=256)
