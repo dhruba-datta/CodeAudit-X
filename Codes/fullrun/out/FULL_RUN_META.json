@@ -1,0 +1,285 @@
+[
+ {
+  "started_at": "2026-09-07T16:25:16.310790+00:00",
+  "backend": "vllm",
+  "benchmarks": [
+   "BTM-2025",
+   "UQSB-2023",
+   "SEB-2023",
+   "BU-2024",
+   "IMSB-2025"
+  ],
+  "models": [
+   "codegen350M",
+   "deepseek1.3b",
+   "qwen1.5b"
+  ],
+  "seeds": [
+   1,
+   2,
+   3
+  ],
+  "methods": [
+   "baseline",
+   "promptmit_v1",
+   "promptmit_v2"
+  ],
+  "limit": null,
+  "shards": {
+   "of": 10,
+   "selected": [
+    0,
+    1,
+    2
+   ],
+   "seed": 20260827
+  },
+  "decoding": "standardized",
+  "env": {
+   "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+   "python": "3.12.13",
+   "dtype": "half",
+   "gpus": [
+    "Tesla T4",
+    "Tesla T4"
+   ],
+   "torch": "2.13.0+cu130",
+   "vllm": "0.28.0",
+   "cuda": "13.0"
+  },
+  "model_revisions": {
+   "codegen350M": {
+    "repo": "Salesforce/codegen-350M-mono",
+    "sha": "d9107f71cca463240db1143f4a75a927a27fcb27"
+   },
+   "deepseek1.3b": {
+    "repo": "deepseek-ai/deepseek-coder-1.3b-instruct",
+    "sha": "e063262dac8366fc1f28a4da0ff3c50ea66259ca"
+   },
+   "qwen1.5b": {
+    "repo": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "sha": "2e1fd397ee46e1388853d2af2c993145b0f1098a"
+   }
+  },
+  "probe_manifest": {
+   "built_at": "2026-09-07T16:25:15.848303+00:00",
+   "sets": [
+    {
+     "benchmark": "BTM-2025",
+     "units": 334,
+     "provenance": "official-authors-release",
+     "target": 334,
+     "sha256": "e0086ff84dccbd65",
+     "path": "Codes/fullrun/probes_full/BTM-2025.json"
+    },
+    {
+     "benchmark": "UQSB-2023",
+     "units": 392,
+     "provenance": "paper-exact",
+     "target": 392,
+     "sha256": "9aedb2560e65d412",
+     "path": "Codes/fullrun/probes_full/UQSB-2023.json"
+    },
+    {
+     "benchmark": "BU-2024",
+     "units": 343,
+     "provenance": "official-authors-release",
+     "target": 343,
+     "sha256": "7735f387f5a69a02",
+     "path": "Codes/fullrun/probes_full/BU-2024.json"
+    },
+    {
+     "benchmark": "SEB-2023",
+     "units": 1138,
+     "provenance": "official-source-datasets",
+     "target": 1138,
+     "sha256": "133fec17deeb124d",
+     "path": "Codes/fullrun/probes_full/SEB-2023.json"
+    },
+    {
+     "benchmark": "IMSB-2025",
+     "units": 883,
+     "provenance": "official-source-datasets",
+     "target": 1000,
+     "sha256": "b6ba6fbaeb40dfa9",
+     "path": "Codes/fullrun/probes_full/IMSB-2025.json"
+    }
+   ]
+  }
+ },
+ {
+  "started_at": "2026-09-08T10:39:17.867399+00:00",
+  "backend": "vllm",
+  "benchmarks": [
+   "BTM-2025",
+   "UQSB-2023",
+   "SEB-2023",
+   "BU-2024",
+   "IMSB-2025"
+  ],
+  "models": [
+   "codegen350M",
+   "deepseek1.3b",
+   "qwen1.5b"
+  ],
+  "seeds": [
+   1,
+   2,
+   3
+  ],
+  "methods": [
+   "baseline",
+   "promptmit_v1",
+   "promptmit_v2"
+  ],
+  "limit": null,
+  "shards": {
+   "of": 10,
+   "selected": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "seed": 20260827
+  },
+  "decoding": "standardized",
+  "env": {
+   "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+   "python": "3.12.13",
+   "dtype": "half",
+   "gpus": [
+    "Tesla T4",
+    "Tesla T4"
+   ],
+   "torch": "2.13.0+cu130",
+   "vllm": "0.28.0",
+   "cuda": "13.0"
+  },
+  "model_revisions": {
+   "codegen350M": {
+    "repo": "Salesforce/codegen-350M-mono",
+    "sha": "d9107f71cca463240db1143f4a75a927a27fcb27"
+   },
+   "deepseek1.3b": {
+    "repo": "deepseek-ai/deepseek-coder-1.3b-instruct",
+    "sha": "e063262dac8366fc1f28a4da0ff3c50ea66259ca"
+   },
+   "qwen1.5b": {
+    "repo": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "sha": "2e1fd397ee46e1388853d2af2c993145b0f1098a"
+   }
+  },
+  "probe_manifest": {
+   "built_at": "2026-09-08T10:39:17.403327+00:00",
+   "sets": [
+    {
+     "benchmark": "BTM-2025",
+     "units": 334,
+     "provenance": "official-authors-release",
+     "target": 334,
+     "sha256": "1776ba194094ea3a",
+     "path": "Codes/fullrun/probes_full/BTM-2025.json"
+    },
+    {
+     "benchmark": "UQSB-2023",
+     "units": 392,
+     "provenance": "paper-exact",
+     "target": 392,
+     "sha256": "58cfd1869072661a",
+     "path": "Codes/fullrun/probes_full/UQSB-2023.json"
+    },
+    {
+     "benchmark": "BU-2024",
+     "units": 343,
+     "provenance": "official-authors-release",
+     "target": 343,
+     "sha256": "ae507637a9f5d654",
+     "path": "Codes/fullrun/probes_full/BU-2024.json"
+    },
+    {
+     "benchmark": "SEB-2023",
+     "units": 1138,
+     "provenance": "official-source-datasets",
+     "target": 1138,
+     "sha256": "762be75be212e246",
+     "path": "Codes/fullrun/probes_full/SEB-2023.json"
+    },
+    {
+     "benchmark": "IMSB-2025",
+     "units": 883,
+     "provenance": "official-source-datasets",
+     "target": 1000,
+     "sha256": "daac4c7138cc3a1f",
+     "path": "Codes/fullrun/probes_full/IMSB-2025.json"
+    }
+   ]
+  }
+ },
+ {
+  "started_at": "2026-09-08T12:19:49.828795+00:00",
+  "backend": "vllm",
+  "benchmarks": [
+   "BTM-2025"
+  ],
+  "models": [
+   "codegen350M",
+   "deepseek1.3b",
+   "qwen1.5b"
+  ],
+  "seeds": [
+   4,
+   5
+  ],
+  "methods": [
+   "baseline",
+   "promptmit_v1",
+   "promptmit_v2"
+  ],
+  "limit": null,
+  "shards": null,
+  "decoding": "standardized",
+  "env": {
+   "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+   "python": "3.12.13",
+   "dtype": "half",
+   "gpus": [
+    "Tesla T4",
+    "Tesla T4"
+   ],
+   "torch": "2.13.0+cu130",
+   "vllm": "0.28.0",
+   "cuda": "13.0"
+  },
+  "model_revisions": {
+   "codegen350M": {
+    "repo": "Salesforce/codegen-350M-mono",
+    "sha": "d9107f71cca463240db1143f4a75a927a27fcb27"
+   },
+   "deepseek1.3b": {
+    "repo": "deepseek-ai/deepseek-coder-1.3b-instruct",
+    "sha": "e063262dac8366fc1f28a4da0ff3c50ea66259ca"
+   },
+   "qwen1.5b": {
+    "repo": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "sha": "2e1fd397ee46e1388853d2af2c993145b0f1098a"
+   }
+  },
+  "probe_manifest": {
+   "built_at": "2026-09-08T12:19:49.613684+00:00",
+   "sets": [
+    {
+     "benchmark": "BTM-2025",
+     "units": 334,
+     "provenance": "official-authors-release",
+     "target": 334,
+     "sha256": "b5dc13a9e267b328",
+     "path": "Codes/fullrun/probes_full/BTM-2025.json"
+    }
+   ]
+  }
+ }
+]

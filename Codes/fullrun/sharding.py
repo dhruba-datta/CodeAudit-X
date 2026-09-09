@@ -47,6 +47,7 @@ PROBE_LIST_KEY = {
     "SEB-2023": "probes",
     "BU-2024": "tasks",
     "IMSB-2025": "triplets",
+    "BU-2024A": "probes",
 }
 
 STRATUM_FIELD = {
@@ -55,6 +56,7 @@ STRATUM_FIELD = {
     "SEB-2023": "source",
     "BU-2024": None,          # homogeneous role-suitability tasks
     "IMSB-2025": "type",
+    "BU-2024A": None,
 }
 
 # Fixed so shard membership is reproducible across machines and reruns. Changing

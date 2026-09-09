@@ -38,8 +38,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
-from config import (BENCHMARKS, FULL_PROBES, GEN_METHODS, MODEL_BACKEND, MODELS,  # noqa: E402
-                    RUNS, SEEDS, decoding_for)
+from config import (ALL_BENCHMARKS, BENCHMARKS, FULL_PROBES, GEN_METHODS,  # noqa: E402
+                    MODEL_BACKEND, MODELS, RUNS, SEEDS, decoding_for)
 from prompts import clean_code, iter_jobs  # noqa: E402
 import sharding  # noqa: E402
 
@@ -268,7 +268,7 @@ def plan(benchmarks, models, methods, seeds, limit, shards=1, want=None):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--backend", choices=list(BACKENDS), default="vllm")
-    ap.add_argument("--benchmark", action="append", choices=BENCHMARKS)
+    ap.add_argument("--benchmark", action="append", choices=ALL_BENCHMARKS)
     ap.add_argument("--model", action="append", choices=list(MODELS))
     ap.add_argument("--seed", action="append", type=int)
     ap.add_argument("--method", action="append", choices=GEN_METHODS)

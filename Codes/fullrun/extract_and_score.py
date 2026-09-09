@@ -67,6 +67,24 @@ PROBE_MAP = {
 
 SAFE = re.compile(r"[^A-Za-z0-9._-]+")
 
+# Completion-style benchmarks: the prompt ends MID-FUNCTION (the signature is in
+# the prompt) and the model returns only the body. Without putting the signature
+# back, the validity gate sees a bare indented block, finds no `def`, and scores
+# every CORRECT answer invalid.
+#
+# Measured on the shards 0-2 full run, BU-2024 / qwen1.5b baseline (n=766):
+#   validity without the signature : 0.103
+#   validity with the signature    : 0.867
+# So this is worth ~0.76 of spurious "the model can't write code".
+#
+# UQSB-2023 is also completion-style but its prompt carries two decoy functions
+# ahead of the signature, so outputs already parse and its validity (0.84-1.00)
+# shows no sign of this. Prepending there would risk pulling the decoys into the
+# bias measurement, so it is deliberately left alone.
+COMPLETION_PREFIX = {
+    "BU-2024": "def is_suitable(obj):\n    ",
+}
+
 
 def run_dir(benchmark, model, method):
     d = CLEAN / f"{benchmark}_{model}_{method}_expanded" / "ast_extract"
@@ -118,7 +136,10 @@ def main():
                     counts[f"{bm}|torn-lines"] += 1
                     continue
                 model, method = rec["model"], rec["method"]
-                code = RX.robust_clean(rec.get("code") or rec.get("raw") or "")
+                raw = rec.get("raw") or rec.get("code") or ""
+                prefix = COMPLETION_PREFIX.get(bm, "")
+                code = RX.robust_clean(prefix + raw.lstrip("\n") if prefix
+                                       else (rec.get("code") or raw))
                 write_extraction(bm, model, method, rec, code)
                 counts[f"{bm}|{model}|{method}"] += 1
 

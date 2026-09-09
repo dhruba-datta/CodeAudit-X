@@ -46,6 +46,17 @@ MODELS = {
 # --------------------------------------------------------------------------
 BENCHMARKS = ["BTM-2025", "UQSB-2023", "SEB-2023", "BU-2024", "IMSB-2025"]
 
+# Extra benchmark variants that are NOT part of the default grid. They exist so
+# a source paper's own metric can be applied faithfully.
+#
+#   BU-2024A  the AAAI-25 authors' 343 prompts VERBATIM: a dataclass listing
+#             every demographic field, and a `(self) -> bool` method to
+#             complete. Their pytest harness (metamorphic execution over the
+#             demographic Cartesian product) only makes sense against this
+#             format, not against our `is_suitable(obj)` completion stub.
+EXTRA_BENCHMARKS = ["BU-2024A"]
+ALL_BENCHMARKS = BENCHMARKS + EXTRA_BENCHMARKS
+
 # Models that CANNOT run on vLLM and must fall back to transformers.
 #
 # CodeGen-350M is `CodeGenForCausalLM`, which vLLM does not implement. Verified
@@ -89,6 +100,7 @@ LEGACY_DECODING = {
     "UQSB-2023": {"temperature": 0.4, "top_p": 1.0,  "max_tokens": 120},
     "IMSB-2025": {"temperature": 0.4, "top_p": 1.0,  "max_tokens": 300},
     "BTM-2025":  {"temperature": 0.4, "top_p": 0.95, "max_tokens": 400},
+    "BU-2024A":  {"temperature": 0.4, "top_p": 1.0,  "max_tokens": 200},   # as BU-2024
 }
 
 # --------------------------------------------------------------------------
@@ -119,6 +131,7 @@ FULL_SET_TARGETS = {
     "SEB-2023":  1138,   # HumanEval 164 + MBPP 974
     "BU-2024":   343,
     "IMSB-2025": 1000,   # capped subsample of CrowS-Pairs (1508 pairs)
+    "BU-2024A":  343,    # authors' prompts, verbatim
 }
 
 

@@ -547,6 +547,56 @@ def build_bu_official(target):
         "these prompts follow this pipeline's format rather than theirs.")
 
 
+BU_PROMPTS_URL = ("https://raw.githubusercontent.com/janeeyre912/"
+                  "fairness_testing_code_generation/master/dataset/prompts.jsonl")
+
+
+def build_bu_authors_prompts(target):
+    """BU-2024A: the authors' 343 prompts verbatim, one per task.
+
+    Each prompt is a dataclass declaring every demographic field with its value
+    set in a comment, followed by an unfinished `def <method>(self)-> bool` and
+    a docstring. The model completes the method body. This is the format the
+    authors' pytest harness (test_suites/utils.py) loads and executes, so
+    generating from it is what lets their CBS / Bias Leaning Score /
+    Pass@attribute be computed without adaptation.
+
+    Note: their prompts omit the colon after `-> bool`. Kept verbatim; their
+    harness compensates when loading the completion.
+    """
+    blob = _fetch(BU_PROMPTS_URL, "BU-2024_prompts.jsonl").decode("utf-8")
+    tasks_raw = json.loads(_fetch(BU_URL, "BU-2024_tasks.json"))
+    by_idx = {str(i): t for i, t in enumerate(tasks_raw)}
+    probes = []
+    for line in blob.splitlines():
+        if not line.strip():
+            continue
+        row = json.loads(line)
+        tid = str(row["task_id"])
+        t = by_idx.get(tid, {})
+        probes.append({
+            "task_id": f"bu_{int(tid):03d}",
+            "authors_task_id": tid,
+            "prompt": row["prompt"],
+            "class_name": t.get("class_name"),
+            "method_name": t.get("method_name"),
+            "sensitive_attributes": t.get("sensitive_attributes", []),
+            "related_attributes": t.get("related_attributes", []),
+        })
+    if len(probes) != target:
+        raise RuntimeError(f"BU-2024A expected {target} prompts, got {len(probes)}")
+    return _stamp({
+        "task_count": len(probes),
+        "description": "BU-2024 (SocialBias-Bench) prompts verbatim from the AAAI-25 artifact, "
+                       "for scoring with the authors' own pytest harness.",
+        "generator": {"source": BU_PROMPTS_URL, "license": "none stated (default copyright); "
+                                                           "fetched at build time, not redistributed"},
+        "probes": probes,
+    }, "BU-2024A", "official-authors-release",
+        "The authors' dataset/prompts.jsonl, unchanged. Exists alongside BU-2024 (our "
+        "completion-stub format) so their metric and ours can both be reported.")
+
+
 def build_bu(target):
     tasks = []
     for ri, (role, major, skill) in enumerate(BU_ROLES):
@@ -802,6 +852,7 @@ BUILDERS = {
     "BU-2024":   lambda t, off: build_bu(t) if off else build_bu_official(t),
     "SEB-2023":  lambda t, off: build_seb(t, off),
     "IMSB-2025": lambda t, off: build_imsb(t, off),
+    "BU-2024A":  lambda t, off: build_bu_authors_prompts(t),   # authors' prompts, needs network
 }
 
 
@@ -814,7 +865,8 @@ def main():
 
     FULL_PROBES.mkdir(parents=True, exist_ok=True)
     SOURCES.mkdir(parents=True, exist_ok=True)
-    todo = args.benchmark or list(BUILDERS)
+    # BU-2024A is opt-in: it is not part of the default five-benchmark grid.
+    todo = args.benchmark or [b for b in BUILDERS if b != "BU-2024A"]
 
     summary = []
     for bm in todo:
