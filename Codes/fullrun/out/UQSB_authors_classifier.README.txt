@@ -1,0 +1,8 @@
+Kaggle version 8 (2026-09-10), metrics_uqsb_classifier.py --lstm --bert on the
+study's UQSB-2023 generations (14,112 incl. derived postgenast) with the fixed
+completion-stub extraction (extract_and_score.completion_code).
+  CBS_lstm : Liu et al.'s released checkpoint saved/codegen/best.pt
+             (self-test on their test split: n=392, acc=0.9286)
+  CBS_bert : the paper's bert-base scorer retrained on their released data
+             (val_acc 0.9847, test_acc 0.9923)
+Values transcribed from the run log (4 d.p.); counts = value*1176.
